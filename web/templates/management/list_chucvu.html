@@ -1,0 +1,54 @@
+<div class="hr-content grid">
+    <div class="content chucvu_container row cells12">
+        <div class="main_content box_shadow cell colspan8">
+            <h3 class="b_c_add">{{'listTitle' | translate}}</h3>
+            <div class="panel collapsible collapsed" data-role="panel">
+                <div class="heading">
+                    <span class="title">{{'addTitle' | translate}}</span>
+                </div>
+                <div class="content padding10 grid" style="display: none;">
+                    <div class="row cells8">
+                        <div class="cell title">{{'idTitle' | translate}}</div>
+                        <div class="input-control text cell colspan2">
+                            <input type="text" value="" ng-model="mcv">
+                        </div>
+                        <div class="cell title">{{'nameTitle' | translate}}</div>
+                        <div class="input-control text cell colspan2">
+                            <input type="text" value="" ng-model="tencv">
+                        </div>
+                        <div class="cell colspan2">
+                            <input type="button" value="{{'addNew' | translate}}" style="height: 40px;margin-top: -6px;margin-left: 22px;" class="submit_b" ng-click="newChucVu()" ng-disabled="!tencv || !mcv">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <table class="table striped hovered cell-hovered border bordered tbChucVu" dt-column-defs="dtColCV" datatable="ng" dt-options="dtListCV">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>{{'idTitleFull' | translate}}</th>
+                            <th>{{'funcTitle' | translate}}</th>
+                            <th>{{'dateCreate' | translate}}</th>
+                            <th>{{'dateUpdate' | translate}}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="(key, value) in chucvu">
+                            <td>{{key+1}}</td>
+                            <td><input type="text" value="{{value.ID}}" style="width:50px" id="{{value.ID}}" ng-blur="checkMCV(value.ID)" title="Click để thay đổi mã chức vụ"></td>
+                            <td><input type="text" value="{{value.tenchucvu}}" id="cv_{{value.ID}}" ng-blur="checkTCV('cv_'+value.ID)" title="Click để thay đổi tên chức vụ"></td>
+                            <td>{{value.ngaytao | date: 'dd/MM/yyyy'}}</td>
+                            <td>{{value.ngaysua | date: 'dd/MM/yyyy'}}</td>
+                            <td style="text-align: center;"><span class="mif-bin mif-2x" title="Xóa chức vụ" ng-click="removeChucVu(value.ID)"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+        <div class="clear"></div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="hr-content grid"> 
+<div class="content row cells12">
+    
+    <div class="main_content box_shadow cell colspan8">
+            <h3 style="text-transform: uppercase; color: #1D58A4;">{{'accessManagement' | translate}}</h3>
+            
+               <table class="table striped hovered cell-hovered border bordered" datatable="ng" dt-options="dtOptions">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>{{'username' | translate}}</th>
+                            <th>{{'addressEmail' | translate}}</th>
+                            <th>{{'setPermissions' | translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="(key, value) in data_account">
+                            <td style="width: 8%;">{{key+1}}</td>
+                            <td>{{value.username}}</td>
+                            <td>{{value.email}}</td>
+                            <td>
+                                <div class="input-control select full-size">
+                                    <select ng-model="auth" ng-init="auth = value.level" ng-change="setAuth(value.id, auth)" style="border: none;background: transparent;">
+                                        <option value="2">Quản lý nhân sự</option>
+                                        <option value="3">Quản lý tài chính</option>
+                                        <option value="4">Quản trị hệ thống</option>
+                                        <option value="5">Nhân viên thông thường</option>
+                                    </select>
+                                </div>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+    </div>
+        <div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+        <div class="clear"></div>
+</div>
+</div>

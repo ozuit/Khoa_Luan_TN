@@ -1,0 +1,122 @@
+<div class="hr-content grid">
+	<div class="content row cells12">
+		<div class="main_content box_shadow cell colspan8">
+			<h3 class="b_c_add">{{'updateInfoCompany' | translate}}</h3>
+			<form ng-submit="updateInfo()" id="updateInfo_form">
+				<div class="grid">
+					<div class="row cells3">
+						<div class="cell colspan2">
+							<div class="grid">
+								<div class="row cells3">
+									<div class="cell title">{{'idCompany' | translate}}</div>
+									<div class="input-control text cell colspan2">
+										<input type="text" value="{{info_company.madonvi}}" name="madonvi">
+									</div>
+								</div>
+							</div>
+							<div class="grid">
+								<div class="row cells3">
+									<div class="cell title">{{'labelConpanyName' | translate}}</div>
+									<div class="input-control text cell colspan2">
+										<input type="text" value="{{info_company.tendonvi}}" name="tendonvi">
+									</div>
+								</div>
+							</div>
+							<div class="grid">
+								<div class="row cells3">
+									<div class="cell title">{{'labelRepresentative' | translate}}</div>
+									<div class="input-control text cell colspan2">
+										<input type="text" value="{{info_company.nguoidaidien}}" name="nguoidaidien">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="cell">
+							<img class="i_logo" ng-model="file" ngf-select="uploadFiles($file, $invalidFiles)" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-thumbnail="file || logo_image">
+							<input type="hidden" name="logo" value="{{info_company.logo}}">
+						</div>
+					</div>
+					<div class="row cells5">
+						<div class="cell title">{{'labelAddress' | translate}}</div>
+						<div class="input-control text cell colspan4">
+							<input type="text" value="{{info_company.diachi}}" name="diachi" title="{{info_company.diachi}}">
+						</div>
+					</div>
+					<div class="row cells5">
+						<div class="cell title">{{'businessLicense' | translate}}</div>
+						<div class="input-control text cell colspan4">
+							<input type="text" value="{{info_company.giayphepkd}}" name="giayphepkd">
+						</div>
+					</div>
+					<div class="row cells5">
+						<div class="cell title">{{'fieldCompany' | translate}}</div>
+						<div class="input-control text cell colspan4">
+							<input type="text" value="{{info_company.linhvuc}}" name="linhvuc">
+						</div>
+					</div>
+					<div class="row cells4">
+						<div class="cell colspan2">
+							<div class="row cells3">
+								<div class="cell title">{{'labelPhoneNumber' | translate}}</div>
+								<div class="input-control text cell colspan2">
+									<input type="text" value="{{info_company.dienthoai}}" name="dienthoai">
+								</div>
+							</div>
+						</div>
+						<div class="cell colspan2">
+							<div class="row cells3">
+								<div class="cell title">Fax</div>
+								<div class="input-control text cell colspan2">
+									<input type="text" value="{{info_company.fax}}" name="fax">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row cells4">
+						<div class="cell colspan2">
+							<div class="row cells3">
+								<div class="cell title">Email</div>
+								<div class="input-control text cell colspan2">
+									<input type="text" value="{{info_company.email}}" name="email">
+								</div>
+							</div>
+						</div>
+						<div class="cell colspan2">
+							<div class="row cells3">
+								<div class="cell title">Website</div>
+								<div class="input-control text cell colspan2">
+									<input type="text" value="{{info_company.website}}" name="website">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row cells4">
+						<div class="cell colspan2">
+							<div class="row cells3">
+								<div class="cell title">{{'labelTax' | translate}}</div>
+								<div class="input-control text cell colspan2">
+									<input type="text" value="{{info_company.masothue}}" name="masothue">
+								</div>
+							</div>
+						</div>
+						<div class="cell colspan2">
+							<div class="row cells3">
+								<div class="cell title">{{'labelAccountNumber' | translate}}</div>
+								<div class="input-control text cell colspan2">
+									<input type="text" value="{{info_company.sotk}}" name="sotk">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row action">
+						<input type="submit" value="{{'btnUpdate' | translate}}" class="submit_b">
+						<input type="reset" value="{{'btnCancel' | translate}}" class="reset_b">
+					</div>
+				</div>				
+			</form>
+		</div>
+
+		<div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+		<div class="clear"></div>
+	</div>
+</div>

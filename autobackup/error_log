@@ -1,0 +1,2 @@
+[30-Nov-2016 14:12:30 UTC] PHP Strict Standards:  Declaration of dbc::prepare() should be compatible with PDO::prepare($statement, $options = NULL) in /home/viettops/public_html/autobackup/files/phpmysqlautobackup_extras.php on line 0
+[30-Nov-2016 14:43:56 UTC] PHP Strict Standards:  Declaration of dbc::prepare() should be compatible with PDO::prepare($statement, $options = NULL) in /home/viettops/public_html/autobackup/files/phpmysqlautobackup_extras.php on line 0

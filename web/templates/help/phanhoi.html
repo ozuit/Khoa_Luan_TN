@@ -1,0 +1,55 @@
+<div class="hr-content grid">
+	<div class="content feedback row cells12">
+		<div class="main_content box_shadow cell colspan8">
+			<h3 class="b_c_add">{{'feedbackTitle' | translate}}</h3>
+			
+			<!-- Form phản hồi cho người dùng -->
+			
+			<h4>{{'helpIntroTitle' | translate}}</h4>
+			
+			<p style="line-height: 25px;">
+				{{'helpIntroContent' | translate}}
+			</p>
+			<form name="formFeedback" ng-submit="feedback(formFeedback.$valid)" id="frm_feedback" data-role="validator" novalidate data-show-required-state="false" data-hint-mode="line" data-hint-background="bg-red" data-hint-color="fg-white" data-hide-error="5000">
+				<p>{{'yourName' | translate}}</p>
+				<div class="input-control text capitalize validateString full-size require-input">
+					<input type="text" name="hoten" ng-model="hoten" required onkeyup="stringValidate(this)" data-validate-func="required" data-validate-hint="Bạn chưa nhập vào họ và tên !">
+					<span class="input-state-error mif-warning" style="right: 8px;"></span>
+					<span class="input-state-success mif-checkmark" style="right: 8px;"></span>
+				</div>
+				<br><p>{{'yourEmail' | translate}}</p>
+				<div class="input-control email full-size require-input">
+					<input type="email" name="email" ng-model="email" required data-validate-func="email" data-validate-hint="Bạn chưa nhập vào một email !">
+					<span class="input-state-error mif-warning" style="right: 8px;"></span>
+					<span class="input-state-success mif-checkmark" style="right: 8px;"></span>
+				</div>
+				<br><p>{{'yourSubject' | translate}}</p>
+				<div class="input-control text full-size">
+					<input type="text" name="subject">
+				</div>
+				<br> <p>{{'yourFeedbackContent' | translate}}</p>
+				<div class="input-control textarea full-size require-input" data-role="input" data-text-auto-resize="true">
+					<textarea style="max-width: 100%;" name="noidung" ng-model="noidung" required data-validate-func="required" data-validate-hint="Bạn chưa nhập vào nội dung góp ý !"></textarea>
+					<span class="input-state-error mif-warning" style="right: 8px;"></span>
+					<span class="input-state-success mif-checkmark" style="right: 8px;"></span>
+				</div>
+				<input type="submit" value="{{'btnSendInvite' | translate}}" class="submit_b" style="float:right;margin-top:40px;">
+				<input type="reset" value="{{'btnCancel' | translate}}" class="reset_b" style="float:right;margin-top:40px;margin-right: 10px;">
+			</form>
+			<!-- Địa chỉ liên lạc - bản đồ -->
+		</div>
+		<div class="info_sidebar box_shadow cell colspan4">
+			
+			<h4>{{'contacts' | translate}}</h4>
+			<span class="mif-mail"> tantd.uit@gmail.com</span>
+			<br><br>
+			<span class="mif-perm-phone-msg"> 01284-090-893</span>
+			<br><br>
+			<div class="google-maps">
+				
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4072611774327!2d106.68565601425641!3d10.780087262075185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f2fe6b7f2c5%3A0xf871307301b46cd8!2sUniversity+of+Information+Technology!5e0!3m2!1svi!2s!4v1463025695441" width="415" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+			</div>		
+		</div>
+		<div class="clear"></div>	
+	</div>	
+</div>

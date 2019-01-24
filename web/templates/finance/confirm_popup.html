@@ -1,0 +1,42 @@
+<style type="text/css">
+	.fancymodal .fancymodal-content {
+    width: 350px;
+    background: #fff;
+    text-align: center;
+    line-height: 25px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .title {
+    padding-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .message {
+		padding: 10px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .action {
+		padding: 10px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .action button {
+		width: 100px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .action button.primary {
+		margin-right: 10px;
+	}
+</style>
+<div class="confirm-popup">
+	<div class="title">
+		<span>Hoàn thành bảng chấm công</span>
+	</div>
+	<div class="message">
+		<p>Bạn có thật sự muốn thực hiện thao tác này không?</p>
+		<span class="mif-quote"></span>
+		<em>Chức năng này sẽ lưu dữ liệu chấm công của tháng hiện tại vào cơ sở dữ liệu. Bạn sẽ không thể khôi phục lại bảng chấm công hiện tại.</em>
+		<span class="mif-quote" style="transform: rotate(180deg);"></span>
+	</div>
+	<div class="action">
+		<button class="button primary" ng-click="finishPayroll()">Đồng ý</button>
+		<button class="button" ng-click="closeModal()">Hủy bỏ</button>
+	</div>
+</div>

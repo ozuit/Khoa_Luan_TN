@@ -1,0 +1,99 @@
+<style>
+p{font-size: 18px;}
+</style>
+<div class="hr-content grid">
+    <div class="content row cells12">
+        
+        <div class="main_content box_shadow cell colspan8" style="padding-bottom: 45px;">
+            <h3 style="text-transform: uppercase; color: #1D58A4;" class="b_c_add">{{'addDecide' | translate}}</h3>
+            <img src="{{avatar_default}}" width="150px" height="150px" class="img-left-round">
+            <div class="label1">
+                <p>{{'userID' | translate}}: {{user.mnv}}</p>
+                <p>{{'fullName' | translate}}: {{user.hoten}}</p>
+                <p>{{'funcSpecialize' | translate}}: {{user.chuyenmon}}</p>
+            </div>
+            <div class="label2">
+                <p>{{'funcTitles' | translate}}: {{user.tencd}}</p>
+                <p>{{'funcTitle' | translate}}: {{user.tencv}}</p>
+                <p>{{'funcRooms' | translate}}: {{user.tenpb}}</p>
+            </div>
+            <hr class="b_c_add" style="clear: both;height: 1px;margin-bottom: 30px">
+            <form name="newKTKL" ng-submit="addKTKL(newKTKL.$valid)" id="frm_add_ktkl" data-role="validator" novalidate data-show-required-state="false" data-hint-mode="line" data-hint-background="bg-red" data-hint-color="fg-white" data-hide-error="5000">
+                <table style="margin-bottom: 25px;">
+                    <tr>
+                        <td>
+                            <p>{{'decisionNumber' | translate}}:</p>
+                        </td>
+                        <td>
+                            <div class="input-control text full-size">
+                                <input type="text" name="maqd" required>
+                            </div>
+                        </td>
+                        <td>
+                            <p>{{'typeDecision' | translate}}:</p>
+                        </td>
+                        <td>
+                            <div class="input-control select full-size">
+                                <select name="loai">
+                                    <option value="Khen thưởng">{{'rewardDecision' | translate}}</option>
+                                    <option value="Kỷ luật">{{'disciplinaryDecision' | translate}}</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>{{'execution' | translate}}:</p>
+                        </td>
+                        <td>
+                            <div class="input-control text full-size">
+                                <input type="text" name="hinhthuc" required ng-readonly="checkMoney" ng-model="applyMoney" value="{{applyMoney}}">
+                            </div>
+                        </td>
+                        <td>
+                            <p>{{'dateExcution' | translate}}:</p>
+                        </td>
+                        <td>
+                            <div class="input-control date">
+                                <input type="date" name="ngayraqd" value="{{quyetdinh.ngayraqd}}" required style="font-size: 16px;">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label class="input-control checkbox small-check">
+                                <input type="checkbox" ng-model="checkMoney" ng-change="applyMoney = (checkMoney == true)? 'Bằng tiền' : ''">
+                                <span class="check"></span>
+                                <span class="caption">{{'decisionByMoney' | translate}}</span>
+                            </label>
+                        </td>
+                        <td>
+                            <p ng-hide="!checkMoney">{{'applyMoney' | translate}}:</p>
+                        </td>
+                        <td>
+                            <div class="input-control text full-size" ng-hide="!checkMoney">
+                                <input type="text" value="" name="tienktkl" ng-model="tienktkl" ng-disabled="!checkMoney" format="number">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-top:10px"><p>{{'reason' | translate}}:</p></td>
+                        <td colspan="3" style="padding-top:10px">
+                            <div class="input-control textarea full-size" data-role="input" style="max-width: 648px;max-height: 110px;">
+                                <textarea name="lydo" required></textarea>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <input type="hidden" name="manv" value="{{user.mnv}}">
+                <div class="right" style="clear: both;">
+                    <input type="submit" value="{{'plus' | translate}}" class="submit_b">
+                    <input type="reset" value="{{'btnReset' | translate}}" class="reset_b">
+                </div>
+            </form>
+            <div class="clear"></div>
+        </div>
+        <div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+        <div class="clear"></div>
+    </div>
+</div>

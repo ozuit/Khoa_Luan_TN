@@ -1,0 +1,65 @@
+<div class="hr-content grid">
+    <div class="content row cells12" ng-controller="SystemController as ctrl">
+        <div class="main_content box_shadow cell colspan8">
+            <div class="title_left">
+                <div class="tools">
+                    <button class="reset_b btn_tool_table" ng-disabled="disabled" ng-click="addQD(ctrl.user.selected.mnv)" title="Thêm quyết định">
+                    <span class="mif-plus mif-2x" style="color: #444;">
+                        </button>
+                        <button ng-click="exportDecidePDF()" class="reset_b btn_tool_table" ng-disabled="disabled" title="Xuất quyết định" style="width: 40px;">
+                        <span class="mif-file-pdf mif-2x" style="color: #444;"></span>
+                        </button>
+                    </div>
+                    <h3 class="b_c_add">{{'ktklCaNhan' | translate}}</h3>
+                </div>
+                <div class="left">
+                    <form id="frm_decide_filters">
+                        <div class="input-control select" style="width: 172px;margin: 10px 0;">
+                            <label>{{'typeDecision' | translate}}</label>
+                            <select name="type" ng-change="decideFilters()" ng-model="initType" ng-disabled="disabled">
+                                <option value="all">{{'all' | translate}}</option>
+                                <option value="Khen thưởng">{{'rewardDecision' | translate}}</option>
+                                <option value="Kỷ luật">{{'disciplinaryDecision' | translate}}</option>
+                            </select>
+                        </div>
+                        <div class="input-control select" style="margin: 10px 0;">
+                            <label>{{'selectEmployee' | translate}}</label>
+                            <input type="hidden" name="manv" value="{{ctrl.user.selected.mnv}}">
+                            <input type="hidden" name="hoten" value="{{ctrl.user.selected.hoten}}">
+                            <ui-select ng-model="ctrl.user.selected" ng-change="selectUserForQD(ctrl.user.selected)" theme="select2" style="min-width: 250px;" title="Chọn một nhân viên">
+                            <ui-select-match placeholder="{{'enterUserInvite' | translate}}">{{$select.selected.hoten}}</ui-select-match>
+                            <ui-select-choices repeat="user in users | propsFilter: {hoten: $select.search, mnv: $select.search}">
+                            <div ng-bind-html="user.hoten | highlight: $select.search"></div>
+                            <small>
+                            {{'labelUsername' | translate}}: <span ng-bind-html="''+user.mnv | highlight: $select.search"></span>
+                            </small>
+                            </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </form>
+                </div>
+                <div style="margin-top: 20px;" id="ds_quyetdinh">
+                    <table class="table striped hovered cell-hovered border bordered tbChucVu" dt-column-defs="dtColCV" datatable="ng" dt-options="dtKTKL">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>{{'code' | translate}}</th>
+                                <th>{{'typeDecision' | translate}}</th>
+                                <th>{{'reason' | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(key, value) in ds_quyetdinh" ng-click="updateQD(ctrl.user.selected.mnv, value.id)" style="cursor: pointer;">
+                                <td>{{key+1}}</td>
+                                <td>{{value.maqd}}</td>
+                                <td>{{value.loai}}</td>
+                                <td>{{value.lydo}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+            <div class="clear"></div>
+        </div>      
+    </div>

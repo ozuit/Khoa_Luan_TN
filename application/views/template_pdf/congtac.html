@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title><?php echo $title; ?></title>
+		<style>
+		  *{ font-family: DejaVu Sans; }
+		  .image{ display: block;float: left;border: 1px solid #ccc;width: 100px;margin-top: 5px; }
+		  .info{ display: block;float: left;margin-left: 120px;margin-top: 0px; }
+		  table{ clear: both;margin-top: 20px;font-size: 14px;margin-bottom: 25px }
+		  table td, table th{ padding: 0 5px; }
+		  .sign{ text-align: right; }
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<h3 style="text-align: center;margin-bottom: 40px;">BẢNG HOẠT ĐỘNG - CÔNG TÁC</h3>
+			<div class="info">
+				Mã nhân viên: <?php echo $manv ?>
+				<br><br>
+				Họ và tên: <?php echo $title ?>
+				<br><br>
+				Chức vụ: <?php echo $chucvu ?>
+			</div>
+			<div class="image">
+				<img src="assets/kcfinder/upload/files/avatars/<?php echo $hinhanh ?>" width="100px" height="100px">
+			</div>
+			
+			
+		</div>
+		<table border="1" cellpadding="0" cellspacing="0" style="width: 100%">
+		    <thead>
+		        <tr>
+		            <th>STT</th>
+                    <th>Lý do đi</th>    
+                    <th>Địa điểm</th>
+                    <th>Từ ngày</th>
+                    <th>Đến ngày</th>
+                    <th>Tiền phụ cấp</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		    	<?php foreach ($content as $key => $value):?>
+		        <tr>
+		            <td style="text-align: center;padding: 0px;width: 5%"><?php echo $key+1; ?></td>
+		            <td style="width: 30%;"><?php echo $value['lydo']; ?></td>
+		            <td style="width: 15%;"><?php echo $value['diadiem']; ?></td>
+		            <td style="width: 15%;"><?php echo date_format(date_create($value['tungay']), 'd/m/Y'); ?></td>
+		            <td style="width: 15%;"><?php echo date_format(date_create($value['denngay']), 'd/m/Y'); ?></td>
+		            <td style="width: 20%;"><?php echo $value['phucap']; ?></td> 
+		        </tr>
+		        <?php endforeach;?>
+		    </tbody>
+		</table>
+		<p class="sign">
+			<b style="margin-right: 10px;">Người lập bảng</b>
+			<br>
+			<i>(Ký và ghi rõ họ tên)</i>
+		</p>		
+	</body>
+</html>
+
+

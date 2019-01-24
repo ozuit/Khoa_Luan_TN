@@ -1,0 +1,39 @@
+<style type="text/css">
+	.fancymodal .fancymodal-content {
+    width: 350px;
+    background: #fff;
+    text-align: center;
+    line-height: 25px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .title {
+    padding-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .message {
+		padding: 10px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .action {
+		padding: 10px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .action button {
+		width: 100px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .action button.primary {
+		margin-right: 10px;
+	}
+</style>
+<div class="confirm-popup">
+	<div class="title">
+		<span>Xóa thông tin nhân viên</span>
+	</div>
+	<div class="message">
+		<p>Bạn có chắc muốn xóa toàn bộ thông tin của nhân viên này không?</p>
+	</div>
+	<div class="action">
+		<button class="button primary" ng-click="confirmRemoveMember()">Có</button>
+		<button class="button" ng-click="closeModal()">Không</button>
+	</div>
+</div>

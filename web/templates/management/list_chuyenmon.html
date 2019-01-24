@@ -1,0 +1,54 @@
+<div class="hr-content grid">
+    <div class="content chuyenmon_container row cells12">
+        <div class="main_content box_shadow cell colspan8">
+            <h3 class="b_c_add">{{'listSpecialize' | translate}}</h3>
+            <div class="panel collapsible collapsed" data-role="panel">
+                <div class="heading">
+                    <span class="title">{{'addSpecialize' | translate}}</span>
+                </div>
+                <div class="content padding10 grid" style="display: none;">
+                    <div class="row cells8">
+                        <div class="cell title">{{'idSpecialize' | translate}}</div>
+                        <div class="input-control text cell colspan2">
+                            <input type="text" value="" ng-model="mcm">
+                        </div>
+                        <div class="cell title">{{'nameSpecialize' | translate}}</div>
+                        <div class="input-control text cell colspan2">
+                            <input type="text" value="" ng-model="tencm">
+                        </div>
+                        <div class="cell colspan2">
+                            <input type="button" value="{{'addNew' | translate}}" style="height: 40px;margin-top: -6px;margin-left: 22px;" class="submit_b" ng-click="newChuyenMon()" ng-disabled="!tencm || !mcm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <table class="table striped hovered cell-hovered border bordered tbChuyenMon" dt-column-defs="dtColCM" datatable="ng" dt-options="dtListCM">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>{{'idSpecializeFull' | translate}}</th>
+                            <th>{{'funcSpecialize' | translate}}</th>
+                            <th>{{'dateCreate' | translate}}</th>
+                            <th>{{'dateUpdate' | translate}}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="(key, value) in chuyenmon">
+                            <td>{{key+1}}</td>
+                            <td><input type="text" value="{{value.ID}}" style="width:50px" id="{{value.ID}}" ng-blur="checkMCM(value.ID)" title="Click để thay đổi mã chuyên môn"></td>
+                            <td><input type="text" value="{{value.tenchuyenmon}}" id="cd_{{value.ID}}" ng-blur="checkTCM('cd_'+value.ID)" title="Click để thay đổi tên chuyên môn"></td>
+                            <td>{{value.ngaytao | date: 'dd/MM/yyyy'}}</td>
+                            <td>{{value.ngaysua | date: 'dd/MM/yyyy'}}</td>
+                            <td style="text-align: center;"><span class="mif-bin mif-2x" title="Xóa chuyên môn" ng-click="removeChuyenMon(value.ID)"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+        <div class="clear"></div>
+    </div>
+</div>

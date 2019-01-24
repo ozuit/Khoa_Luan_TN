@@ -1,0 +1,248 @@
+<div class="hr-content">
+  <div class="content list-member" id="loadhtml">
+    
+    <div class="main_content box_shadow full_content">
+      <div class="title_left">
+        <h3 class="b_c_add">{{'listEmployees' | translate}}</h3>
+        <div class="tools">
+          <button class="btn_tool_table reset_b" ng-click="exportExl()" title="Export ra file excel" style="width: 40px;">
+            <span class="mif-file-excel mif-2x"></span>
+            <span class="mif-file-download arrow"></span>
+          </button>
+          <button class="btn_tool_table reset_b" ng-click="printTable('#list-members')" title="In danh sách" style="width: 45px;">
+            <span class="mif-printer mif-2x"></span>
+          </button>
+          <button class="btn_tool_table reset_b" type="file" ngf-select="importExl($file, $invalidFiles)" ngf-pattern="'.xls,.xlsx'" ngf-accept="'.xls,.xlsx'" title="Import từ file excel" style="width: 40px;">
+            <span class="mif-file-excel mif-2x"></span>
+            <span class="mif-file-upload arrow"></span>
+          </button>
+        </div>        
+      </div>
+      <form id="frm_user_filters">
+        <div class="tool-bar grid condensed">
+          <div class="row cells8">
+            <div class="cell">
+              <div class="input-control select">
+                <label>{{'funcGender' | translate}}</label>
+                <select name="gioitinh" ng-change="userFilters()" ng-model="initGT">
+                  <option value="all">{{'all' | translate}}</option>
+                  <option value="Nam">{{'male' | translate}}</option>
+                  <option value="Nữ">{{'female' | translate}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="cell">
+              <div class="input-control select">
+                <label>{{'marital' | translate}}</label>
+                <select name="tthonnhan" ng-change="userFilters()" ng-model="initHN">
+                  <option value="all">{{'all' | translate}}</option>
+                  <option value="Chưa kết hôn">{{'single' | translate}}</option>
+                  <option value="Đã kết hôn">{{'married' | translate}}</option>
+                  <option value="Đã ly hôn">{{'divorced' | translate}}</option>
+                  <option value="Mất vợ/chồng">{{'widow' | translate}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="cell">
+              <div class="input-control select">
+                <label>{{'funcSpecialize' | translate}}</label>
+                <select name="chuyenmon" ng-change="userFilters()" ng-model="initCM">
+                  <option value="all">{{'all' | translate}}</option>
+                  <option ng-repeat="cm in chuyenmon" value="{{cm.ID}}">{{cm.tenchuyenmon}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="cell">
+              <div class="input-control select">
+                <label>{{'funcTitles' | translate}}</label>
+                <select name="macd" ng-change="userFilters()" ng-model="initCD">
+                  <option value="all">{{'all' | translate}}</option>
+                  <option ng-repeat="cd in chucdanh" value="{{cd.mcd}}">{{cd.tencd}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="cell">
+              <div class="input-control select">
+                <label>{{'funcRooms' | translate}}</label>
+                <select name="phongban" ng-change="userFilters()" ng-model="initPB">
+                  <option value="all">{{'all' | translate}}</option>
+                  <option ng-repeat="pb in phongban" value="{{pb.mpb}}">{{pb.tenpb}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="cell">
+              <div class="input-control select">
+                <label>{{'status' | translate}}</label>
+                <select name="trangthai" ng-change="userFilters()" ng-model="initTT">
+                  <option value="all">{{'all' | translate}}</option>
+                  <option value="Đang làm việc">{{'working' | translate}}</option>
+                  <option value="Đã nghỉ việc">{{'stopWorking' | translate}}</option>
+                  <option value="Đang nghỉ phép">{{'onLeave' | translate}}</option>
+                  <option value="Đã về hưu">{{'retired' | translate}}</option>
+                  <option value="Đang thực tập">{{'practicing' | translate}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="cell">
+              <div class="input-control select">
+                <label>{{'funcLevel' | translate}}</label>
+                <select name="trinhdo" ng-change="userFilters()" ng-model="initTD">
+                  <option value="all">{{'all' | translate}}</option>
+                  <option value="Tiến sĩ">{{'doctor' | translate}}</option>
+                  <option value="Thạc sĩ">{{'masters' | translate}}</option>
+                  <option value="Đại học">{{'university' | translate}}</option>
+                  <option value="Cao đẳng">{{'college' | translate}}</option>
+                  <option value="Trung cấp">{{'vocational' | translate}}</option>
+                  <option value="Phổ thông">{{'highSchool' | translate}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="cell">
+              <button class="button" style="margin: 0;" ng-click="removeFilterUser()">{{'removeFilter' | translate}}</button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <table class="table hovered border bordered small_font" datatable="ng" dt-options="dtOptions">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>{{'userID' | translate}}</th>
+            <th>{{'fullName' | translate}}</th>
+            <th>{{'funcGender' | translate}}</th>
+            <th>{{'birthday' | translate}}</th>
+            <th>{{'birthplace' | translate}}</th>
+            <th>{{'marital' | translate}}</th>
+            <th>{{'mobileNumber' | translate}}</th>
+            <th>{{'landlineNumber' | translate}}</th>
+            <th>{{'addressEmail' | translate}}</th>
+            <th>{{'resident' | translate}}</th>
+            <th>{{'staying' | translate}}</th>
+            <th>{{'nationality' | translate}}</th>
+            <th>{{'funcEthnic' | translate}}</th>
+            <th>{{'funcReligion' | translate}}</th>
+            <th>{{'identityCard' | translate}}</th>
+            <th>{{'dateIssue' | translate}}</th>
+            <th>{{'placeIssue' | translate}}</th>
+            <th>{{'funcLevel' | translate}}</th>
+            <th>{{'language' | translate}}</th>
+            <th>{{'computerization' | translate}}</th>
+            <th>{{'funcSpecialize' | translate}}</th>
+            <th>{{'funcTitles' | translate}}</th>
+            <th>{{'funcTitle' | translate}}</th>
+            <th>{{'funcRooms' | translate}}</th>
+            <th>{{'status' | translate}}</th>
+            <th>{{'basicSalary' | translate}}</th>
+            <th>{{'dependents' | translate}}</th>
+            <th>{{'dashboardNote' | translate}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="(key, value) in data_users">
+            <td>{{key+1}}</td>
+            <td>{{value.mnv}}</td>
+            <td>{{value.hoten}}</td>
+            <td>{{value.gioitinh}}</td>
+            <td>{{value.ngaysinh | date: 'dd/MM/yyyy'}}</td>
+            <td>{{value.noisinh}}</td>
+            <td>{{value.tthonnhan}}</td>
+            <td>{{value.dtdd}}</td>
+            <td>{{value.dtcd}}</td>
+            <td>{{value.email}}</td>
+            <td>{{value.thuongtru}}</td>
+            <td>{{value.tamtru}}</td>
+            <td>{{value.quoctich}}</td>
+            <td>{{value.dantoc}}</td>
+            <td>{{value.tongiao}}</td>
+            <td>{{value.cmnd}}</td>
+            <td>{{value.ngaycap | date:"dd/MM/yyyy"}}</td>
+            <td>{{value.noicap}}</td>
+            <td>{{value.trinhdo}}</td>
+            <td>{{value.ngoaingu}}</td>
+            <td>{{value.tinhoc}}</td>
+            <td>{{value.tenchuyenmon}}</td>
+            <td>{{value.tencd}}</td>
+            <td>{{value.tenchucvu}}</td>
+            <td>{{value.tenpb}}</td>
+            <td>{{value.trangthai}}</td>
+            <td>{{value.luongcb}}</td>
+            <td>{{value.songuoi_pt}}</td>
+            <td>{{value.ghichu}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div id="list-members" style="display: none;">
+        <table border="1" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>Mã nhân viên</th>
+              <th>Họ và Tên</th>
+              <th>Giới tính</th>
+              <th>Ngày sinh</th>
+              <th>Nơi sinh</th>
+              <th>TT hôn nhân</th>
+              <th>Số di động</th>
+              <th>Số cố định</th>
+              <th>Email</th>
+              <th>Thường trú</th>
+              <th>Tạm trú</th>
+              <th>Quốc tịch</th>
+              <th>Dân tộc</th>
+              <th>Tôn giáo</th>
+              <th>Số CMND</th>
+              <th>Ngày cấp</th>
+              <th>Nơi cấp</th>
+              <th>Trình độ</th>
+              <th>Ngoại ngữ</th>
+              <th>Tin học</th>
+              <th>Chuyên môn</th>
+              <th>Chức danh</th>
+              <th>Chức vụ</th>
+              <th>Phòng ban</th>
+              <th>Trạng thái</th>
+              <th>Lương căn bản</th>
+              <th>Số người PT</th>
+              <th>Ghi chú</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(key, value) in data_users">
+              <td>{{key+1}}</td>
+              <td>{{value.mnv}}</td>
+              <td>{{value.hoten}}</td>
+              <td>{{value.gioitinh}}</td>
+              <td>{{value.ngaysinh | date: 'dd/MM/yyyy'}}</td>
+              <td>{{value.noisinh}}</td>
+              <td>{{value.tthonnhan}}</td>
+              <td>{{value.dtdd}}</td>
+              <td>{{value.dtcd}}</td>
+              <td>{{value.email}}</td>
+              <td>{{value.thuongtru}}</td>
+              <td>{{value.tamtru}}</td>
+              <td>{{value.quoctich}}</td>
+              <td>{{value.dantoc}}</td>
+              <td>{{value.tongiao}}</td>
+              <td>{{value.cmnd}}</td>
+              <td>{{value.ngaycap | date:"dd/MM/yyyy"}}</td>
+              <td>{{value.noicap}}</td>
+              <td>{{value.trinhdo}}</td>
+              <td>{{value.ngoaingu}}</td>
+              <td>{{value.tinhoc}}</td>
+              <td>{{value.tenchuyenmon}}</td>
+              <td>{{value.tencd}}</td>
+              <td>{{value.tenchucvu}}</td>
+              <td>{{value.tenpb}}</td>
+              <td>{{value.trangthai}}</td>
+              <td>{{value.luongcb}}</td>
+              <td>{{value.songuoi_pt}}</td>
+              <td>{{value.ghichu}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

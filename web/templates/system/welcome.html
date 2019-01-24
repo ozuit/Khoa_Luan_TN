@@ -1,0 +1,75 @@
+<div class="hr-content grid">
+	<div class="content welcome row cells12">
+		<div class="main_content box_shadow cell colspan8" style="padding-bottom: 45px;">
+			<center><h3 class="b_c_add">{{ 'headerTitleDashboard' | translate }}</h3></center>
+			<fieldset style="margin: 30px 20px;border: 1px solid #999;">
+				<legend style="font-weight: 500;">{{ 'headerTitleWelcome' | translate }}</legend>
+				<table>
+					<tr>
+						<td rowspan="5"><img style="margin: 10px;max-height: 150px;" src="/assets/kcfinder/upload/files/images/{{info_company.logo}}"></td>
+						<td>{{ 'labelRepresentative' | translate }}: {{info_company.nguoidaidien}}</td>
+					</tr>
+					<tr>
+						<td>{{ 'labelConpanyName' | translate }}: {{info_company.tendonvi}}</td>
+					</tr>
+					<tr>
+						<td>{{ 'labelAddress' | translate }}: {{info_company.diachi}}</td>
+					</tr>
+					<tr>
+						<td>{{ 'labelPhoneNumber' | translate }}: {{info_company.dienthoai}}</td>
+					</tr>
+					<tr>
+						<td>Email: {{info_company.email}}</td>
+					</tr>
+				</table>
+			</fieldset>	
+
+			<div class="grid expand">
+				<div class="row cells3">
+					<div class="cell" ng-click="toRedirectUrl('gioi-thieu', null, 'help')">
+						<div class="header">
+							<span class="mif-info mif-4x"></span>
+						</div>
+						<div class="content">
+							<table>
+								<tr>
+									<td style="text-align: center;" ng-bind-html="'welcomeOverviewBox' | translate"></td>
+									<td style="width: 60px;"><span class="mif-file-text mif-3x"></span></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="cell" ng-click="toRedirectUrl('huong-dan/tong-quan', null, 'help')">
+						<div class="header">
+							<span class="mif-help mif-4x"></span>
+						</div>
+						<div class="content">
+							<table>
+								<tr>
+									<td style="text-align: center;" ng-bind-html="'welcomeHelpBox' | translate"></td>
+									<td style="width: 60px;"><span class="mif-file-video mif-3x"></span></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="cell" ng-click="toRedirectUrl('phan-hoi', null, 'help')">
+						<div class="header">
+							<span class="mif-question mif-4x"></span>
+						</div>
+						<div class="content">
+							<table>
+								<tr>
+									<td style="text-align: center;" ng-bind-html="'welcomeFeedbackBox' | translate"></td>
+									<td style="width: 60px;"><span class="mif-mail mif-3x"></span></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+		<div class="clear"></div>
+	</div>
+</div>
+

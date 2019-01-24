@@ -1,0 +1,45 @@
+<div class="hr-content grid"> 
+<div class="content row cells12">
+    <div class="main_content box_shadow cell colspan8">
+            <h3 style="text-transform: uppercase; color: #1D58A4;">{{'accessManagement' | translate}}</h3>
+            <table class="table striped hovered cell-hovered border bordered" datatable="ng" dt-options="dtOptions">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>{{'username' | translate}}</th>
+                        <th>{{'addressEmail' | translate}}</th>
+                        <th>{{'auth' | translate}}</th>
+                        <th>{{'status' | translate}}</th>
+                        <th>{{'active' | translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="(key, value) in data_account">
+                        <td>{{key+1}}</td>
+                        <td>{{value.username}}</td>
+                        <td>{{value.email}}</td>
+                        <td ng-switch on="{{value.level}}">
+                            <div ng-switch-when="1">Master</div>
+                            <div ng-switch-when="2">Manager</div>
+                            <div ng-switch-when="3">Accountant</div>
+                            <div ng-switch-when="4">Admin</div>
+                            <div ng-switch-when="5">Member</div>
+                        </td>
+                        <td ng-class="{'user-status-online': value.online == '1'}">{{(value.online == '1') ? 'Online' : 'Offline'}}</td>
+                        <td>
+                            <center>
+                                <label class="switch">
+                                    <input type="checkbox" ng-click="setActive(value.id, active)" ng-model="active" ng-init="active = checkActive(value.active)">
+                                    <span class="check"></span>
+                                </label>
+                            </center>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+               
+        </div>
+        <div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+        <div class="clear"></div>
+    </div>
+</div>

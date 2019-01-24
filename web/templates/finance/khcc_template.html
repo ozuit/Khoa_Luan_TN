@@ -1,0 +1,83 @@
+<style type="text/css">
+	.fancymodal {padding-top: 70px;}
+	.fancymodal .fancymodal-content {width: 360px}
+	.fancymodal .fancymodal-content .them-kh-cham-cong .kyhieu {text-transform: uppercase;}
+</style>
+<div class="them-kh-cham-cong"> 
+	<div class="section-title">
+  	<h4>{{chamcong.title}}</h4>
+	</div>
+	<ng-form name="frmThemKHCC">
+		<div class="grid">
+			<div class="row">
+				<div class="cell">
+					<div class="input-control modern text" data-role="input">
+						<input type="text" class="kyhieu" ng-model="chamcong.data.kyhieu" name="kyhieu" required>
+						<span class="label">Ký hiệu chấm công</span>
+						<span class="informer">Nhập vào một ký hiệu ngắn gọn</span>
+						<span class="placeholder">Ký hiệu chấm công</span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="cell">
+					<div class="input-control modern text" data-role="input">
+						<input type="text" ng-model="chamcong.data.mota" name="mota" required>
+						<span class="label">Mô tả</span>
+						<span class="informer">Nhập vào mô tả cho ký hiệu</span>
+						<span class="placeholder">Mô tả</span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="cell">
+					<div class="input-control modern text" data-role="input">
+						<input type="text" ng-model="chamcong.data.ghichu" name="ghichu">
+						<span class="label">Ghi chú</span>
+						<span class="informer">Nhập vào nội dung ghi chú</span>
+						<span class="placeholder">Ghi chú</span>
+					</div>
+				</div>
+			</div>
+			<div class="row show-symbol">
+				<div class="cell">
+					<label>Hiển thị trong bảng chấm công
+						<label class="switch">
+							<input type="checkbox" bit-to-boolean ng-model="chamcong.data.hienthi" name="hienthi">
+							<span class="check"></span>
+						</label>
+					</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="cell">
+					<div class="input-control select">
+						<select ng-model="chamcong.data.xuly" name="xuly">
+							<option value="1">Thiết lập thêm giờ mặc định</option>
+							<option value="0">Thiết lập trừ giờ mặc định</option>
+							<option value="-1" ng-selected="chamcong.data.xuly == null || chamcong.data.xuly == -1">Không thiết lập số giờ mặc định</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row" ng-show="chamcong.data.xuly != -1 && chamcong.data.xuly != null">
+				<div class="cell">
+					<div class="input-control modern text" data-role="input">
+						<input type="number" string-to-number ng-model="chamcong.data.thoigian" name="thoigian" class="thoigian">
+						<span class="label">Số giờ</span>
+						<span class="informer">Nhập vào một con số</span>
+						<span class="placeholder">Số giờ</span>
+						<span class="hours">giờ</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row action">
+				<div class="cell">
+					<button class="button" ng-click="closeModal()">Hủy</button>
+					<button class="button primary" ng-click="saveKHCC(chamcong.data)" ng-disabled="frmThemKHCC.$invalid">Lưu</button>
+				</div>
+			</div>	
+		</div>
+	</ng-form>
+</div>

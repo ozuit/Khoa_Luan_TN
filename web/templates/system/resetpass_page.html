@@ -1,0 +1,25 @@
+<style type="text/css">.fancymodal .fancymodal-content {width: 360px}</style>
+<div class="ozu-form"> 
+  <div class="section-title">
+      <h3>{{'resetPass' | translate}}</h3>
+  </div>
+  <div class="forgot-content">
+    <form ng-submit="submitResetpass()" id="resetpass_form" name="frmForgotPass">
+      <div class="textbox-wrap focused">
+        <div class="input-control text input-group">
+          <span class="mif-user prepend-icon"></span>
+          <input type="text" class="form-control" placeholder="{{'username' | translate}}" name="username" onfocus="addFocused(this)" id="manv" ng-model="username" required>
+        </div>
+      </div>
+      <div class="textbox-wrap">
+        <div class="input-control text input-group">
+          <span class="mif-mail prepend-icon"></span>
+          <input type="email" class="form-control" placeholder="{{'addressEmail' | translate}}" name="email" onfocus="addFocused(this)" ng-model="email" required>
+        </div>
+      </div>
+      <div class="forget-form-action clearfix">
+        <button type="submit" class="submit_b btn_resetpass" ng-disabled="frmForgotPass.$invalid">{{'btnUpdate' | translate}}<span class="mif-chevron-right mif-2x" style="margin-left:5px;color:#fff"></span></button>
+      </div>
+    </form>
+  </div>
+</div>

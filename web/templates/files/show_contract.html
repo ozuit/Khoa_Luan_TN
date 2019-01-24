@@ -1,0 +1,271 @@
+<div class="hr-content grid">
+    <div class="content row cells12">
+        
+        <div class="main_content box_shadow cell colspan8">
+            <h3 class="b_c_add">{{'partiesContract' | translate}}</h3>
+            <form ng-submit="updateContract()" id="frm_update_contract">
+                <input type="hidden" name="id" value="{{contract.id}}">
+                <div class="grid">
+                    <div class="row cells2">
+                        <fieldset class="field cell">
+                            <legend style="font-weight: bold;">{{'party' | translate}} A</legend>
+                            <table>
+                                <tr>
+                                    <td>{{'representativeSigned' | translate}}:</td>
+                                    <td>
+                                        <div class="input-control text full-size">
+                                            <input type="hidden" name="nguoidd" value="{{nguoidd.mnv}}">
+                                            <ui-select ng-model="nguoidd.mnv" theme="select2" style="min-width: 250px;" title="Chọn một nhân viên" ng-change="changeNguoiDD(nguoidd.mnv)">
+                                            <ui-select-match placeholder="Chọn người đại diện">{{$select.selected.hoten}}</ui-select-match>
+                                            <ui-select-choices repeat="person.mnv as person in users | propsFilter: {hoten: $select.search, mnv: $select.search}">
+                                            <div ng-bind-html="person.hoten | highlight: $select.search"></div>
+                                            <small>
+                                            {{'labelUsername' | translate}}: <span ng-bind-html="''+person.mnv | highlight: $select.search"></span>
+                                            </small>
+                                            </ui-select-choices>
+                                            </ui-select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{'nationality' | translate}}:</td>
+                                    <td>
+                                        <div class="input-control text capitalize full-size">
+                                            <input type="text" value="" disabled ng-model="quoctichA">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{'funcTitle' | translate}}:</td>
+                                    <td>
+                                        <div class="input-control text capitalize full-size">
+                                            <input type="text" value="" disabled ng-model="chucvuA">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{'represent' | translate}}:</td>
+                                    <td>
+                                        <div class="input-control text capitalize full-size">
+                                            <input type="text" value="{{contract.tenCty}}" disabled>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{'labelPhoneNumber' | translate}}:</td>
+                                    <td>
+                                        <div class="input-control text full-size">
+                                            <input type="text" value="{{contract.sdtCty}}" disabled>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                        <fieldset class="field cell">
+                            <legend style="font-weight: bold;">{{'party' | translate}} B</legend>
+                            <table>
+                                <tr>
+                                    <td>{{'nameMember' | translate}}:</td>
+                                    <td>
+                                        <div class="input-control text capitalize full-size">
+                                            <input type="text" value="{{contract.hotenB}}" disabled>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{'nationality' | translate}}:</td>
+                                    <td>
+                                        <div class="input-control text capitalize full-size">
+                                            <input type="text" value="{{contract.quoctichB}}" disabled>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{'birthday' | translate}}:</td>
+                                    <td>
+                                        <div class="input-control text full-size">
+                                            <input type="text" value="{{contract.ngaysinhB | date:'dd/MM/yyyy'}}" disabled>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{'funcTitle' | translate}}:</td>
+                                    <td>
+                                        <div class="input-control text capitalize full-size">
+                                            <input type="text" value="{{contract.chucvuB}}" disabled>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{{'identityCard' | translate}}:</td>
+                                    <td>
+                                        <div class="input-control text full-size">
+                                            <input type="text" value="{{contract.cmndB}}" disabled>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                    </div>
+                </div>
+                
+                
+                <div class="clear"></div>
+                <h3 class="b_c_add" style="margin-top: 40px;">{{'contractInformation' | translate}}</h3>
+                <fieldset style="margin-bottom: 20px;padding-top: 15px;">
+                    <table>
+                        <tr>
+                            <td style="width: 15%;">{{'codeContract' | translate}}:</td>
+                            <td>
+                                <div class="input-control text full-size">
+                                    <input type="text" value="{{contract.mahd}}" disabled>
+                                </div>
+                            </td>
+                            <td style="padding-left: 35px;">{{'nameContract' | translate}}:</td>
+                            <td>
+                                <div class="input-control text capitalize full-size">
+                                    <input type="text" value="Hợp đồng lao động" disabled>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 15%;">{{'typeContract' | translate}}:</td>
+                            <td style="width: 31%;">
+                                <div class="input-control select full-size">
+                                    <select name="loaihd" ng-model="loaihd" id="select-loaihd3">
+                                        <option value="{{loaihd}}" selected>{{loaihd}}</option>
+                                        <option value="Hợp đồng thử việc" ng-hide="loaihd=='Hợp đồng thử việc'">Hợp đồng thử việc</option>
+                                        <option value="Hợp đồng học việc" ng-hide="loaihd=='Hợp đồng học việc'">Hợp đồng học việc</option>
+                                        <option value="Hợp đồng có thời hạn" ng-hide="loaihd=='Hợp đồng có thời hạn'">Hợp đồng có thời hạn</option>
+                                        <option value="Hợp đồng không thời hạn" ng-hide="loaihd=='Hợp đồng không thời hạn'">Hợp đồng không thời hạn</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td style="padding-left: 35px;">{{'termContract' | translate}}:</td>
+                            <td style="width: 31%;">
+                                <div class="input-control select full-size">
+                                    <select name="thoihan" id="select-thoihan3" ng-model="thoihan">
+                                        <option value="{{thoihan}}" selected>{{thoihan}}</option>
+                                        <option value="2 tháng" ng-hide="thoihan=='2 tháng'">2 tháng</option>
+                                        <option value="3 tháng" ng-hide="thoihan=='3 tháng'">3 tháng</option>
+                                        <option value="6 tháng" ng-hide="thoihan=='6 tháng'">6 tháng</option>
+                                        <option value="1 năm" ng-hide="thoihan=='1 năm'">1 năm</option>
+                                        <option value="3 năm" ng-hide="thoihan=='3 năm'">3 năm</option>
+                                        <option value="5 năm" ng-hide="thoihan=='5 năm'">5 năm</option>
+                                        <option value="Không thời hạn" ng-hide="thoihan=='Không thời hạn'">Không thời hạn</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 18%;">{{'dateContract' | translate}}:</td>
+                            <td>
+                                <div class="input-control date full-size">
+                                    <input type="date" value="{{contract.ngaytao}}" name="ngaytao" style="font-size: 16px;">
+                                </div>
+                            </td>
+                            <td style="padding-left: 35px;">{{'workingTime' | translate}}:</td>
+                            <td>
+                                <div class="input-control text full-size">
+                                    <input type="text" value="{{contract.giolamviec}}" name="giolamviec">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 15%;">{{'dateEffective' | translate}}:</td>
+                            <td>
+                                <div class="input-control date full-size">
+                                    <input type="date" value="{{contract.ngayhieuluc}}" name="ngayhieuluc" style="font-size: 16px;"
+                                </div>
+                            </td>
+                            <td style="padding-left: 35px;">{{'dateExpiry' | translate}}:</td>
+                            <td>
+                                <div class="input-control date full-size">
+                                    <input type="date" value="{{contract.ngayhethan}}" name="ngayhethan" style="font-size: 16px;">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <h3 class="b_c_add" style="padding-bottom: 0"></h3>
+                    <div class="grid">
+                        <div class="row cells3">
+                            <div class="cell">
+                                <span>{{'basicSalary' | translate}}:</span>
+                                <div class="input-control number add_p full-size">
+                                    <input type="number" value="{{contract.luongcb}}" name="luongcb">
+                                </div>
+                            </div>
+                            <div class="cell">
+                                <span>{{'payForms' | translate}}:</span>
+                                <div class="input-control text full-size">
+                                    <input type="text" value="{{contract.htTraluong}}" placeholder="Trả bằng tiền mặt" name="htTraluong">
+                                </div>
+                            </div>
+                            <div class="cell">
+                                <span>{{'payDate' | translate}}:</span>
+                                <div class="input-control number full-size">
+                                    <input type="number" value="{{contract.ngaytraluong}}" placeholder="25" name="ngaytraluong">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <table>
+                        <tr>
+                            <td style="width: 128px;">{{'allowance' | translate}}</td>
+                            <td>
+                                <div class="input-control text full-size">
+                                    <input type="text" value="{{contract.phucap}}" name="phucap">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 128px;">{{'insurrance' | translate}}</td>
+                            <td>
+                                <div class="input-control text full-size">
+                                    <input type="text" value="{{contract.baohiem}}" name="baohiem">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 128px;">{{'placeContract' | translate}}</td>
+                            <td>
+                                <div class="input-control text full-size">
+                                    <input type="text" value="{{contract.noitao}}" name="noitao">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 128px;">{{'dashboardNote' | translate}}</td>
+                            <td>
+                                <div class="input-control textarea full-size" data-role="input" data-text-auto-resize="true">
+                                    <textarea name="ghichu">{{contract.ghichu}}</textarea>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <div style="float: right">
+                    <input type="submit" value="{{'btnUpdate' | translate}}" class="submit_b">
+                </div>
+            </form>
+            <button class="button" style="height: 42px;padding: 5px;line-height: 34px;" ng-click="export_contract(contract.mnv)"><span class="mif-file-pdf mif-2x" style="color: #444;padding-bottom: 6px;"></span>{{'exportContract' | translate}}</button>
+            <script type="text/javascript">
+            $('#select-thoihan3').hover(function() {
+            $('#select-thoihan3').editableSelect({ filter: false });
+            });
+            $('#select-loaihd3').hover(function() {
+            $('#select-loaihd3').editableSelect({ filter: false });
+            });
+            $('.hr_content').scroll(function() {
+            $('.es-list').css('display', 'none');
+            $('#select-thoihan3').blur();
+            $('#select-loaihd3').blur();
+            });
+            </script>
+            <div class="clear"></div>
+        </div>
+        <div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+        <div class="clear"></div>
+    </div>
+</div>

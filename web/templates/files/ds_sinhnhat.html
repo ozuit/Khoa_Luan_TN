@@ -1,0 +1,34 @@
+<div class="hr-content grid">
+    <div class="content chucdanh_container row cells12">
+        <div class="main_content box_shadow cell colspan8">
+            <h3 class="b_c_add">Danh sách nhân viên có sinh nhật trong tháng</h3>
+            
+            <div style="margin-top: 20px;">
+                <table class="table striped hovered cell-hovered border bordered tbChucDanh" dt-column-defs="dtColCD" datatable="ng" dt-options="dtListCD">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã nhân viên</th>
+                            <th>Họ và tên</th>
+                            <th>Giới tính</th>
+                            <th>Ngày sinh</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="(key, value) in listSinhNhat">
+                            <td>{{key+1}}</td>
+                            <td>{{value.mnv}}</td>
+                            <td>{{value.hoten}}</td>
+                            <td>{{value.gioitinh}}</td>
+                            <td>{{value.ngaysinh | date:'dd/MM/yyyy'}}</td>
+                            <td>{{value.email}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+        <div class="clear"></div>
+    </div>
+</div>

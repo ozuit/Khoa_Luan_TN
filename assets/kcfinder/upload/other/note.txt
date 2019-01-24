@@ -1,0 +1,6 @@
+﻿giao diện hình 3.
+xây dựng hệ thống quản lý nhân sự - tiền lương
+văn nói
+chính tả
+
+giao diện thông báo riêng, khi người dùng logout thì lưu lại ngày giờ, khi đăng nhập lại lần sau thì đánh dấu những tin tức mới sau lần logout gần nhất

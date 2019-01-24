@@ -1,0 +1,86 @@
+<div class="hr-content grid">
+	<div class="content row cells12">
+		<div class="main_content tl-cham-cong cell colspan8">
+			<h4 class="title-content">{{'setupTimekeeping' | translate}}</h4>
+			<div class="grid">
+				<div class="row cells8">
+					<div class="cell colspan3 title">{{'hoursWork' | translate}}:</div>
+					<div class="input-control text cell">
+			    	<input type="number" string-to-number ng-model="setupCC.congngay">
+					</div>
+					<div class="cell"></div>
+					<div class="cell colspan2 title">{{'satWork' | translate}}:</div>
+					<label class="input-control checkbox cell">
+            <input type="checkbox" bit-to-boolean checked="" ng-model="setupCC.lamt7">
+            <span class="check"></span>
+          </label>
+				</div>
+				<div class="row cells8">
+					<div class="cell colspan3 title">{{'maternityLeave' | translate}}:</div>
+					<div class="input-control text cell">
+			    	<input type="number" string-to-number ng-model="setupCC.thaisan">
+					</div>
+					<div class="cell"></div>
+					<div class="cell colspan2 title">{{'symbolDefault' | translate}}:</div>
+					<div class="input-control select cell">
+				    <select ng-model="setupCC.khmacdinh">
+			        <option ng-repeat="chamcong in khOrigin" ng-selected="chamcong.kyhieu == setupCC.khmacdinh">{{chamcong.kyhieu}}</option>
+				    </select>
+					</div>
+				</div>
+				<div class="row cells8">
+					<div class="cell colspan3 title">{{'leaveMonth' | translate}}:</div>
+					<div class="input-control text cell">
+			    	<input type="number" string-to-number ng-model="setupCC.phepthang">
+					</div>
+					<div class="cell"></div>
+					<div class="cell colspan3">
+						<button class="button primary large-button right" ng-click="updateSetupCC(setupCC)">{{'btnUpdateTimekeeping' | translate}}</button>
+					</div>
+				</div>
+			</div>
+
+			<h4 class="title-content">{{'signageTimekeeping' | translate}}</h4>
+			<fieldset class="fieldset-border">
+				<div class="grid">
+					<div class="row cells4" ng-repeat="item in khCustom">
+						<div class="cell" ng-repeat="khcc in item"><span>{{khcc.kyhieu}}:</span> {{khcc.mota}}</div>
+					</div>
+					<div class="row cells4">
+						<div class="cell colspan4"><button class="button" ng-click="isEdit = (isEdit == true)? false : true">{{'editSymbolTable' | translate}}</button></div>
+					</div>
+				</div>
+			</fieldset>
+			<div ng-show="isEdit">
+				<table class="table hovered border striped bordered" datatable="ng" dt-options="dtOptionKH">
+					<thead>
+						<tr>
+							<th>STT</th>
+							<th>{{'symbols' | translate}}</th>
+							<th>{{'describe' | translate}}</th>
+							<th>{{'dashboardNote' | translate}}</th>
+							<th class="newSymbol">
+								<button class="button primary place-right" ng-click="themKHCC()">{{'plus' | translate}}</button>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="item in khOrigin track by $index">
+							<td>{{$index+1}}</td>
+							<td>{{item.kyhieu}}</td>
+							<td>{{item.mota}}</td>
+							<td>{{item.ghichu}}</td>
+							<td class="action">
+								<button class="toolbar-button" title="Chỉnh sửa ký hiệu" ng-click="editKHCC(item)"><span class="mif-pencil"></span></button>
+								<button class="toolbar-button" title="Xóa ký hiệu" ng-click="deleteKHCC(item.id)" ng-disabled="item.default == 1"><span class="mif-cross"></span></button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+		<div class="clear"></div>
+	</div>
+</div>

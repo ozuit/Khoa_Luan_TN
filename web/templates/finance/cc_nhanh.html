@@ -1,0 +1,119 @@
+<style type="text/css">
+	.fancymodal {
+		padding-top: 105px;
+	}
+	.fancymodal .fancymodal-content {
+    width: 450px;
+    background: #fff;
+    line-height: 25px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .title {
+    padding-top: 10px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    text-align: center;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .message {
+		padding: 10px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .message label {
+		margin-left: 18px;
+		vertical-align: text-bottom;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .message .input-control {
+		width: 160px;
+    margin-left: 20px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .message .grid .input-control {
+		width: 70px;
+    margin-left: 10px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .action {
+		padding: 10px;
+		text-align: center;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .action button {
+		width: 120px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .action button.primary {
+		margin-right: 10px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .checkbox .check:before {
+    width: 10px;
+    height: 5px;
+	}
+</style>
+<form name="frm_fast_payroll">
+	<div class="confirm-popup">
+		<div class="title">
+			<span>Chấm công nhanh</span>
+		</div>
+		<div class="message">
+			<label>Chọn ký hiệu chấm công</label>
+			<div class="input-control select">
+		    <select ng-model="chamcong.kyhieu">
+		      <option ng-repeat="khcc in arrSymbols" value="{{khcc.kyhieu}}">{{khcc.kyhieu}}: {{khcc.mota}}</option>
+		    </select>
+			</div>
+			<fieldset>
+				<legend>Chọn ngày làm việc</legend>
+				<label class="input-control checkbox small-check">
+			    <input type="checkbox" ng-model="chamcong.allDate" ng-init="chamcong.allDate=true">
+			    <span class="check"></span>
+			    <span class="caption">Tất cả các ngày</span>
+				</label>
+				<div class="grid">
+					<div class="row cells2">
+						<div class="cell">
+							<label>Từ ngày:</label>
+							<div class="input-control text">
+						    <input type="number" name="startDate" min="1" max="{{dateNumber}}" ng-model="chamcong.startDate" ng-disabled="chamcong.allDate" required>
+							</div>
+						</div>	
+						<div class="cell">
+							<label>Đến ngày:</label>
+							<div class="input-control text">
+						    <input type="number" name="endDate" min="1" max="{{dateNumber}}" ng-model="chamcong.endDate" ng-disabled="chamcong.allDate" required>
+							</div>
+						</div>		
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>Chọn dòng cần chấm công</legend>
+				<label class="input-control checkbox small-check">
+			    <input type="checkbox" ng-model="chamcong.allLine" ng-init="chamcong.allLine=true">
+			    <span class="check"></span>
+			    <span class="caption">Tất cả các dòng</span>
+				</label>
+				<div class="grid">
+					<div class="row cells2">
+						<div class="cell">
+							<label>Từ dòng:</label>
+							<div class="input-control text">
+						    <input type="number" name="startLine" min="1" max="{{dataChamCong.length}}" ng-model="chamcong.startLine" ng-disabled="chamcong.allLine" required>
+							</div>
+						</div>	
+						<div class="cell">
+							<label>Đến dòng:</label>
+							<div class="input-control text">
+						    <input type="number" name="endLine" min="1" max="{{dataChamCong.length}}" ng-model="chamcong.endLine" ng-disabled="chamcong.allLine" required>
+							</div>
+						</div>		
+					</div>
+				</div>
+			</fieldset>
+		</div>
+		<div class="action">
+			<button class="button primary" 
+			ng-disabled="((frm_fast_payroll.startDate.$invalid || frm_fast_payroll.endDate.$invalid) && !chamcong.allDate) || ((frm_fast_payroll.startLine.$invalid || frm_fast_payroll.endLine.$invalid) && !chamcong.allLine)"
+			ng-click="fastUpdatePayroll(chamcong)">
+				Thực hiện
+			</button>
+			<button class="button" ng-click="closeModal()">Hủy bỏ</button>
+		</div>
+	</div>
+</form>

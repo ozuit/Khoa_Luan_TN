@@ -1,0 +1,53 @@
+<style type="text/css">
+	.fancymodal .fancymodal-content {width: 500px;background: #fff;line-height: 25px;}
+	.fancymodal .fancymodal-content .fancymodal-data .title {padding-top: 10px;font-size: 18px;font-weight: bold;border-bottom: 1px solid #eee;padding-bottom: 10px;text-align: center;}
+	.fancymodal .fancymodal-content .fancymodal-data .message {padding: 10px;}
+	.fancymodal .fancymodal-content .fancymodal-data .action {text-align: right;padding-bottom: 5px;}
+	.fancymodal .fancymodal-content .fancymodal-data .action button {width: 85px;font-weight: bold;}
+	.fancymodal .fancymodal-content .fancymodal-data .action button span {margin-right: 5px;}
+	.fancymodal .fancymodal-content .fancymodal-data .action button.default {padding: 0;margin-right: 10px;vertical-align: middle;line-height: 30px;}
+	#copyURL {float: left;font-weight: 600;line-height: 30px;cursor: pointer;}
+	#copyURL img {transform: rotate(135deg);width: 20px;margin: 0 10px 5px 15px;}
+	.timkiem {margin: 0;}
+	.message .title-invite {margin: 0;margin-bottom: 10px;text-align: left;}
+	.notify-container {top: 0;left: 0;margin-left: 0;}
+	.notify-closer {display: none;}
+	.notify.shadow {background: rgba(255, 255, 255, 0.9);}
+	.notify.shadow .notify-text {width: 310px;}
+	#list-user {width: 100%;height: auto;margin-bottom: 10px;border: 2px dashed #e4dbd6;padding: 5px;}
+	#list-user .add-user {display: inline-block;border: 1px solid #ddd;padding: 2px 5px;border-radius: 100px;margin: 2px;}
+	#list-user .add-user .icon-close {margin: -4px 0 0 5px;cursor: pointer;}
+	.online-status {background: rgb(66, 183, 42);border-radius: 50%;display: inline-block;height: 8px;margin-left: 4px;width: 8px;float: right;margin-top: 10px;}
+</style>
+<div class="confirm-popup" ng-controller="VideoController as ctrl">
+	<div class="title">
+		<span>{{ 'videoCallInviteUser' | translate }}</span>
+	</div>
+	<div class="message">
+		<p class="title-invite">{{ 'titleSendInvite' | translate }}</p>
+		<div id="list-user" ng-if="listUser.length > 0">
+			<span class="add-user" ng-repeat="userItem in listUser">{{userItem.hoten}}<span class="icon-close mif-cancel" ng-click="removeUser(userItem.id)"></span></span>
+		</div>
+		<div class="input-control text timkiem full">
+			<ui-select ng-model="ctrl.user.mnv" ng-click="getAllUser()" theme="select2" style="min-width: 250px;">
+      <ui-select-match>{{ 'enterUserInvite' | translate }}</ui-select-match>
+      <ui-select-choices repeat="person.mnv as person in users | propsFilter: {hoten: $select.search, mnv: $select.search} | orderBy: '-online'" ng-click="addUser($select.selected)" ng-enter="addUser($select.selected)">
+      <div>
+      	<span ng-bind-html="person.hoten | highlight: $select.search"></span>
+      	<span class="online-status" ng-if="person.online == '1'"></span>
+      </div>
+      <small>
+      {{ 'labelUsername' | translate }}: <span ng-bind-html="''+person.mnv | highlight: $select.search"></span>
+      </small>
+      </ui-select-choices>
+      </ui-select>
+		</div>
+	</div>
+	<div class="action">
+		<span id="copyURL" ng-click="copyURL()" data-clipboard-text="{{curentURL}}">
+			<img src="/assets/images/metro/link.png">
+			{{ 'copyLinkVideoCall' | translate }}
+		</span>	
+		<button class="button default" ng-click="inviteUser()" ng-disabled="listUser.length == 0"><span class="mif-paper-plane"></span>{{ 'btnSendInvite' | translate }}</button>
+	</div>
+</div>

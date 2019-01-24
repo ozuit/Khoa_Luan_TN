@@ -1,0 +1,51 @@
+<style type="text/css">.fancymodal .fancymodal-content {width: 360px}</style>
+<div class="ozu-form"> 
+  <div class="section-title">
+      <h3>{{'addDepartment' | translate}}</h3>
+  </div>
+  <form ng-submit="addRoom()" id="newroom_form" data-role="validator">
+    <div class="textbox-wrap focused">
+      <div class="input-control text input-group" required>
+        <span class="mif-credit-card prepend-icon"></span>
+        <input type="text" class="form-control" placeholder="{{'idDepartment' | translate}}" name="mpb" onfocus="addFocused(this)" id="mpb" onkeyup="stringValidate(this)" style="text-transform: uppercase;" 
+          data-validate-func="required" 
+          data-validate-hint="Bạn không được phép bỏ trống !"  
+          data-validate-hint-position="right"
+          data-hint-easing="easeInQuad"
+        >
+        <span class="input-state-error mif-warning"></span>
+        <span class="input-state-success mif-checkmark"></span>
+      </div>
+    </div>
+    <div class="textbox-wrap">
+      <div class="input-control text input-group" required>
+        <span class="mif-organization prepend-icon"></span>
+        <input type="text" class="form-control" placeholder="{{'nameDepartment' | translate}}" name="tenpb" onfocus="addFocused(this)" id="tenpb" onkeyup="stringValidate(this)" 
+          data-validate-func="required" 
+          data-validate-hint="Bạn không được phép bỏ trống !"  
+          data-validate-hint-position="right"
+          data-hint-easing="easeInQuad"
+        >
+        <span class="input-state-error mif-warning"></span>
+        <span class="input-state-success mif-checkmark"></span>
+      </div>
+    </div>
+    <div class="textbox-wrap">
+      <div class="input-control text input-group" required>
+        <span class="mif-user prepend-icon"></span>
+        <input type="text" class="form-control" placeholder="{{'nameGeneralinchief' | translate}}" name="truongpb" onfocus="addFocused(this)" id="truongpb" onkeyup="stringValidate(this)" style="text-transform: capitalize;" 
+          data-validate-func="required" 
+          data-validate-hint="Bạn không được phép bỏ trống !"  
+          data-validate-hint-position="right"
+          data-hint-easing="easeInQuad"
+        >
+        <span class="input-state-error mif-warning"></span>
+        <span class="input-state-success mif-checkmark"></span>
+      </div>
+    </div>
+    <div style="">
+      <input type="submit" value="{{'addNew' | translate}}" class="submit_b" style="margin: 15px;float: right;">
+      <div class="clear"></div>
+    </div>
+  </form>
+</div>

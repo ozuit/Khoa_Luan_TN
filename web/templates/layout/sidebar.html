@@ -1,0 +1,151 @@
+<div class="info_notify box_shadow">
+	<h4>{{ 'sidebarTitleNotify' |translate }}</h4>
+	<ul class="announce">
+		<li ng-repeat="announcement in announcements">
+			<span class="mif-chevron-right"></span>
+			<a ng-click="toRedirectUrl('xem-thong-bao/'+announcement.id)">{{announcement.tieude}}</a> <span class="date-created">({{announcement.ngaytao}})</span>
+			<span class="is-read" ng-if="announcement.isRead == '0'"> - <strong>{{ 'newNotify' |translate }}</strong></span>
+		</li>
+	</ul>
+	<div class="view_more">
+		<a ng-click="toRedirectUrl('ds-thong-bao/')"><h5 style="text-align: right;">{{ 'sidebarViewMore' |translate }} <span class="more-icon">»</span></h5></a>
+	</div>
+</div>
+<div class="info_calendar box_shadow">
+	<h4>{{ 'sidebarNote' |translate }}</h4>
+	<div id="scheduler" style="margin-bottom: 10px;"></div>
+</div>
+
+
+<!-- CUSTOM EDITOR TEMPLATE -->
+<script type="text/x-kendo-template" id="schedulerTemplate">
+  <div class="k-edit-form-container">
+  	<div class="k-edit-label"><label for="title">Tiêu đề</label></div>
+  	<div data-container-for="title" class="k-edit-field">
+  		<input type="text" class="k-input k-textbox" name="title" required="required" data-bind="value:title">
+		</div>
+		<div class="k-edit-label"><label for="start">Bắt đầu</label></div>
+		<div data-container-for="start" class="k-edit-field">
+			<input name="start" type="text" required  data-type="date" data-role="datetimepicker" data-bind="value: start,invisible: isAllDay" />
+    	<input name="start" type="text" required  data-type="date" data-role="datepicker" data-bind="value: start,visible: isAllDay" />
+		</div>
+		<div class="k-edit-label"><label for="end">Kết thúc</label></div>
+		<div data-container-for="end" class="k-edit-field">
+			<input name="end" type="text" required data-type="date" data-role="datetimepicker" data-bind="value: end ,invisible:isAllDay" />    
+    	<input name="end" type="text" required data-type="date" data-role="datepicker" data-bind="value: end ,visible:isAllDay" />
+		</div>
+		<div class="k-edit-label"><label for="isAllDay">Cả ngày</label></div>
+		<div data-container-for="isAllDay" class="k-edit-field">
+			<input type="checkbox" name="isAllDay" data-type="boolean" data-bind="checked:isAllDay">
+		</div>
+		<div class="k-edit-label"><label for="description">Nội dung</label></div>
+		<div data-container-for="description" class="k-edit-field">
+			<textarea name="description" class="k-textbox" data-bind="value:description"></textarea>
+		</div>
+		<div class="k-edit-label"><label for="important">Mức độ</label></div>
+		<div data-container-for="important" class="k-edit-field">
+			<span title="" class="k-widget k-dropdown k-header" unselectable="on" role="listbox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-owns="" aria-disabled="false" aria-busy="false">
+				<select data-bind="value:important" data-role="dropdownlist" style="display: none;">
+					<option value="1">Cao</option>
+					<option value="2" selected="selected">Trung bình</option>
+					<option value="3">Thấp</option>
+				</select>
+			</span>
+		</div>
+  </div>
+</script>
+
+<script>
+	var headers = {"Authorization": "Bearer "+($.cookie('token')? $.cookie('token') : localStorage.getItem('token'))}
+	var BaseAPI = "https://192.168.159.1/api";
+	$(function() {
+		$("#scheduler").kendoScheduler({
+			height: 417,
+			views: [
+				"day",
+				{type: "month", selected: true}
+			],
+			editable: {
+        template: kendo.template($("#schedulerTemplate").html())
+      },
+			dataSource: {
+				batch: true,
+				transport: {
+					read: {
+						url: BaseAPI+"/schedule/all",
+						headers: headers,
+						dataType: "json"
+					},
+					update: {
+						url: BaseAPI+"/schedule/update",
+						headers: headers,
+						dataType: "json"
+					},
+					create: {
+						url: BaseAPI+"/schedule/create",
+						headers: headers,
+						dataType: "json"
+					},
+					destroy: {
+						url: BaseAPI+"/schedule/delete",
+						headers: headers,
+						dataType: "json"
+					},
+					parameterMap: function(options, operation) {
+						if (operation !== "read" && options.models) {
+							return {models: kendo.stringify(options.models)};
+						}
+					}
+				},
+				schema: {
+					model: {
+						id: "taskId",
+						fields: {
+							taskId: {
+								from: "TaskID",
+								type: "number"
+							},
+							title: {
+								from: "Title",
+								defaultValue: "Không tiêu đề",
+								validation: {
+									required: true
+								}
+							},
+							start: {
+								type: "date",
+								from: "Start"
+							},
+							end: {
+								type: "date",
+								from: "End"
+							},
+							description: {
+								from: "Description"
+							},
+							important: {
+								from: "Important",
+								defaultValue: 2
+							},
+							isAllDay: {
+								type: "boolean",
+								from: "IsAllDay"
+							}
+						}
+					}
+				}
+			},
+			resources: [
+				{
+					field: "important",
+					title: "Important",
+					dataSource: [
+						{ text: "High", value: 1, color: "#f8a398" },
+						{ text: "Normal", value: 2, color: "#f7f73d" },
+						{ text: "Low", value: 3, color: "#56ca85" }
+					]
+				}
+			]
+		});
+});
+</script>

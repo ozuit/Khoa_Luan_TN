@@ -1,0 +1,49 @@
+<div class="video-call">
+	<div id="cms_bar" class="menu-container">
+		<!-- Mở full màn hình -->
+		<toggle-image value="isExpanded" id="icon-expand"
+			onclick="toggleFullScreen()"
+			on-url="/assets/images/metro/expand-on.png" 
+			off-url="/assets/images/metro/expand-off.png">
+		</toggle-image>
+
+		<!-- Mời thêm user -->
+		<img class="videocall-icon" id="icon-add-user" src="/assets/images/metro/add-user.png" ng-click="openInvitePopup()">
+
+		<!-- Điều khiển webcam -->
+		<input type="hidden" value="{{isCamOpened}}" id="toggleVideo">
+		<toggle-image value="isCamOpened" id="icon-webcam"
+			on-url="/assets/images/metro/cam-on.png" 
+			off-url="/assets/images/metro/cam-off.png">
+		</toggle-image>
+
+		<!-- Điều khiển mic -->
+		<input type="hidden" value="{{isMicOpened}}" id="toggleAudio">
+		<toggle-image value="isMicOpened" id="icon-micro"
+			on-url="/assets/images/metro/mic-on.png" 
+			off-url="/assets/images/metro/mic-off.png">
+		</toggle-image>
+
+		<!-- Chia sẻ file -->
+		<img class="videocall-icon" id="icon-share-file" src="/assets/images/metro/attach-file.png" ng-click="shareFile()">
+
+		<!-- Close windows -->
+		<img class="videocall-icon" id="icon-close" src="/assets/images/metro/close.png" ng-click="closeVideoCall()">
+	</div>
+
+	<!-- Chứa file chia sẻ -->
+ 	<div id="logs"></div>
+
+	<!-- <div id="videos"> -->
+		<div id="videos-container" style="height: 672px; width: 896px;">
+			<!-- <canvas id="canvas" width="860" height="680"></canvas> -->
+			<canvas id="canvas" width="640" height="480"></canvas>
+		</div>
+	<!-- </div> -->
+
+	<!-- Hiển thị danh sách user đang online -->
+	<div id="user-online"></div>
+</div>
+<audio id="audioCall" loop>
+  <source src="/assets/media/duo_ringtone.mp3" type="audio/mpeg">
+</audio>

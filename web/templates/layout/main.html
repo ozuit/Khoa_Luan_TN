@@ -1,0 +1,582 @@
+<!-- ***************************HEADER************************ -->
+<div class="hr-header">
+	<!-- Change color -->
+	<div data-role="charm" data-position="right" id="right-charm">
+		<div class="row user-info">
+			<div class="avatar">
+				<img ng-src="{{charm.avatar}}">
+			</div>
+			<p class="email-user">{{charm.email}}</p>
+		</div>
+		<div class="change-theme row">
+			<h4>{{ 'sidebarChangeColor' | translate }}</h4>
+			<div class="grid">
+				<div class="row cells6">
+					<div class="circleBase cell type1" ng-click="changeBackground('#1BA1E2')"></div>
+					<div class="circleBase cell type2" ng-click="changeBackground('#59cde2')"></div>
+					<div class="circleBase cell type3" ng-click="changeBackground('#1d58ac')"></div>
+					<div class="circleBase cell type4" ng-click="changeBackground('#de8282')"></div>
+					<div class="circleBase cell type5" ng-click="changeBackground('#f472d0')"></div>
+					<div class="circleBase cell type6" ng-click="changeBackground('#72a6f4')"></div>
+				</div>
+			</div>
+		</div>
+		<div class="font-size row">
+			<h4>{{ 'sidebarChangeSize' | translate }}</h4>
+			<span ng-click="changeFontSize(14)">{{ 'sidebarSmallSize' | translate }}</span>
+			<span ng-click="changeFontSize(16)">{{ 'sidebarNormalSize' | translate }}</span>
+			<span ng-click="changeFontSize(18)">{{ 'sidebarLargeSize' | translate }}</span>
+		</div>
+		<div class="row new-notify">
+			<h4>{{ 'sidebarGetNotify' | translate }}</h4>
+			<div class="grid">
+				<div class="row cells2">
+					<button class="button cell" ng-click="getNotify(true)" ng-disabled="acceptNotify"><span class="mif-checkmark"></span> {{ 'sidebarEnableNotify' | translate }}</button>
+					<button class="button cell" ng-click="getNotify(false)" ng-disabled="declineNotify"><span class="mif-cross"></span> {{ 'sidebarDisableNotify' | translate }}</button>
+				</div>
+			</div>
+		</div>
+		<div class="row logout" ng-click="logout()">
+			<span class="mif-switch"></span>
+			<h4>{{ 'funcLogout' | translate }}</h4>
+		</div>	
+	</div>
+	<!-- Menu chứa các chức năng của hệ thống -->
+	<div class="fluent-menu" data-role="fluentmenu">
+		<ul class="tabs-holder" ng-style="theme_background_color" ng-class="{'theme-color-white': theme_color_white == true, 'theme-color-black': theme_color_black == true}">
+			<li class="special" ng-click="redirectHome()"><img src="/assets/images/logo.png" alt="logo" title="HR-Manager"></li>
+			<li id="system" class="tabs" ng-hide="tab_system"><a href="#tab_system">{{ 'tabSystem' | translate }}</a></li>
+			<li id="manage" class="tabs" ng-hide="tab_manage"><a href="#tab_manage">{{ 'tabManage' | translate }}</a></li>
+			<li id="file" class="tabs" ng-hide="tab_file"><a href="#tab_file">{{ 'tabProfile' | translate }}</a></li>
+			<li id="wage" class="tabs" ng-hide="tab_wage"><a href="#tab_wage">{{ 'tabSalary' | translate }}</a></li>
+			<li id="statistic" class="tabs" ng-hide="tab_statistic"><a href="#tab_statistic">{{ 'tabStatistic' | translate }}</a></li>
+			<li id="help" class="tabs" ng-hide="tab_help"><a href="#tab_help">{{ 'tabHelp' | translate }}</a></li>
+			<li id="icon-flag">
+				<img src="/assets/images/lang/ico-vn.png" ng-click="changeLanguage('vn_VN')" title="VN">
+				<img src="/assets/images/lang/ico-en.png" ng-click="changeLanguage('en_US')" title="EN">
+			</li>
+			<li id="welcome-user" ng-style="theme_font_color">{{ 'hello' | translate }}: {{hoten_user}}</li>
+			<li id="change-background">
+				<span class="mif-more-vert mif-lg" style="cursor: pointer;z-index: 9999;" onclick="openCharm()" ng-style="theme_font_color"></span>
+			</li>
+		</ul>
+		<span class="mif-enlarge fullscreen" ng-click="f_enlarge()" ng-show="enlarge"></span>
+		<span class="mif-shrink fullscreen" ng-click="f_shrink()" ng-show="shrink"></span>
+		<div class="tabs-content box_shadow">
+			<div class="tab-panel" id="tab_system">
+				<div class="tab-panel-group">
+					<div class="tab-group-content">
+						<div class="tab-content-segment">
+							<button class="fluent-big-button" ng-click="logout()">
+							<span class="icon mif-switch"></span>
+							<br />
+							<span class="label">{{ 'funcLogout' | translate }}</span>
+							</button>
+						</div>
+						<a ng-click="toRedirectUrl('info')" ng-hide="homeCtr">
+							<div class="tab-content-segment" id="info_controll">
+								<button class="fluent-big-button">
+								<span class="mif-info"></span>
+								<br />
+								<span class="label" ng-bind-html="'funcCompanyInfo' | translate"></span>
+								</button>
+							</div>
+						</a>
+					</div>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'groupSystem' | translate }}</span></div>
+				</div>
+				<div class="tab-panel-group">
+					<div class="tab-group-content">
+						<a ng-click="toRedirectUrl('account')" ng-hide="accountCtr">
+							<div class="tab-content-segment">
+								<button class="fluent-big-button">
+								<span class="mif-user"></span>
+								<br />
+								<span class="label" ng-bind-html="'funcAccount' | translate"></span>
+								</button>
+							</div>
+						</a>
+						<div class="tab-content-segment" id="resetpass_controll" ng-click="openChangepass()">
+							<button class="fluent-big-button">
+							<span class="mif-key"></span>
+							<br />
+							<span class="label" ng-bind-html="'funcChangePass' | translate"></span>
+							</button>
+						</div>
+						<a ng-click="toRedirectUrl('auth')" ng-hide="authCtr">
+							<div class="tab-content-segment" id="auth_controll">
+								<button class="fluent-big-button">
+								<span class="mif-user-check"></span>
+								<br />
+								<span class="label">{{ 'funcAuth' | translate }}</span>
+								</button>
+							</div>
+						</a>
+						<div class="tab-content-segment" id="resetpass_controll" ng-click="openResetpass()" ng-hide="resetpassCtr">
+							<button class="fluent-big-button">
+							<span class="mif-security"></span>
+							<br />
+							<span class="label" ng-bind-html="'funcResetPass' | translate"></span>
+							</button>
+						</div>
+					</div>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'groupSecure' | translate }}</span></div>
+				</div>
+				<div class="tab-panel-group" ng-hide="backupCtr">
+					<div class="tab-group-content">
+						<div class="tab-content-segment" ng-click="openBackup()">
+							<button class="fluent-big-button">
+							<span class="mif-download"></span>
+							<br />
+							<span class="label" ng-bind-html="'funcBackup' | translate"></span>
+							</button>
+						</div>
+						<div class="tab-content-segment" ng-click="openRestore()">
+							<button class="fluent-big-button">
+							<span class="mif-upload"></span>
+							<br />
+							<span class="label" ng-bind-html="'funcRestore' | translate"></span>
+							</button>
+						</div>
+					</div>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'groupData' | translate }}</span></div>
+				</div>
+				<div class="tab-panel-group">
+					<div class="tab-group-content">
+						<a ng-click="toRedirectUrl('nghi-phep')" ng-hide="holidayCtr">
+							<div class="tab-content-segment" ng-click="">
+								<button class="fluent-big-button">
+								<span class="mif-file-text"></span>
+								<br />
+								<span class="label" ng-bind-html="'funcSetSabbatical' | translate"></span>
+								</button>
+							</div>
+						</a>
+						<a ng-click="toRedirectUrl('thong-bao')" ng-hide="announceCtr">
+							<div class="tab-content-segment" ng-click="">
+								<button class="fluent-big-button">
+								<span class="mif-bell"></span>
+								<br />
+								<span class="label" ng-bind-html="'funcCreateNotify' | translate"></span>
+								</button>
+							</div>
+						</a>
+					</div>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'groupUtility' | translate }}</span></div>
+				</div>
+				<div class="tab-panel-group">
+					<div class="tab-group-content search-member">
+						{{ 'search' | translate }}:
+						<div class="input-control text timkiem">
+							<input type="text" ng-model="keyword" ng-enter="searchData(keyword)">
+							<button class="button search-button" ng-click="searchData(keyword)"><span class="mif-search"></span></button>
+						</div>
+					</div>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'search' | translate }}</span></div>
+				</div>
+			</div>
+			<div class="tab-panel" id="tab_manage">
+				<div class="tab-panel-group">
+					<div class="tab-group-content">
+						<a ng-click="toRedirectUrl('list-rooms')">
+							<div class="tab-content-segment">
+								<button class="fluent-big-button">
+								<span class="mif-organization"></span>
+								<br />
+								<span class="label">{{ 'funcRooms' | translate }}</span>
+								</button>
+							</div>
+						</a>
+						<a ng-click="toRedirectUrl('chuc-danh')">
+							<div class="tab-content-segment">
+								<button class="fluent-big-button">
+								<span class="mif-credit-card"></span>
+								<br />
+								<span class="label">{{ 'funcTitles' | translate }}</span>
+								</button>
+							</div>
+						</a>
+						<a ng-click="toRedirectUrl('chuc-vu')">
+							<div class="tab-content-segment">
+								<button class="fluent-big-button">
+								<span class="mif-tree"></span>
+								<br />
+								<span class="label">{{ 'funcTitle' | translate }}</span>
+								</button>
+							</div>
+						</a>
+						<a ng-click="toRedirectUrl('chuyen-mon')">
+							<div class="tab-content-segment">
+								<button class="fluent-big-button">
+								<span class="mif-school"></span>
+								<br />
+								<span class="label">{{ 'funcSpecialize' | translate }}</span>
+								</button>
+							</div>
+						</a>
+					</div>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'groupInternal' | translate }}</span></div>
+				</div>
+				<div class="tab-panel-group" ng-hide="duyetNghiPhep">
+					<div class="tab-group-content">
+						<a ng-click="toRedirectUrl('ds-nghi-phep')">
+							<div class="tab-content-segment">
+								<button class="fluent-big-button">
+								<span class="mif-envelop"></span>
+								<br />
+								<span class="label">{{ 'funcGetSabbatical' | translate }}</span>
+								</button>
+							</div>
+						</a>
+					</div>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'groupDiscipline' | translate }}</span></div>
+				</div>
+				<div class="tab-panel-group">
+					<div class="tab-group-content">
+						<a ng-click="toRedirectUrl('du-lieu/hinh-anh')">
+							<div class="tab-content-segment">
+								<button class="fluent-big-button">
+								<span class="mif-images"></span>
+								<br />
+								<span class="label">{{ 'funcImages' | translate }}</span>
+								</button>
+							</div>
+						</a>
+						<a ng-click="toRedirectUrl('du-lieu/khac')">
+							<div class="tab-content-segment">
+								<button class="fluent-big-button">
+								<span class="mif-stack"></span>
+								<br />
+								<span class="label">{{ 'funcOther' | translate }}</span>
+								</button>
+							</div>
+						</a>
+					</div>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'groupStorage' | translate }}</span></div>
+				</div>
+				<div class="tab-panel-group">
+					<div class="tab-group-content search-member">
+						{{ 'search' | translate }}:
+						<div class="input-control text timkiem">
+							<input type="text" ng-model="keyword" ng-enter="searchData(keyword)">
+							<button class="button search-button" ng-click="searchData(keyword)"><span class="mif-search"></span></button>
+						</div>
+					</div>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'search' | translate }}</span></div>
+				</div>
+			</div>
+			<div class="tab-panel" id="tab_file">
+				<div class="tab-panel-group">
+					<div class="tab-group-content">
+						<a ng-click="toRedirectUrl('members')" ng-hide="membersCtr">
+							<div class="tab-content-segment">
+								<button class="fluent-big-button">
+								<span class="mif-users"></span>
+								<br />
+								<span class="label" ng-bind-html="'funcListUser' | translate"></span>
+								</button>
+							</div>
+						</a>
+						<a ng-click="toRedirectUrl('new-member')" ng-hide="new_memberCtr">
+							<div class="tab-content-segment">
+								<button class="fluent-big-button">
+								<span class="mif-user-plus"></span>
+								<br />
+								<span class="label" ng-bind-html="'funcAddUser' | translate"></span>
+								</button>
+							</div>
+						</a>
+						<a ng-click="toRedirectUrl('edit-member')">
+							<div class="tab-content-segment">
+								<button class="fluent-big-button">
+								<span class="mif-profile"></span>
+								<br />
+								<span class="label" ng-bind-html="'funcUpdateProfile' | translate"></span>
+								</button>
+							</div>
+						</a>
+					</div>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'groupProfileInfo' | translate }}</span></div>
+				</div>
+				<div class="tab-panel-group" ng-hide="workingCtr">
+					<div class="tab-group-content">
+						<a ng-click="toRedirectUrl('ktkl')" ng-hide="ktklCtr">
+							<div class="tab-content-segment">
+								<button class="fluent-big-button">
+								<span class="mif-medal"></span>
+								<br />
+								<span class="label" ng-bind-html="'funcLaudatoryDiscipline' | translate"></span>
+								</button>
+							</div>
+						</a>
+						<a ng-click="toRedirectUrl('cong-tac')" ng-hide="congtacCtr">
+							<div class="tab-content-segment">
+								<button class="fluent-big-button">
+								<span class="mif-loop2"></span>
+								<br />
+								<span class="label">{{ 'funcMission' | translate }}</span>
+								</button>
+							</div>
+						</a>
+						<a ng-click="toRedirectUrl('ds-hop-dong')" ng-hide="contractCtr">
+							<div class="tab-content-segment">
+								<button class="fluent-big-button">
+								<span class="mif-clipboard"></span>
+								<br />
+								<span class="label" ng-bind-html="'funcContract' | translate"></span>
+								</button>
+							</div>
+						</a>
+					</div>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'groupWorkProgress' | translate }}</span></div>
+				</div>
+				<div class="tab-panel-group">
+					<div class="tab-group-content search-member">
+						{{ 'search' | translate }}:
+						<div class="input-control text timkiem">
+							<input type="text" ng-model="keyword" ng-enter="searchData(keyword)">
+							<button class="button search-button" ng-click="searchData(keyword)"><span class="mif-search"></span></button>
+						</div>
+					</div>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'search' | translate }}</span></div>
+				</div>
+			</div>
+			<div class="tab-panel" id="tab_wage">
+				<div class="tab-panel-group">
+					<div class="tab-group-content">
+						<div class="tab-content-segment" ng-click="toRedirectUrl('ki-hieu-cham-cong')">
+							<button class="fluent-big-button">
+							<span class="mif-calendar" style="font-size: 35px;"></span>
+							<br />
+							<span class="label" ng-bind-html="'funcSetupTimekeeping' | translate"></span>
+							</button>
+						</div>
+						<div class="tab-content-segment" ng-click="toRedirectUrl('bang-cham-cong')">
+							<button class="fluent-big-button">
+							<img class="menu-icon-custom" style="font-size: 35px;" src="/assets/images/metro/cham-cong.png">
+							<br />
+							<span class="label" ng-bind-html="'funcTimesheets' | translate"></span>
+							</button>
+						</div>
+					</div>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'groupManageTimekeeping' | translate }}</span></div>
+				</div>
+				<div class="tab-panel-group">
+					<div class="tab-group-content">
+						<div class="tab-content-segment" ng-click="toRedirectUrl('thiet-lap-luong')">
+							<button class="fluent-big-button">
+							<span class="mif-coins"></span>
+							<br />
+							<span class="label" ng-bind-html="'funcSetupLimit' | translate"></span>
+							</button>
+						</div>
+						<div class="tab-content-segment" ng-click="toRedirectUrl('phu-cap')">
+							<button class="fluent-big-button">
+							<span class="mif-dollars"></span>
+							<br />
+							<span class="label" ng-bind-html="'funcAllowance' | translate"></span>
+							</button>
+						</div>
+						<div class="tab-content-segment" ng-click="toRedirectUrl('bang-luong-thang')">
+							<button class="fluent-big-button">
+							<img class="menu-icon-custom" src="/assets/images/metro/bang-luong.png">
+							<br />
+							<span class="label" ng-bind-html="'funcPayroll' | translate"></span>
+							</button>
+						</div>
+					</div>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'groupManageSalary' | translate }}</span></div>
+				</div>
+				<div class="tab-panel-group">
+					<div class="tab-group-content search-member">
+						{{ 'search' | translate }}:
+						<div class="input-control text timkiem">
+							<input type="text" ng-model="keyword" ng-enter="searchData(keyword)">
+							<button class="button search-button" ng-click="searchData(keyword)"><span class="mif-search"></span></button>
+						</div>
+					</div>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'search' | translate }}</span></div>
+				</div>
+			</div>
+			<div class="tab-panel" id="tab_statistic">
+				<div class="tab-panel-group">
+					<div class="tab-group-content">
+						<a ng-click="toRedirectUrl('tk-chuc-danh')">
+							<div class="tab-content-segment">
+								<button class="fluent-big-button">
+								<span class="mif-credit-card"></span>
+								<br />
+								<span class="label">{{ 'funcTitles' | translate }}</span>
+								</button>
+							</div>
+						</a>
+						<a ng-click="toRedirectUrl('tk-trinh-do')">
+							<div class="tab-content-segment">
+								<button class="fluent-big-button">
+								<span class="mif-school"></span>
+								<br />
+								<span class="label">{{ 'funcLevel' | translate }}</span>
+								</button>
+							</div>
+						</a>
+					</div>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'groupEducation' | translate }}</span></div>
+				</div>
+				<div class="tab-panel-group">
+					<div class="tab-group-content">
+						<a ng-click="toRedirectUrl('tk-do-tuoi')">
+							<div class="tab-content-segment">
+								<button class="fluent-big-button">
+								<span class="mif-heartbeat"></span>
+								<br />
+								<span class="label">{{ 'funcAge' | translate }}</span>
+								</button>
+							</div>
+						</a>
+						<a ng-click="toRedirectUrl('tk-gioi-tinh')">
+							<div class="tab-content-segment">
+								<button class="fluent-big-button">
+								<span class="mif-male"></span>
+								<br />
+								<span class="label">{{ 'funcGender' | translate }}</span>
+								</button>
+							</div>
+						</a>
+						<a ng-click="toRedirectUrl('tk-ngay-nghi')">
+						<div class="tab-content-segment">
+							<button class="fluent-big-button">
+							<span class="mif-calendar" style="font-size: 35px;margin-top: 12px;margin-bottom: -2px;"></span>
+							<br />
+							<span class="label">{{ 'funcTimekeeping' | translate }}</span>
+							</button>
+						</div>
+					</a>
+					</div>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'groupPersonnel' | translate }}</span></div>
+				</div>
+				<div class="tab-panel-group">
+					<a ng-click="toRedirectUrl('tk-ton-giao')">
+						<div class="tab-content-segment">
+							<button class="fluent-big-button">
+							<span class="mif-florist"></span>
+							<br />
+							<span class="label">{{ 'funcReligion' | translate }}</span>
+							</button>
+						</div>
+					</a>
+					<a ng-click="toRedirectUrl('tk-dan-toc')">
+						<div class="tab-content-segment">
+							<button class="fluent-big-button">
+							<span class="mif-palette"></span>
+							<br />
+							<span class="label">{{ 'funcEthnic' | translate }}</span>
+							</button>
+						</div>
+					</a>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'groupCultural' | translate }}</span></div>
+				</div>
+				<div class="tab-panel-group">
+					<div class="tab-group-content search-member">
+						{{ 'search' | translate }}:
+						<div class="input-control text timkiem">
+							<input type="text" ng-model="keyword" ng-enter="searchData(keyword)">
+							<button class="button search-button" ng-click="searchData(keyword)"><span class="mif-search"></span></button>
+						</div>
+					</div>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'search' | translate }}</span></div>
+				</div>
+			</div>
+			<div class="tab-panel" id="tab_help">
+				<div class="tab-panel-group">
+					<a ng-click="toRedirectUrl('gioi-thieu')" ng-hide="introCtr">
+						<div class="tab-content-segment">
+							<button class="fluent-big-button">
+							<span class="mif-display"></span>
+							<br />
+							<span class="label" ng-bind-html="'funcIntro' | translate"></span>
+							</button>
+						</div>
+					</a>
+					<a ng-click="toRedirectUrl('huong-dan/tong-quan')">
+						<div class="tab-content-segment">
+							<button class="fluent-big-button">
+							<span class="mif-help"></span>
+							<br />
+							<span class="label" ng-bind-html="'funcManual' | translate"></span>
+							</button>
+						</div>
+					</a>
+					<a ng-click="toRedirectUrl('phan-hoi')">
+						<div class="tab-content-segment">
+							<button class="fluent-big-button">
+							<span class="mif-question"></span>
+							<br />
+							<span class="label" ng-bind-html="'funcFeedback' | translate"></span>
+							</button>
+						</div>
+					</a>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'groupHelpInfo' | translate }}</span></div>
+				</div>
+				<div class="tab-panel-group">
+					<div class="tab-group-content search-member">
+						{{ 'search' | translate }}:
+						<div class="input-control text timkiem">
+							<input type="text" ng-model="keyword" ng-enter="searchData(keyword)">
+							<button class="button search-button" ng-click="searchData(keyword)"><span class="mif-search"></span></button>
+						</div>
+					</div>
+					<div class="tab-group-caption" ng-style="theme_background_color"><span ng-style="theme_font_color">{{ 'search' | translate }}</span></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- ***************************CONTENT************************ -->
+<div ui-view='content'></div>
+
+<!-- ***************************FOOTER************************ -->
+<div class="hr-footer" ng-style="theme_background_color">
+	<div class="f_left">
+		<label ng-style="theme_font_color">{{infoFooter.tendonvi}}</label>
+	</div>
+	<div class="f_middle">
+		<label ng-style="theme_font_color">| {{ 'today' | translate }}: {{currentDate | date:"dd/MM/yyyy' - 'hh:mm a"}}</label>
+	</div>
+	<div class="f_right">
+		<label ng-style="theme_font_color">Website: </label>
+		<a href="http://{{infoFooter.website}}" target="_blank" style="color: #000;"><span ng-style="theme_font_color">{{infoFooter.website}}</span></a>
+		<label ng-style="theme_font_color">|</label>
+		<a class="fancybox" href="/assets/media/StandardCalculator.swf"><span class="mif-calculator2" style="color: #000;" ng-style="theme_font_color"></span></a>
+	</div>
+ 	<audio id="audioCall" loop>
+    <source src="/assets/media/duo_ringtone.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audioNotification">
+  	<source src="/assets/media/tweet.ogg" type="audio/ogg">
+    <source src="/assets/media/tweet.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+<div id="olark-box-wrapper">
+  <a id="side-chat" href="javascript:void(0);" onclick="changeClass()">
+  	{{ 'footerChat' | translate }}
+  	<span id="arrow-chat" class="mif-chevron-thin-up"></span>
+  </a>
+  <div id="olark-box-container">
+  	<div id="firechat-wrapper"></div>
+  </div>
+</div>
+
+<div class="fancybox-overlay fancybox-overlay-fixed" style="width: auto; height: auto;" ng-class="{'show-div': fancyboxOverlay, 'hide-div': !fancyboxOverlay}" ng-click="fancyboxOverlay=false"></div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		firebase.auth().onAuthStateChanged(function(user) {
+		  if (user) {
+		  	console.log('Login chat successfull');
+		    initChat(user);
+		  }
+		});
+	});	
+</script>

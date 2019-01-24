@@ -1,0 +1,24 @@
+<div class="hr-content grid">
+	<div class="content row cells12">
+		<div class="main_content box_shadow view-announce cell colspan8">
+			<h4 style="color: #1D58A4;margin-bottom: 5px;">{{announcement.tieude}}</h4>
+			<p class="public-announce">{{ 'publishedNotify' | translate }}: {{announcement.ngaytao}}
+				<span style="margin-left: 20px;">{{ 'authorNotify' | translate }}: {{announcement.hoten}}</span>
+				<button class="btn-toolbar-announce right" title="Xóa" ng-if="announcement.user_id === userID" ng-click="deleteAnnounce(announcement.id)"><span class="mif-bin"></span></button>
+				<button class="btn-toolbar-announce right" title="Chỉnh sửa" ng-if="announcement.user_id === userID" ng-click="editAnnounce(announcement.id)"><span class="mif-pencil"></span></button>
+				<button class="btn-toolbar-announce right" title="In" ng-click="printAnnounce()"><span class="mif-print" style="font-size: 18px;"></span></button>
+			</p>
+			<div class="noidung_TB"></div>
+			<div class="dinhkem" ng-show="announcement.files">
+				<p style="font-weight: 600;">{{ 'attachFilesNotify' | translate }}:</p>
+				<ul style="margin: 0;padding-left: 20px;">
+					<li ng-repeat="file in announcement.files">
+						<a ng-click="toRedirectUrl('assets/kcfinder/upload/other/'+file , true)">{{file}}</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+		<div class="clear"></div>
+	</div>	
+</div>

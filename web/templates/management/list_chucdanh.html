@@ -1,0 +1,54 @@
+<div class="hr-content grid">
+    <div class="content chucdanh_container row cells12">
+        <div class="main_content box_shadow cell colspan8">
+            <h3 class="b_c_add">{{'listTitles' | translate}}</h3>
+            <div class="panel collapsible collapsed" data-role="panel">
+                <div class="heading">
+                    <span class="title">{{'addTitles' | translate}}</span>
+                </div>
+                <div class="content padding10 grid" style="display: none;">
+                    <div class="row cells8">
+                        <div class="cell title">{{'idTitles' | translate}}</div>
+                        <div class="input-control text cell colspan2">
+                            <input type="text" value="" ng-model="mcd">
+                        </div>
+                        <div class="cell title">{{'nameTitles' | translate}}</div>
+                        <div class="input-control text cell colspan2">
+                            <input type="text" value="" ng-model="tencd">
+                        </div>
+                        <div class="cell colspan2">
+                            <input type="button" value="{{'addNew' | translate}}" style="height: 40px;margin-top: -6px;margin-left: 22px;" class="submit_b" ng-click="newChucDanh()" ng-disabled="!tencd || !mcd">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <table class="table striped hovered cell-hovered border bordered tbChucDanh" dt-column-defs="dtColCD" datatable="ng" dt-options="dtListCD">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>{{'idTitlesFull' | translate}}</th>
+                            <th>{{'funcTitles' | translate}}</th>
+                            <th>{{'dateCreate' | translate}}</th>
+                            <th>{{'dateUpdate' | translate}}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="(key, value) in chucdanh">
+                            <td>{{key+1}}</td>
+                            <td><input type="text" value="{{value.mcd}}" style="width:50px" id="{{value.mcd}}" ng-blur="checkMCD(value.mcd)" title="Click để thay đổi mã chức danh"></td>
+                            <td><input type="text" value="{{value.tencd}}" id="cd_{{value.mcd}}" ng-blur="checkTCD('cd_'+value.mcd)" title="Click để thay đổi tên chức danh"></td>
+                            <td>{{value.ngaytao | date: 'dd/MM/yyyy'}}</td>
+                            <td>{{value.ngaysua | date: 'dd/MM/yyyy'}}</td>
+                            <td style="text-align: center;"><span class="mif-bin mif-2x" title="Xóa chức danh" ng-click="removeChucDanh(value.mcd)"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+        <div class="clear"></div>
+    </div>
+</div>

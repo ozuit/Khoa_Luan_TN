@@ -1,0 +1,64 @@
+<div class="hr-content grid">
+  <div class="content row cells12">
+    <div class="main_content box_shadow cell colspan8">
+      <h3 class="b_c_add">{{'infoDepartment' | translate}}</h3>
+      
+      <form ng-submit="updateRoom()" id="frmUpdateRoom">
+        <table>
+          <tr>
+              <td>{{'numberUser' | translate}}</td>
+              <td>
+                  <div class="input-control text">
+                      <input type="text" readonly value="{{number}}">
+                  </div>
+              </td>
+              <td>{{'idDepartment' | translate}}</td>
+              <td>
+                  <div class="input-control text">
+                      <input type="text" name="mpb" value="{{room.mpb}}" required>
+                  </div>
+              </td>
+          </tr>
+          <tr>
+              <td>{{'nameDepartment' | translate}}</td>
+              <td>
+                  <div class="input-control text">
+                      <input type="text" name="tenpb" value="{{room.tenpb}}" required>
+                  </div>
+              </td>
+              <td>{{'nameGeneralinchief' | translate}}</td>
+              <td>
+                  <div class="input-control text capitalize">
+                      <input type="text" name="truongpb" value="{{room.truongpb}}" required onkeyup="stringValidate(this)">
+                  </div>
+              </td>
+          </tr>
+        </table>
+        <input type="submit" value="{{'btnUpdate' | translate}}" class="submit_b" style="margin: 15px 45px 0 15px;;float: right">
+        <input type="reset" value="{{'btnCancel' | translate}}" class="reset_b" style="margin: 15px 0 0 0;float: right">
+      </form>
+        
+      <h3 style="margin-top:40px;" class="b_c_add">{{'listUserRoom' | translate}}</h3>
+      <table class="table striped hovered cell-hovered border bordered" datatable="ng" dt-options="dtDetailRoom">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>{{'fullName' | translate}}</th>
+                <th>{{'mobileNumber' | translate}}</th>
+                <th>{{'addressEmail' | translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="(key, value) in members">
+                <td>{{key+1}}</td>
+                <td>{{value.hoten}}</td>
+                <td>{{value.dtdd}}</td>
+                <td>{{value.email}}</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+    <div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+    <div class="clear"></div>
+  </div>
+</div>

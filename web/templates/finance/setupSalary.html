@@ -1,0 +1,175 @@
+<div class="hr-content grid">
+	<div class="content row cells12">
+		<div class="cell colspan8">
+			<ng-form name="frmSetupSalary">
+				<div class="main_content box_shadow tl-luong">
+					<table class="table border bordered">
+						<thead>
+							<tr>
+								<th class="title">{{'insurancePremiums' | translate}}</th>
+								<th class="sub-title">{{'enterprisesPay' | translate}}</th>
+								<th class="sub-title">{{'employeePay' | translate}}</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="title-body">{{'socialInsurance' | translate}}</td>
+								<td>
+									<div class="input-control text">
+								    <input type="number" string-to-number min="0" max="100" ng-model="dinhmuc.bhxh_cty"  name="bhxh_cty" required>
+									</div>
+									<span>%</span>
+								</td>
+								<td>
+									<div class="input-control text">
+								    <input type="number" string-to-number min="0" max="100" ng-model="dinhmuc.bhxh_nv"  name="bhxh_nv" required>
+									</div>
+									<span>%</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="title-body">{{'healthInsurance' | translate}}</td>
+								<td>
+									<div class="input-control text">
+								    <input type="number" string-to-number min="0" max="100" ng-model="dinhmuc.bhyt_cty"  name="bhyt_cty" required>
+									</div>
+									<span>%</span>
+								</td>
+								<td>
+									<div class="input-control text">
+								    <input type="number" string-to-number min="0" ng-model="dinhmuc.bhyt_nv"  name="bhyt_nv" required>
+									</div>
+									<span>%</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="title-body">{{'unemploymentInsurance' | translate}}</td>
+								<td>
+									<div class="input-control text">
+								    <input type="number" string-to-number min="0" max="100" ng-model="dinhmuc.bhtn_cty"  name="bhtn_cty" required>
+									</div>
+									<span>%</span>
+								</td>
+								<td>
+									<div class="input-control text">
+								    <input type="number" string-to-number min="0" max="100" ng-model="dinhmuc.bhtn_nv"  name="bhtn_nv" required>
+									</div>
+									<span>%</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<fieldset class="fieldset-border">
+						<legend>{{'unionDues' | translate}}</legend>
+						<div class="grid">
+							<div class="row cells2">
+								<div class="cell">
+									<label>{{'enterprisesPay' | translate}}</label>
+									<div class="input-control text">
+								    <input type="number" string-to-number min="0" max="100" ng-model="dinhmuc.congdoan_cty"  name="congdoan_cty" required>
+									</div>
+									<span>%</span>
+								</div>
+								<div class="cell text-right">
+									<label>{{'employeePay' | translate}}</label>
+									<div class="input-control text">
+								    <input type="number" string-to-number min="0" max="100" ng-model="dinhmuc.congdoan_nv"  name="congdoan_nv" required>
+									</div>
+									<span>%</span>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset class="fieldset-border">
+						<legend>{{'personalTax' | translate}}</legend>
+						<div class="grid dinh-muc-tncn">
+							<div class="row cells3">
+								<div class="cell colspan2">
+									{{'limitPersonalTax' | translate}}:
+								</div>
+								<div class="cell">
+									<div class="input-control text">
+								    <input type="number" string-to-number min="0" ng-model="dinhmuc.thunhapcn"  name="thunhapcn" required>
+									</div>
+									<span>VNĐ</span>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+				<div class="main_content box_shadow tl-luong">
+					<fieldset class="fieldset-border">
+						<legend>{{'overtimeSalary' | translate}}</legend>
+						<div class="grid dinh-muc-tang-ca">
+							<div class="row cells3">
+								<div class="cell colspan2">
+									{{'overtimeCoefficient' | translate}}:
+								</div>
+								<div class="cell">
+									<div class="input-control text">
+								    <input type="number" string-to-number min="100" ng-model="dinhmuc.tangca"  name="tangca" required>
+									</div>
+									<span>%</span>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset class="fieldset-border">
+						<legend>{{'wasLate' | translate}}</legend>
+						<div class="grid dinh-muc-di-tre">
+							<div class="row cells2">
+								<div class="cell">
+									<label class="input-control checkbox small-check">
+								    <input type="checkbox" checked ng-model="dinhmuc.tinhditre">
+								    <span class="check"></span>
+								    <span class="caption">{{'exceptWages' | translate}}</span>
+									</label>
+								</div>
+								<div class="cell">
+									<label>{{'whenLate' | translate}} >=</label>
+									<div class="input-control text limit-late">
+								    <input type="number" string-to-number ng-disabled="!dinhmuc.tinhditre" min="1" ng-model="dinhmuc.ditre"  name="ditre" ng-required="dinhmuc.tinhditre">
+									</div>
+									<span>{{'hours' | translate}}</span>
+								</div>
+							</div>
+							<div class="row cells3">
+								<div class="cell colspan2">
+									{{'lateCoefficient' | translate}}:
+								</div>
+								<div class="cell">
+									<div class="input-control text">
+								    <input type="number" string-to-number ng-disabled="!dinhmuc.tinhditre" min="0" max="100" ng-model="dinhmuc.truditre"  name="truditre" ng-required="dinhmuc.tinhditre">
+									</div>
+									<span>%</span>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset class="fieldset-border">
+						<legend>{{'lateCoefficient' | translate}}</legend>
+						<div class="grid dinh-muc-tang-ca">
+							<div class="row cells3">
+								<div class="cell colspan2">
+									{{'autoRoundMoney' | translate}}:
+								</div>
+								<div class="cell">
+									<div class="input-control text">
+								    <input type="number" string-to-number min="1" ng-model="dinhmuc.lamtrontien"  name="lamtrontien" required>
+									</div>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<div class="row">
+						<div class="cell action">
+							<button class="button large-button" ng-click="resetSetupSalary()">{{'restoreDefault' | translate}}</button>
+							<button class="button primary large-button" ng-click="updateSetupSalary(dinhmuc)" ng-disabled="frmSetupSalary.$error.required">{{'applyNewSetup' | translate}}</button>
+						</div>
+					</div>
+				</div>
+			</ng-form>
+		</div>
+		<div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+	</div>
+</div>

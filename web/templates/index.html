@@ -1,0 +1,119 @@
+<div class="container full-size">
+  <div class="presenter" data-role="presenter" data-easing="swing" data-scene-timeout="4000">
+    <div class="scene">
+        <div class="act bg-image2 fg-white" style="display: block;">
+            <img src="/assets/images/nhanvien.png" class="actor logo" data-position="30,10">
+            <h1 class="actor" data-position="20,350">Doanh Nghiệp Tư Nhân Dịch Vụ - Tin Học KITA</h1>
+            <p class="actor" data-position="80,350">
+              Với đội ngũ 100 nhân viên sáng tạo và nhiệt huyết, KITA luôn tiên phong mang lại những sản phẩm độc đáo, hữu ích và giá cạnh tranh cho khách hàng.
+            </p>
+            <p class="actor" data-position="140,350">
+              - Uy tín, thấu hiểu thị trường với hơn 6 năm kinh nghiệm cung cấp các giải pháp và dịch vụ công nghệ thông tin tại Việt Nam.
+            </p>
+            <p class="actor" data-position="170,350">
+              - Sản phẩm độc đáo, sáng tạo, hữu ích và giá cạnh tranh.
+            </p>
+            <p class="actor" data-position="200,350">
+              - Chất lượng quốc tế: Liên tục áp dụng, đánh giá và đạt các chứng chỉ mô hình chất lượng.
+            </p>
+            <p class="actor" data-position="230,350">
+              - Quy trình triển khai chuyên nghiệp, dịch vụ bảo trì – bảo hành chu đáo và tận tâm.
+            </p>
+            <a class="actor button primary" data-position="280,350" href="http://www.kita.io" target="_blank">
+              Website chính thức KITA
+            </a>
+        </div>
+        <div class="act bg-image1 fg-white" style="display: none;">
+            <img src="/assets/images/kita_logo.png" class="actor logo" data-position="10,10">
+            <h1 class="actor" data-position="10,400">Trụ sở chính của KITA Việt Nam</h1>
+            
+            <h4 class="actor" data-position="80,400">
+              <span class="icon mif-location"></span>
+              Địa chỉ: 88 Nguyễn Thị Huỳnh, Quận Phú Nhuận, TP.HCM
+            </h4>
+            <h4 class="actor" data-position="120,400">
+              <span class="icon mif-phone"></span>
+              Số điện thoại: (84-8) 833 8383
+            </h4>
+            <h4 class="actor" data-position="160,400">
+              <span class="icon mif-printer"></span>
+              Mã số fax: (84-8) 833 8484
+            </h4>
+            <h4 class="actor" data-position="200,400">
+              <span class="icon mif-mail"></span>
+              Địa chỉ e-mail: kita@kita.com.vn
+            </h4>
+            <h4 class="actor" data-position="240,400">
+              <span class="icon mif-earth2"></span>
+              Địa chỉ website: <a href="http://www.kita.io" target="_blank" style="color:#fff">http://www.kita.io</a>
+            </h4>
+        </div>
+    </div>
+    <center>
+      <a class="btn-circle page-scroll" ng-click="gotoLogin()">
+        <i class="fa fa-angle-double-down animated"></i>
+      </a>
+    </center>
+  </div>
+  <div class="login-form full-size" id="login">
+    <section class="login-container">
+      <div class="ozu-form" >
+        <div class="section-title">
+            <h3 style="line-height: 50px;">{{ 'titleLogin' | translate }}</h3>
+        </div>
+        <form ng-submit="submitLogin()" id="login_form" data-role="validator">
+          <div class="textbox-wrap focused">
+            <div class="input-control text input-group full-size" data-role="input" required>
+              <span class="mif-user prepend-icon"></span>
+              <input type="text" placeholder="{{ 'loginUsername' | translate }}" name="username" ng-model="username" onfocus="addFocused(this)" id="login_user" ng-keypress="uppercase()" 
+                data-validate-func="required" 
+                data-validate-hint="{{ 'alertLoginUsername' | translate }}"  
+                data-validate-hint-position="right"
+                data-hint-easing="easeInQuad"
+              >
+              <span class="input-state-error mif-warning"></span>
+              <span class="input-state-success mif-checkmark"></span>
+              <button class="button helper-button clear" style="background: transparent;"><span class="mif-cross"></span></button>
+            </div>
+          </div>
+          <div class="textbox-wrap">
+            <div class="input-control password input-group full-size required" data-role="input">
+              <span class="mif-lock prepend-icon"></span>
+              <input type="password" id="user_password" name="password" ng-model="password" placeholder="{{ 'loginPassword' | translate }}" onfocus="addFocused(this)" 
+                data-validate-func="minlength" 
+                data-validate-arg="6"
+                data-validate-hint="{{ 'alertLoginPassword' | translate }}" 
+                data-validate-hint-position="right"
+                data-hint-easing="easeInQuad"
+              >
+              <span class="input-state-error mif-warning"></span>
+              <span class="input-state-success mif-checkmark"></span>
+              <button class="button helper-button reveal" style="background: transparent;"><span class="mif-looks"></span></button>
+            </div>
+          </div>
+          <center>
+            <div vc-recaptcha key="'6Lfaxw8UAAAAACTVMUeJm6bEGr08m-pBNwvpznH8'" style="margin-top:20px;"></div>
+          </center>
+          
+          <div class="grid">
+            <div class="row cells2">
+              <div class="cell">
+                <label class="switch">
+                    <input type="checkbox" ng-model="rememberMe">
+                    <span class="check"></span>                    
+                </label>
+                {{ 'switchRemember' | translate }}
+              </div>
+              <div class="cell">
+                <button type="submit" class="submit_b right" >
+                  {{ 'btnLogin' | translate }}
+                  <span class="mif-chevron-right mif-2x" style="margin-left:5px;color:#fff"></span>
+                </button>
+              </div>
+            </div>
+          </div>  
+        </form>
+      </div>
+    </section>
+  </div>
+</div>

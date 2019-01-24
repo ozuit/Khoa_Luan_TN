@@ -1,0 +1,332 @@
+<div class="hr-content grid">
+  <div class="content row cells12">
+    <div class="main_content view-member box_shadow cell colspan8">
+      <h3 class="b_c_add">{{'personalInfo' | translate}}</h3>
+      <table>
+        <tr>
+          <td>
+            {{'fullName' | translate}}:
+          </td>
+          <td style="width: 28%">
+            <div class="input-control text capitalize validateString full-size">
+              <input type="text" value="{{user.hoten}}" readonly>
+            </div>
+          </td>
+          <td colspan="2" rowspan="4" style="padding-left:55px;">
+            <div class="i_logo add">
+              <img ngf-src="avatar || avatar_default">
+            </div>
+            <div class="toolbar">
+              <div class="toolbar-section right">
+                <button class="btn-toolbar-view-member" title="Xóa" ng-click="removeMember(user.mnv)"><span class="mif-bin"></span></button>
+                <button class="btn-toolbar-view-member" title="Chỉnh sửa" ng-click="updateMembers(user.mnv)"><span class="mif-pencil"></span></button>
+                <button class="btn-toolbar-view-member" title="In" ng-click="printMember()"><span class="mif-print" style="font-size: 18px;"></span></button>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{'funcGender' | translate}}:
+          </td>
+          <td style="width: 28%">
+            <label class="input-control radio small-check margin_input" style="float: left;margin: 0;">
+              <input type="radio" name="gioitinh" value="Nam" ng-checked="user.gioitinh=='Nam'">
+              <span class="check"></span><span class="caption">{{'male' | translate}}</span>
+            </label>
+            <label class="input-control radio small-check margin_input">
+              <input type="radio" name="gioitinh" value="Nữ" ng-checked="user.gioitinh=='Nữ'">
+              <span class="check"></span><span class="caption">{{'female' | translate}}</span>
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{'birthplace' | translate}}:
+          </td>
+          <td style="width: 28%">
+            <div class="input-control text full-size">
+              <input type="text" value="{{noisinh}}" readonly>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{'birthday' | translate}}:
+          </td>
+          <td style="width: 28%">
+            <div class="input-control text full-size">
+              <input type="text" value="{{user.ngaysinh | date: 'dd/MM/yyyy'}}" readonly>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{'nationality' | translate}}:
+          </td>
+          <td style="width: 28%">
+            <div class="input-control text capitalize full-size">
+              <input type="text" value="{{user.quoctich}}" readonly>
+            </div>
+          </td>
+          <td style="padding-left: 12%">
+            {{'dateParticipate' | translate}}:
+          </td>
+          <td>
+            <div class="input-control text full-size">
+              <input type="text" value="{{user.ngayvaolam | date: 'dd/MM/yyyy'}}" readonly>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{'funcEthnic' | translate}}:
+          </td>
+          <td style="width: 28%">
+            <div class="input-control select full-size">
+              <input type="text" value="{{dantoc}}" readonly>
+            </div>
+          </td>
+          <td style="padding-left: 12%">
+            {{'status' | translate}}:
+          </td>
+          <td>
+            <div class="input-control text full-size">
+              <input type="text" value="{{user.trangthai}}" readonly>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>{{'funcReligion' | translate}}:</td>
+          <td style="width: 28%">
+            <div class="input-control text full-size">
+              <input type="text" value="{{tongiao}}" readonly>
+            </div>
+          </td>
+          <td style="padding-left: 12%">{{'dependents' | translate}}:</td>
+          <td>
+            <div class="input-control number full-size">
+              <input type="number" value="{{user.songuoi_pt}}" readonly>
+            </div>
+          </td>
+        </tr>
+      </table>
+      
+      <h3 style="text-transform: uppercase;color: #1D58A4;clear: both;padding-top: 30px;" class="b_c_add">{{'contactInfo' | translate}} <span class="mif-map" title="Xem bản đồ" ng-click="viewMap(user.thuongtru)" style="cursor: pointer"></span></h3>
+      <table>
+        <tr>
+          <td>
+            {{'resident' | translate}}:
+          </td>
+          <td colspan="3">
+            <div class="input-control text add_p capitalize full-size">
+              <input type="text" value="{{user.thuongtru}}" readonly>
+            </div>
+          </td>
+        </tr>
+        
+        <tr>
+          
+          <td>
+            {{'addressEmail' | translate}}:
+          </td>
+          <td style="with: 28%">
+            <div class="input-control mail add_p full-size">
+              <input type="mail" value="{{user.email}}" readonly
+              >
+            </div>
+          </td>
+          <td style="padding-left: 12%">
+            {{'identityCard' | translate}}:
+          </td>
+          <td >
+            <div class="input-control number add_p full-size">
+              <input type="number" value="{{user.cmnd}}" readonly>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{'landlineNumber' | translate}}:
+          </td>
+          <td >
+            <div class="input-control text add_p full-size">
+              <input type="text" value="{{user.dtcd | tel}}" readonly>
+            </div>
+          </td>
+          
+          <td style="padding-left: 12%">
+            {{'dateIssue' | translate}}:
+          </td>
+          <td>
+            <div class="input-control text full-size">
+              <input type="text" value="{{user.ngaycap | date: 'dd/MM/yyyy'}}" readonly>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{'mobileNumber' | translate}}:
+          </td>
+          <td >
+            <div class="input-control text add_p full-size">
+              <input type="text" value="{{user.dtdd | tel}}" readonly>
+            </div>
+          </td>
+          
+          <td style="padding-left: 12%">
+            {{'placeIssue' | translate}}:
+          </td>
+          <td style="width: 28%">
+            <div class="input-control text full-size">
+              <input type="text" value="{{user.noicap}}" readonly>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <h3 class="b_c_add" style="clear:both;padding-top:30px">{{'jobPosition' | translate}}</h3>
+      <table>
+        <tr>
+          <td>
+            {{'funcTitles' | translate}}:
+          </td>
+          <td style="padding-left: 4%; width: 32%">
+            <div class="input-control select full-size">
+              <select name="macd" disabled>
+                <option ng-repeat="cd in chucdanh"  ng-selected="user.macd == cd.mcd">{{cd.tencd}}</option>
+              </select>
+            </div>
+          </td>
+          <td style="padding-left: 12%">
+            {{'funcTitle' | translate}}:
+          </td>
+          <td>
+            <div class="input-control select full-size">
+              <select name="chucvu" ng-model="macv" ng-change="updateChucvu()" disabled>
+                <option ng-repeat="cv in chucvu" value="{{cv.ID}}">{{cv.tenchucvu}}</option>
+              </select>
+            </div>
+          </td>
+          
+        </tr>
+        <tr>
+          <td>
+            {{'funcRooms' | translate}}:
+          </td>
+          <td style="padding-left: 4%; width: 32%">
+            <div class="input-control select full-size">
+              <select name="phongban" disabled>
+                <option ng-repeat="pb in phongban" value="{{pb.mpb}}" ng-selected="user.phongban == pb.mpb">{{pb.tenpb}}</option>
+              </select>
+            </div>
+          </td>
+          <td style="padding-left: 12%">
+            {{'userID' | translate}}:
+          </td>
+          <td>
+            <div class="input-control text full-size">
+              <input type="text" ng-model="manv" name="mnv" readonly>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{'funcLevel' | translate}}:
+          </td>
+          <td style="padding-left: 4%; width: 32%">
+            <div class="input-control text full-size">
+              <input type="text" value="{{user.trinhdo}}" readonly>
+            </div>
+          </td>
+          <td style="padding-left: 12%">
+            {{'funcSpecialize' | translate}}:
+          </td>
+          <td>
+            <div class="input-control select full-size">
+              <select name="chuyenmon" disabled>
+                <option ng-repeat="cm in chuyenmon" value="{{cm.ID}}" ng-selected="user.chuyenmon == cm.ID">{{cm.tenchuyenmon}}</option>
+              </select>
+            </div>
+          </td>
+          
+        </tr>
+      </table>
+      <h3 style="text-transform: uppercase; color: #1D58A4;clear: both;padding-top: 30px;" class="b_c_add">{{'contractInformation' | translate}}</h3>
+      <input type="hidden" name="idHopdong" value="{{user.data_hd.id}}">
+      <table>
+        <tr>
+          <td>
+            {{'typeContract' | translate}}:
+          </td>
+          <td>
+            <div class="input-control text full-size">
+              <input type="text" value="{{loaihd}}" readonly>
+            </div>
+          </td>
+          <td style="padding-left: 5%">
+            {{'termContract' | translate}}:
+          </td>
+          <td>
+            <div class="input-control text full-size">
+              <input type="text" value="{{thoihan}}" readonly>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{'dateEffective' | translate}}:
+          </td>
+          <td>
+            <div class="input-control text full-size">
+              <input type="text" value="{{user.data_hd.ngayhieuluc | date: 'dd/MM/yyyy'}}" readonly>
+            </div>
+          </td>
+          <td style="padding-left: 5%">
+            {{'dateExpiry' | translate}}:
+          </td>
+          <td style="width: 30%">
+            <div class="input-control text full-size">
+              <input type="text" value="{{user.data_hd.ngayhethan | date: 'dd/MM/yyyy'}}" readonly>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{'labelRepresentative' | translate}}:
+          </td>
+          <td style="width: 30%">
+            <div class="input-control select full-size">
+              <select name="chuyenmon" disabled>
+                <option ng-repeat="person in users" value="{{person.id}}" ng-selected="nguoidd.id == person.id">{{person.hoten}}</option>
+              </select>
+            </div>
+          </td>
+          <td style="padding-left: 5%">
+            {{'basicSalary' | translate}}:
+          </td>
+          <td style="width: 30%">
+            <div class="input-control text add_p full-size">
+              <input type="text" value="{{user.data_hd.luongcb}}" format="number" readonly>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>{{'allowance' | translate}}:</td>
+          <td colspan="3">
+            <div class="input-control text full-size">
+              <input type="text" value="{{user.phucap}}" readonly>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <h3 class="b_c_add">{{'dashboardNote' | translate}}</h3>
+      <div class="input-control full-size textarea text_add left"
+        data-role="input" data-text-auto-resize="true">
+        <textarea name="ghichu" readonly>{{user.ghichu}}</textarea>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+    <div class="clear"></div>
+  </div>
+</div>

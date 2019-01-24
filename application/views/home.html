@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <title>HRM - 2016</title>
+  <link rel="icon" href="/assets/images/favicon.png">
+	<link href="/assets/css/login.css" rel="stylesheet">
+	<link href="/assets/font-awesome/font-awesome.css" rel="stylesheet">
+	<!-- METRO UI -->
+	<link href="/assets/css/metro.css" rel="stylesheet">
+  <link href="/assets/css/metro-icons.css" rel="stylesheet">
+  <link href="/assets/css/metro-responsive.css" rel="stylesheet">
+  <link href="/assets/css/metro-schemes.css" rel="stylesheet">
+  <!-- KENDO UI -->
+	<link href="/assets/css/kendo.common-material.min.css" rel="stylesheet"/>
+	<link href="/assets/css/kendo.material.min.css" rel="stylesheet"/>
+  <!-- Component CSS -->
+  <link href="/assets/css/angular-fancy-modal.css" rel="stylesheet">
+  <link href="/assets/css/angular-chart.min.css" rel="stylesheet">
+  <link href="/assets/css/angular-loading.css" rel="stylesheet">
+  <link href="/assets/css/select.css" rel="stylesheet">   
+  <link href="/assets/css/select2.css" rel="stylesheet">   
+  <link href="/assets/css/jquery.editable-select.min.css" rel="stylesheet">   
+	<link href="/assets/css/jquery.fancybox.css" rel="stylesheet" media="screen" />
+	<link href="/assets/css/content.css" rel="stylesheet">
+	<!-- Video Call -->
+	<link rel="stylesheet" type="text/css" href="/assets/css/video-call.css" media="screen" />
+	<!-- Firechat -->
+	<link rel="stylesheet" href="/assets/css/firechat.min.css" />
+	
+</head>
+<body ng-app="hr_manager" onload="setActive()" dw-loading="waiting">
+	<div ui-view="main"></div>
+
+	<!-- Jquery Resource JS -->
+	<script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/assets/js/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/assets/js/metro_update.js"></script>
+	<script type="text/javascript" src="/assets/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/assets/js/sha512.min.js"></script>
+	<script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer></script>
+	<script type="text/javascript" src="/assets/js/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="/assets/js/jquery.easing.min.js"></script>
+	<script type="text/javascript" src="/assets/js/Blob.js"></script>
+	<script type="text/javascript" src="/assets/js/dataTables.fixedColumns.js"></script>
+	<script type="text/javascript" src="/assets/js/dataTables.scroller.min.js"></script>
+	<script type="text/javascript" src="/assets/js/spin.min.js"></script>
+	<script type="text/javascript" src="/assets/js/Chart.min.js"></script>
+	<script type="text/javascript" src="/assets/js/jquery.editable-select.min.js"></script>
+	<script type="text/javascript" src="/assets/ckeditor/ckeditor.js"></script>
+	<script type="text/javascript" src="/assets/js/custom.js"></script>
+	<script type="text/javascript" src="/assets/js/notification.js"></script>
+	<script type="text/javascript" src="/assets/js/jquery.fancybox.pack.js"></script>
+	<script type="text/javascript" src="/assets/js/kendo.all.min.js"></script>
+	<script type="text/javascript" src="/assets/js/jquery.cookie.min.js"></script>
+	<script type="text/javascript" src="/assets/js/clipboard.min.js"></script>
+
+<!-- Firebase -->
+	<script src="/assets/js/firebase.js"></script>
+<!-- Firechat -->
+	<script src="/assets/js/firechat.min.js"></script>
+	<script src="/assets/js/setup-firechat.js"></script>
+
+<!-- Video Call -->
+	<script src="https://192.168.159.1:9001/dist/RTCMultiConnection.min.js"></script>
+	<script src='https://192.168.159.1:9001/socket.io/socket.io.js'></script>
+	<script src="/assets/js/getMediaElement.js"></script>
+	<script src="/assets/js/FileBufferReader.js"></script>
+	<script src='/assets/js/videocall.js'></script>
+
+<!-- Angular Resource JS -->
+  <script type="text/javascript" src="/web/components/angular.min.js"></script>
+  <script type="text/javascript" src="/web/components/angular-translate.min.js"></script>
+  <script type="text/javascript" src="/web/components/angular-translate-loader-static-files.min.js"></script>
+  <script type="text/javascript" src="/web/components/angular-sanitize.js"></script>
+  <script type="text/javascript" src="/web/components/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="/web/components/angular-cookies.js"></script>
+	<script type="text/javascript" src="/web/components/angular-resource.min.js"></script>
+	<script type="text/javascript" src="/web/components/angular-datatables.min.js"></script>
+	<script type="text/javascript" src="/web/components/angular-datatables.fixedcolumns.min.js"></script>
+	<script type="text/javascript" src="/web/components/angular-datatables.scroller.min.js"></script>
+	<script type="text/javascript" src="/web/components/angular-fancy-modal.js"></script>
+	<script type="text/javascript" src="/web/components/angular-recaptcha.min.js"></script>
+	<script type="text/javascript" src="/web/components/angular-chart.min.js"></script>
+	<script type="text/javascript" src="/web/components/ng-file-upload-shim.min.js"></script>
+	<script type="text/javascript" src="/web/components/ng-file-upload.min.js"></script>
+	<script type="text/javascript" src="/web/components/angular-ckeditor.min.js"></script>
+	<script type="text/javascript" src="/web/components/angular-loading.js"></script>
+	<script type="text/javascript" src="/assets/js/select.js"></script>
+	<script type="text/javascript" src="/web/app.js"></script>
+
+	<!-- Component Angular JS -->
+	<script type="text/javascript" src="/web/modules/authController.js"></script>
+	<script type="text/javascript" src="/web/modules/mainController.js"></script>
+
+	<!-- Service -->
+	<script type="text/javascript" src="/web/services/dataService.js"></script>
+	<script type="text/javascript" src="/web/services/authService.js"></script>
+	<script type="text/javascript" src="/web/services/directive.js"></script>
+	<script type="text/javascript" src="/web/services/entities.js"></script>
+	<script type="text/javascript" src="/web/services/utilities.js"></script>
+
+	<!-- Module Statistic -->
+	<script type="text/javascript" src="/web/modules/statistic/statistic-route.js"></script>
+	<script type="text/javascript" src="/web/modules/statistic/statistic-controller.js"></script>
+	
+	<!-- Module Manage -->
+	<script type="text/javascript" src="/web/modules/manage/manage-route.js"></script>
+	<script type="text/javascript" src="/web/modules/manage/manage-controller.js"></script>
+
+	<!-- Module Profile -->
+	<script type="text/javascript" src="/web/modules/profile/profile-route.js"></script>
+	<script type="text/javascript" src="/web/modules/profile/profile-controller.js"></script>
+
+	<!-- Module Salary -->
+	<script type="text/javascript" src="/web/modules/salary/salary-route.js"></script>
+	<script type="text/javascript" src="/web/modules/salary/salary-controller.js"></script>
+
+	<!-- Module Help -->
+	<script type="text/javascript" src="/web/modules/help/help-route.js"></script>
+	<script type="text/javascript" src="/web/modules/help/help-controller.js"></script>
+
+	<!-- Module System -->
+	<script type="text/javascript" src="/web/modules/system/system-route.js"></script>
+	<script type="text/javascript" src="/web/modules/system/system-controller.js"></script>
+
+	<!-- Module Video -->
+	<script type="text/javascript" src="/web/modules/video/video-route.js"></script>
+	<script type="text/javascript" src="/web/modules/video/video-controller.js"></script>
+
+</body>
+</html>

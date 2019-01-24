@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Phiếu lương cá nhân</title>
+		<style>
+		  *{ font-family: DejaVu Sans; }
+		  .image{display: block;float: left;margin-top: 5px;margin-left: 20px;}
+		  .image img{border-radius: 60px;}
+		  .info{margin-left: 170px;padding-bottom: 20px;float: left;margin-top: 15px;display: block;}
+		  .info table{margin: 0 auto;}
+		  .info tr td{font-size: 16px;width: 300px;height: 30px;padding: 5px;}
+		  .detail{clear: both;font-size: 14px;margin-top: 30px;}
+		  .detail table{margin: 0 auto;}
+		  .detail table tr td{height: 30px;width: 25%;background: #EEEEEE;padding: 10px 20px;}
+		  .detail .title{font-weight: bold;}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<h3 style="text-align: center;font-size: 18px;margin-right: 20px;">PHIẾU LƯƠNG THÁNG <?php echo $month; ?> NĂM <?php echo $year; ?></h3>
+			<div class="image">
+				<img src="assets/kcfinder/upload/files/avatars/<?php echo $hinhanh; ?>" width="120px" height="120px">
+			</div>
+			<div class="info">
+				<table>
+					<tr>
+						<td>Họ và tên: <?php echo $hoten; ?></td>
+						<td>Lương căn bản: <?php echo $luongcb; ?></td>
+					</tr>
+					<tr>
+						<td>Mã nhân viên: <?php echo $manv; ?></td>
+						<td>Tổng thực lãnh: <strong><?php echo $thuclanh; ?></strong></td>
+					</tr>
+				</table>
+			</div>
+			<div class="detail">
+				<table>
+					<tr>
+						<td colspan="4" style="text-transform: uppercase;text-align: center;font-size: 14px;"><strong>Thông tin chi tiết tiền lương</strong></td>
+					</tr>
+					<tr>
+						<td class="title">Thông tin bảo hiểm</td>
+						<td>BHXH: <?php echo $bhxh_nv; ?></td>
+						<td>BHYT: <?php echo $bhyt_nv; ?></td>
+						<td>BHTN: <?php echo $bhtn_nv; ?></td>
+					</tr>
+					<tr>
+						<td class="title">Thuế thu nhập cá nhân</td>
+						<td><?php echo $thuetncn; ?></td>
+						<td class="title">Phí công đoàn</td>
+						<td><?php echo $congdoan_nv; ?></td>
+					</tr>
+					<tr>
+						<td class="title">Tiền tăng ca</td>
+						<td><?php echo $tangca; ?></td>
+						<td class="title">Tiền đi trễ</td>
+						<td><?php echo $ditre; ?></td>
+					</tr>
+					<tr>
+						<td class="title">Khen thưởng</td>
+						<td><?php echo $khenthuong; ?></td>
+						<td class="title">Kỷ luật</td>
+						<td><?php echo $phat; ?></td>
+					</tr>
+					<tr>
+						<td colspan="2" style="text-align: center;color: #545456;font-weight: bold;">Ngày tạo: <?php echo $dateCreated; ?></td>
+						<td class="title">Tổng thu nhập</td>
+						<td><?php echo $tongluong; ?></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

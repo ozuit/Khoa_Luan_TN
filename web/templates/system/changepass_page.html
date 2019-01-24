@@ -1,0 +1,69 @@
+<style type="text/css">
+.fancymodal .fancymodal-content {width: 605px}
+.i_logo.i_user_p{margin:0 10px !important;}
+.input-control input, .input-control textarea, .input-control select{height: 36px;}
+</style>
+<div class="changepass-form ozu-form">
+	<div class="section-title">
+      	<h3>{{'changePass' | translate}}</h3>
+  	</div>
+	<form ng-submit="resetPassword()" name="frmResetPass">
+		<table>
+			
+			<tr>
+				<td rowspan="3">
+						<div class="i_logo i_user_p">
+		          <img src="{{avatar}}" alt="">
+						</div>
+				</td>
+				<td>
+					{{'oldPass' | translate}}
+				</td>
+				<td>
+					
+					<div class="input-control password input-group" data-role="input">
+			          
+			          <input type="password" name="user_password" id="user_password" name="password" ng-model="oldPass" onfocus="addFocused(this)" required>
+			          <button class="button helper-button reveal"><span class="mif-looks"></span></button>
+			        </div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					{{'newPass' | translate}}
+				</td>
+				<td>
+					
+					<div class="input-control password input-group" data-role="input">
+			          
+			          <input type="password" name="user_password" id="user_password" name="password" ng-model="newPass" onfocus="addFocused(this)" required>
+			          <button class="button helper-button reveal"><span class="mif-looks"></span></button>
+			        </div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					{{'confirmPass' | translate}}
+				</td>
+				<td>
+					
+					<div class="input-control password input-group" data-role="input">
+			          
+			          <input type="password" name="user_password" id="user_password" name="password" ng-model="rePass" onfocus="addFocused(this)" required>
+			          <button class="button helper-button reveal"><span class="mif-looks"></span></button>
+			        </div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td></td>
+				<td></td>
+				<td>
+					<button class="submit_b ch_pas_s" type="submit" ng-disabled="frmResetPass.$invalid || newPass!=rePass">{{'btnUpdate' | translate}}</button>
+					<input type="reset" value="{{'btnCancel' | translate}}" class="reset_b ch_pas_r">
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+		

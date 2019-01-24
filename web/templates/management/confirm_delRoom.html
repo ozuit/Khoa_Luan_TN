@@ -1,0 +1,36 @@
+<style type="text/css">
+	.fancymodal .fancymodal-content {
+    width: 350px;
+    background: #fff;
+    text-align: center;
+    line-height: 25px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .title {
+    padding-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .message {
+		padding: 10px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .action {
+		padding: 10px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .action button {
+		width: 100px;
+	}
+	.fancymodal .fancymodal-content .fancymodal-data .action button.primary {
+		margin-right: 10px;
+	}
+</style>
+<div class="confirm-popup">
+	<div class="message">
+		<p>Bạn có chắc muốn xóa phòng ban này không?</p>
+	</div>
+	<div class="action">
+		<button class="button primary" ng-click="confirmRemoveRoom(holdRoomID)">Có</button>
+		<button class="button" ng-click="closeModal()">Không</button>
+	</div>
+</div>

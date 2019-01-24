@@ -1,0 +1,19 @@
+<div class="hr-content grid">
+	<div class="content row cells12">
+		<div class="main_content box_shadow cell colspan8">
+			<h3 class="b_c_add">{{'statisticGroupAge' | translate}}</h3>
+			<span class="mif-user-plus chart-icon" title="Thống kê Nam" ng-click="vm.tkDotuoi('chartMan')"></span>
+			<span class="mif-user-minus chart-icon" title="Thống kê Nữ" ng-click="vm.tkDotuoi('chartWoman')"></span>
+			<div class="chart-container-custom">
+				<canvas class="chart chart-pie" ng-if="chartMan"
+					chart-data="data_nam" chart-labels="labels_nam" chart-legend="true">
+				</canvas>
+				<canvas class="chart chart-pie" ng-if="chartWoman"
+					chart-data="data_nu" chart-labels="labels_nu" chart-legend="true">
+				</canvas>
+			</div>
+		</div>
+		<div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+		<div class="clear"></div>
+	</div>
+</div>

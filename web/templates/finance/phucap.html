@@ -1,0 +1,92 @@
+<div class="hr-content grid">
+	<div class="content row cells12">
+		<div class="cell colspan8 main_content box_shadow">
+			<table class="table border bordered tb-phu-cap" datatable="ng" dt-options>
+				<thead>
+					<tr>
+						<th>STT</th>
+						<th>{{'funcTitles' | translate}}</th>
+						<th>{{'nameAllowances' | translate}}</th>
+						<th>{{'money' | translate}}</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="(key, value) in listPhucap">
+						<td>{{key+1}}</td>
+						<td>{{value.tencd}}</td>
+						<td>{{value.mota}}</td>
+						<td>{{value.sotien}}</td>
+						<td class="action">
+							<span class="mif-pencil mif-2x" title="Chỉnh sửa" ng-click="editPhucap( value )"></span>
+							<span class="mif-bin mif-2x" title="Xóa phụ cấp" ng-click="removePhucap( value.id )"></span>
+						</td>
+					</tr>
+					<tr ng-if="listPhucap.length == 0">
+						<td colspan="5">Bảng hiện tại không có dữ liệu</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<div class="grid update-tb-phu-cap">
+				<div class="row header">
+					<h4 class="title-content" ng-if="isCreating">{{'newAllowance' | translate}}</h4>
+					<h4 class="title-content" ng-if="isEditing">{{'updateAllowance' | translate}}</h4>
+				</div>
+				<form name="frm_phucap" class="content">
+					<div class="row cells4">
+						<div class="cell">{{'nameFullTitles' | translate}}</div>
+						<div class="cell colspan2">
+							<div class="input-control select full-size">
+								<select name="macd" ng-model="phucap.macd" required>
+									<option ng-repeat="chucdanh in listChucdanh" ng-selected="chucdanh.mcd == phucap.macd" value="{{chucdanh.mcd}}">{{chucdanh.tencd}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="cell"></div>
+					</div>
+					<div class="row cells4">
+						<div class="cell">{{'nameAllowances' | translate}}</div>
+						<div class="cell colspan2">
+							<div class="input-control text full-size">
+								<input type="text" name="mota" ng-model="phucap.mota" required>
+							</div>
+						</div>
+						<div class="cell"></div>
+					</div>
+					<div class="row cells4">
+						<div class="cell">{{'allowanceMoney' | translate}}</div>
+						<div class="cell colspan2">
+							<div class="input-control text full-size so-tien">
+								<input type="text" name="sotien" ng-model="phucap.sotien" format="number" required> VNĐ/{{'month' | translate}}
+							</div>
+						</div>
+						<div class="cell"></div>
+					</div>
+					<div class="row cells4">
+						<div class="cell">{{'dashboardNote' | translate}}</div>
+						<div class="cell colspan2">
+							<div class="input-control textarea full-size">
+								<textarea class="full-size" name="ghichu" ng-model="phucap.ghichu"></textarea>
+							</div>
+						</div>
+						<div class="cell"></div>
+					</div>
+					<div class="row cells4">
+						<div class="cell"></div>
+						<div class="cell colspan2 action" ng-if="isCreating">
+							<button type="button" class="submit_b" ng-disabled="frm_phucap.$invalid || (phucap.mota == '') || (phucap.sotien == '')" ng-click="createPhucap(phucap)">{{'addNew' | translate}}</button>
+							<button type="button" class="reset_b" ng-click="resetPhucap()">{{'btnReset' | translate}}</button>
+						</div>
+						<div class="cell colspan2 action" ng-if="isEditing">
+							<button type="button" class="submit_b" ng-click="updatePhucap(phucap)">{{'btnUpdate' | translate}}</button>
+							<button type="button" class="reset_b" ng-click="cancelUpdatePhucap()">{{'btnCancel' | translate}}</button>
+						</div>
+						<div class="cell"></div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+	</div>
+</div>

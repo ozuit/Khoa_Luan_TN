@@ -1,0 +1,80 @@
+<style>
+p{font-size: 18px;}
+</style>
+<div class="hr-content grid">
+    <div class="content row cells12">
+        
+        <div class="main_content box_shadow cell colspan8" style="padding-bottom: 45px;">
+            <h3 style="text-transform: uppercase; color: #1D58A4;" class="b_c_add">Cập nhật hoạt động - công tác</h3>
+            <img src="{{avatar_default}}" width="150px" height="150px" class="img-left-round">
+            <div class="label1">
+                <p>Mã nhân viên: {{user.mnv}}</p>
+                <p>Họ và tên: {{user.hoten}}</p>
+                <p>Chuyên môn: {{user.chuyenmon}}</p>
+            </div>
+            <div class="label2">
+                <p>Chức danh: {{user.tencd}}</p>
+                <p>Chức vụ: {{user.tencv}}</p>
+                <p>Phòng ban: {{user.tenpb}}</p>
+            </div>
+            <hr class="b_c_add" style="clear: both;height: 1px;margin-bottom: 30px">
+            <form name="newHoatdong" ng-submit="updateHoatdong(newHoatdong.$valid)" id="frm_update_hoatdong" data-role="validator" novalidate data-show-required-state="false" data-hint-mode="line" data-hint-background="bg-red" data-hint-color="fg-white" data-hide-error="5000">
+                <table style="margin-bottom: 25px;">
+                    <tr>
+                        <td>
+                            <p>Đi từ ngày:</p>
+                        </td>
+                        <td>
+                            <div class="input-control date">
+                                <input type="date" name="tungay" required style="font-size: 16px;" value="{{hoatdong.tungay}}">
+                            </div>
+                        </td>
+                        <td>
+                            <p>Đến ngày:</p>
+                        </td>
+                        <td>
+                            <div class="input-control date">
+                                <input type="date" name="denngay" required style="font-size: 16px;" value="{{hoatdong.denngay}}">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Địa điểm công tác:</p>
+                        </td>
+                        <td>
+                            <div class="input-control text full-size">
+                                <input type="text" name="diadiem" required value="{{hoatdong.diadiem}}">
+                            </div>
+                        </td>
+                        <td>
+                            <p>Kinh phí hỗ trợ:</p>
+                        </td>
+                        <td>
+                            <div class="input-control text full-size">
+                                <input type="text" name="phucap" required value="{{hoatdong.phucap}}">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-top:10px"><p>Lý do:</p></td>
+                        <td colspan="3" style="padding-top:10px">
+                            <div class="input-control textarea full-size" data-role="input" data-text-auto-resize="true">
+                                <textarea name="lydo" required>{{hoatdong.lydo}}</textarea>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <input type="hidden" name="manv" value="{{user.mnv}}">
+                <input type="hidden" name="id" value="{{hoatdong.id}}">
+                <div class="right" style="clear: both;margin-right: 6px;">
+                    <input type="submit" value="Thêm" class="submit_b">
+                    <input type="reset" value="Xóa" class="reset_b">
+                </div>
+            </form>
+            <div class="clear"></div>
+        </div>
+        <div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+        <div class="clear"></div>
+    </div>
+</div>

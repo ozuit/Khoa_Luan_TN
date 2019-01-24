@@ -1,0 +1,44 @@
+<div class="hr-content grid">
+    <div class="content row cells12">
+        <div class="main_content box_shadow cell colspan8">
+            <h3 class="b_c_add">{{'listUserLeave' | translate}}</h3>
+            
+            <div style="margin-top: 20px;">
+                <table class="table striped hovered cell-hovered border bordered tbChucVu" dt-column-defs="dtColCV" datatable="ng" dt-options="dtListCV">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>{{ 'labelUsername' | translate }}</th>
+                            <th>{{ 'dateOff' | translate }}</th>
+                            <th>{{ 'reason' | translate }}</th>
+                            <th>{{ 'resolve' | translate }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="(key, value) in ds_nghi">
+                            <td>{{key+1}}</td>
+                            <td><a href="#/view-member/{{value.manv}}">{{value.manv}}</a></td>
+                            <td>{{value.ngaynghi | date:'dd/MM/yyyy'}}</td>
+                            <td ng-click="showDialog('#dialog_'+key)" title="Click vào để xem chi tiết" style="cursor:pointer">
+                                <p style="height: 18px;margin: 0;overflow: hidden;float: left;width: 28vw;">{{value.lydo}}</p>
+                                <div data-role="dialog" id="dialog_{{key}}" data-overlay="true" data-overlay-color="op-dark" data-overlay-click-close="true">
+                                    <div class="input-control textarea"
+                                        data-role="input" data-text-auto-resize="true" data-text-max-height="200">
+                                        <textarea style="width:500px;height:100px" readonly>{{value.lydo}}</textarea>
+                                    </div>
+                                </div>
+                                <span style="float: left;">...<span>
+                            </td>
+                            <td style="text-align: center;">
+                                <span class="mif-checkmark fg-green" title="Duyệt" style="cursor:pointer;font-size: 22px;" ng-click="duyetNghiphep(value.manv, value.maphep, false)"></span>
+                                <span class="mif-cross fg-red" style="font-size: 18px;margin-left: 15px;cursor:pointer" title="Hủy" ng-click="duyetNghiphep(value.manv, value.maphep, true)"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+        <div class="clear"></div>
+    </div>
+</div>

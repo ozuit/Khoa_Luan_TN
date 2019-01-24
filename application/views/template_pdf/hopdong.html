@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Hợp đồng lao động</title>
+		<style type="text/css">
+			*{ font-family: DejaVu Sans;font-size: 14px;}
+			ul{list-style-type: decimal;margin: 0 20px;padding: 0;}
+			ul li{padding: 2px 0;text-align: justify;}
+			.list-cross li{padding-left: 0;}
+		</style>
+	</head>
+	<body>
+		<p style="text-align: right;float: left;">
+		<strong>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</strong><br>
+			<strong style="margin-right: 50px;">Độc lập - Tự do - Hạnh phúc</strong>
+		</p>
+		<p style="text-align: left;float: left;">
+			<strong>Công Ty CP Tin Học Lạc Việt</strong><br>
+			<strong>Số: <?php echo $mahd; ?></strong>
+		</p>
+		<h4 style="text-align: center;margin-bottom: 0;font-size: 18px;clear: both;">HỢP ĐỒNG LAO ĐỘNG</h4>
+		<center style="margin-top: 5px;margin-bottom: 20px;">
+			<em>(Ban hành kèm theo Thông tư số 21/2003/TT-BLĐTBXH ngày 22/9/2003<br> của Bộ Lao động - Thương binh và Xã hội)</em><br>
+			--------------------------
+		</center>
+
+		<p>
+			<table>
+				<tr>
+					<td style="padding-right: 20px;">Chúng tôi, một bên là Ông/Bà: <strong><?php echo $hotenA; ?></strong></td>
+					<td>Quốc tịch: <?php echo $quoctichA; ?></td>
+				</tr>
+				<tr>
+					<td colspan="2">Chức vụ: <?php echo $chucvuA; ?></td>
+				</tr>
+				<tr>
+					<td>Đại diện cho: <?php echo $tenCty; ?></td>
+					<td>Điện thoại: <?php echo $sdtCty; ?></td>
+				</tr>
+				<tr>
+					<td colspan="2">Địa chỉ: <?php echo $diachiCty; ?></td>
+				</tr>
+				<tr>
+					<td style="padding-top: 10px;">Và một bên là Ông/Bà: <strong><?php echo $hotenB; ?></strong></td>
+					<td>Quốc tịch: <?php echo $quoctichB; ?></td>
+				</tr>
+				<tr>
+					<td colspan="2">Sinh ngày: <?php echo DateTime::createFromFormat('Y-m-d', $ngaysinhB)->format('d/m/Y'); ?> tại <?php echo $noisinhB; ?></td>
+				</tr>
+				<tr>
+					<td colspan="2">Địa chỉ thường trú: <?php echo $thuongtruB; ?></td>
+				</tr>
+				<tr>
+					<td colspan="2">Số CMTND: <?php echo $cmndB; ?> cấp ngày <?php echo DateTime::createFromFormat('Y-m-d', $ngaycapB)->format('d/m/Y'); ?> tại <?php echo $noicapB; ?><td>
+				</tr>
+			</table>
+		</p>
+		<p>Thỏa thuận ký kết hợp đồng lao động và cam kết làm đúng những điều khoản sau đây:</p>
+
+		<center style="margin-top: 20px;"><strong>Điều 1: Thời hạn và công việc hợp đồng</strong></center>
+		<ul>
+			<li>Loai hợp đồng lao động: <?php echo $loaihd; ?></li>
+			<li>Từ ngày <?php echo DateTime::createFromFormat('Y-m-d', $ngayhieuluc)->format('d/m/Y'); ?> đến ngày <?php $hethan = ($ngayhethan!=null) ? DateTime::createFromFormat('Y-m-d', $ngayhethan)->format('d/m/Y') : ''; echo $hethan; ?></li>
+			<li>Địa điểm làm việc: <?php echo $diachiCty; ?></li>
+			<li>Chức vụ chuyên môn: <?php echo $chucvuB; ?></li>
+			<li>Công việc phải làm: Theo phân công của trưởng bộ phận</li>
+		</ul>
+		<center style="margin-top: 20px;"><strong>Điều 2: Chế độ làm việc</strong></center>
+		<ul>
+			<li>Thời giờ làm việc: <?php echo $giolamviec; ?></li>
+			<li>Được cấp phát những dụng cụ làm việc theo ngành nghề qui định. Người lao động có nhiệm vụ sử dụng và bảo quản theo đúng qui định. Nếu mất hoặc làm hư hỏng thì phải bồi thường theo qui định của công ty và luật lao động.</li>
+		</ul>
+		<center style="margin-top: 20px;"><strong>Điều 3: Nghĩa vụ và quyền lợi của người lao động</strong></center>
+		<ul>
+			<li>
+				Quyền lợi:
+					<ul style="list-style-type: none;margin: 0;" class="list-cross">
+						<li>- Phương tiện đi lại làm việc: người lao động tự túc</li>
+						<li>- Mức lương chính hoặc tiền công: <?php echo $luongcb; ?></li>
+						<li>- Hình thức trả lương: <?php echo $htTraluong; ?></li>
+						<li>- Phụ cấp gồm: <?php echo $phucap; ?><li>
+						<li>- Được trả lương vào các ngày <?php echo $ngaytraluong; ?> hàng tháng.</li>
+						<li>- Tiền thưởng: theo chế độ của công ty</li>
+						<li>- Chế độ nâng lương: theo qui định của nhà nước và công ty</li>
+						<li>- Được trang bị bảo hộ lao động gồm: theo yêu cầu công việc và tình hình thực tế của công ty</li>
+						<li>- Chế độ nghỉ ngơi (nghỉ hàng tuần, phép năm, lễ tết...): nghỉ phép năm và nghỉ việc riêng theo qui định của luật lao động. Nghỉ lễ, nghỉ tết hằng năm theo qui định của nhà nước.</li>
+						<li>- Bảo hiểm xã hội và bảo hiểm y tế: <?php echo $baohiem; ?></li>
+						<li>- Những thỏa thuận khác:
+							<ul style="list-style-type: disc;">
+								<li style="padding-left: 0px;">Được hỗ trợ thêm bữa ăn trưa</li>
+								<li style="padding-left: 0px;">Được hưởng lương tháng thứ 13 theo mức từ 1 tới 6 tháng lương tùy theo tình hình kinh doanh của công ty.</li>
+							</ul>
+						</li>
+					</ul>
+			</li>
+			<li>
+				Nghĩa vụ:
+				<ul style="list-style-type: none;margin: 0;" class="list-cross">
+					<li>- Hoàn thành những công việc đã cam kết trong hợp đồng lao động.</li>
+					<li>- Chấp hành lệnh điều hành sản xuất - kinh doanh, nội quy kỷ luật lao động, an toàn lao động ...</li>
+				</ul>
+			</li>
+		</ul>
+		<center style="margin-top: 20px;"><strong>Điều 4: Nghĩa vụ và quyền hạn của người sử dụng lao động</strong></center>
+		<ul>
+			<li>
+				Nghĩa vụ:
+				<ul style="list-style-type: none;margin: 0;">
+					<li>- Bảo đảm việc làm và thực hiện đầy đủ những điều đã cam kết trong hợp đồng lao động.</li>
+					<li>- Thanh toán đầy đủ, đúng thời hạn các chế độ và quyền lợi cho người lao động theo hợp đồng lao động, thỏa ước lao động tập thể (nếu có).</li>
+				</ul>	
+			</li>
+			<li>
+				Quyền hạn:
+				<ul style="list-style-type: none;margin: 0;">
+					<li>- Điều hành người lao động hoàn thành công việc theo hợp đồng (bố trí, điều chuyển, tạm ngừng việc?)</li>
+					<li>- Tạm hoãn, chấm dứt hợp đồng lao động, kỷ luật người lao động theo quy định của pháp luật, thỏa ước lao động tập thể (nếu có) và nội quy lao động của doanh nghiệp.</li>
+				</ul>
+			</li>
+		</ul>
+		<center style="margin-top: 20px;"><strong>Điều 5: Điều khoản thi hành</strong></center>
+		<ul>
+			<li>Những vấn đề về lao động không ghi trong hợp đồng lao động này thì áp dụng qui định của thỏa ước tập thể, trường hợp chưa có thỏa ước tập thể thì áp dụng quy định của pháp luật lao động.</li>
+			<li>Hợp đồng lao động được làm thành 02 bản có giá trị ngang nhau, mỗi bên giữ một bản và có hiệu lực từ ngày .... tháng .... năm .... Khi hai bên ký kết phụ lục hợp đồng lao động thì nội dung của phụ lục hợp đồng lao động cũng có giá trị như các nội dung của bản hợp đồng lao động này.</li>
+		</ul>
+		<p style="text-align: right;">Hợp đồng này làm tại: <?php echo $noitao; ?><br> <?php $ngaytao = ($ngaytao!=null)? ('ngày '.DateTime::createFromFormat('Y-m-d', $ngaytao)->format('d').' tháng '.DateTime::createFromFormat('Y-m-d', $ngaytao)->format('m').' năm '. DateTime::createFromFormat('Y-m-d', $ngaytao)->format('Y')) : ('ngày ... tháng ... năm ...'); echo $ngaytao;?></p>
+	
+		<p style="text-align: left;float: left;">
+			<strong style="margin-left: 8px;">Người lao động</strong><br>
+		    <em>(Ký và ghi rõ họ tên)</em>
+		</p>
+		<p style="text-align: right;float: left;">
+			<strong style="margin-right: 11px;">Người sử dụng lao động</strong><br>
+			<em>(Ký, đóng dấu và ghi rõ họ tên)</em>
+		</p>
+	</body>
+</html>

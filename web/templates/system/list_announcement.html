@@ -1,0 +1,22 @@
+<div class="hr-content grid">
+	<div class="content row cells12">
+		<div class="main_content list_notify box_shadow cell colspan8">
+			<h3 class="b_c_add">{{ 'titleListNotify' |translate }}</h3>
+			<div class="view_item announce" ng-repeat="announcement in list_announce">
+				<h4 class="title"><a ng-click="toRedirectUrl('xem-thong-bao/'+announcement.id)">{{announcement.tieude}}</a><span ng-if="announcement.isRead == '0'"> - <span style="color:red;font-size: 16px;">{{ 'newNotify' |translate }}</span></span></h4>
+				<p class="date_public">{{ 'publishedNotify' | translate }}: {{announcement.ngaytao}} <span style="margin-left: 20px;">{{ 'authorNotify' | translate }}: {{announcement.nguoitao}}</span></p>
+				<div class="mota_TB" ng-bind-html="announcement.mota | unsafe"></div>
+			    	<a ng-click="toRedirectUrl('xem-thong-bao/'+announcement.id)"><h5 class="view_more" style="text-align: right;">{{ 'viewDetailNotify' | translate }} <span class="more-icon">»</span></h5></a>
+				 
+			</div>
+			<div id="pagination">
+				<ul class="tsc_pagination">
+				<!-- Show pagination links -->
+					<li ng-repeat="link in pagination" ng-bind-html="link | unsafe"></li>
+				</ul>
+			</div>	
+		</div>
+		<div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+		<div class="clear"></div>
+	</div>
+</div>

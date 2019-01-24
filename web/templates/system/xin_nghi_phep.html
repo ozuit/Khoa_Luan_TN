@@ -1,0 +1,75 @@
+<div class="hr-content grid">
+	<div class="content row cells12">
+		<div class="main_content box_shadow cell colspan8">
+			<h3 class="b_c_add">{{'signUpSabbatical' | translate}}</h3>
+				<form ng-submit="dknghiphep()" id="frm_dk_nghi" name="frmXinNghiPhep">
+					<table style="margin: 30px;">
+						<tr>
+							<td>
+								<label>{{'fullName' | translate}}:</label>								
+							</td>
+							<td>
+								<div class="input-control text">
+								    <input type="text" value="{{user.hoten}}" readonly>
+								</div>
+							</td>
+							<td style="padding-left:20px">
+								<label>{{'userID' | translate}}:</label>		
+							</td>
+							<td>
+								<div class="input-control text">
+								    <input type="text" value="{{user.mnv}}" readonly name="manv">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label>{{'funcTitle' | translate}}:</label>
+							</td>
+							<td>
+								<div class="input-control text">
+								    <input type="text" value="{{user.tencv}}" readonly>
+								</div>
+							</td>
+							<td style="padding-left:20px">
+								<label>{{'funcRooms' | translate}}:</label>
+							</td>
+							<td>
+								<div class="input-control text">
+								    <input type="text" value="{{user.tenpb}}" readonly>
+								</div>
+							</td>
+						</tr>
+					</table>
+					<hr class="b_c_add" style="height:1px">
+					<div style="margin: 30px;">
+						<label>{{'reasonAbsence' | translate}}:</label>
+						<div class="input-control textarea full-size" style="margin-top: 15px;" 
+						    data-role="input" data-text-auto-resize="true">
+						    <textarea name="lydo" ng-model="lydo" required></textarea>
+						</div>
+					</div>
+					<table style="margin: 30px;">
+						<tr>
+							<td style="width:100px">
+								<label>{{'dayOff' | translate}}:</label>
+							</td>
+							<td>
+								<div class="input-control date">
+								    <input type="date" name="ngaynghi" ng-model="ngaynghi" style="font-size:16px" required>
+								</div>
+							</td>
+							<td></td>
+							<td>
+								<button type="submit" class="submit_b" style="float:right; margin-right:50px" ng-disabled="frmXinNghiPhep.$invalid">{{'register' | translate}}</button>
+								<input type="reset" value="{{'sidebarDisableNotify' | translate}}" class="reset_b" style="float:right; margin-right:10px">
+							</td>
+						</tr>
+					</table>
+					
+				</form>
+		</div>
+		<div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+		<div class="clear"></div>
+	</div>
+</div>

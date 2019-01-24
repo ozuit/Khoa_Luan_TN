@@ -1,0 +1,19 @@
+<div class="hr-content grid">
+	<div class="content row cells12">
+		<div class="main_content box_shadow cell colspan8">
+			<h3 class="b_c_add">{{'statisticReligious' | translate}}</h3>
+			<span class="mif-chart-pie chart-icon" title="Biểu đồ tròn" ng-click="vm.tkTongiao('chartPie')"></span>
+			<span class="mif-chart-bars chart-icon" title="Biểu đồ cột" ng-click="vm.tkTongiao('chartBar')"></span>
+			<div class="chart-container-custom">
+				<canvas class="chart chart-pie" ng-if="chartPie"
+				chart-data="data_tg" chart-labels="labels_tg" chart-legend="true">
+				</canvas>
+			</div>
+			<canvas class="chart chart-bar" ng-if="chartBar"
+				chart-data="data_tg" chart-labels="labels_tg">
+			</canvas>
+		</div>
+		<div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+		<div class="clear"></div>
+	</div>
+</div>

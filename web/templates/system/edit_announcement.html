@@ -1,0 +1,43 @@
+<div class="hr-content grid">
+	<div class="content row cells12">
+		<div class="main_content box_shadow cell colspan8">
+			<h3 class="b_c_add">{{'updateAnnouncement' | translate}}</h3>
+			<form name="frmEditAnnouncement">
+				<p>{{'inputTitleAnnouncement' | translate}}</p>
+				<div class="input-control text full-size">
+				    <input type="text" name="tieude" ng-model="editAnnouncement.tieude" placeholder="Nhập vào một tiêu đề ngắn gọn cho nội dung cần thông báo" required>
+				</div>	
+				<br>
+				<p>
+					{{'inputDescAnnouncement' | translate}}
+					<br>
+					<em style="color:#A9A9A9">"{{'inputShortDescAnnoucement' | translate}}"</em>
+				</p>	
+				<div ckeditor="options" ng-model="editAnnouncement.mota" required></div>	
+				<br>
+				<p>{{'inputContentAnnouncement' | translate}}</p>	
+				<div ckeditor="options" ng-model="editAnnouncement.noidung" required></div>
+			
+				<p>{{'attachFileAnnouncement' | translate}} <span ng-if="frmEditAnnouncement.file.$error.maxSize" class="upload-size-error">{{'alertLimitAttachFile' | translate}}</span></p>
+    		<div class="span4">
+        	<button type="button" ngf-select ng-model="files" name="file" multiple ngf-max-size="'10MB'" class="button success">{{'selectFileAnnouncement' | translate}} <span class="mif-attachment"></span></button>
+					<button type="button" class="button warning" ng-show="!frmEditAnnouncement.file.$error.maxSize && (files.length > 0)" ng-click="files=null">{{'delFileAnnouncement' | translate}}</button>
+        </div>
+        <div class="span8">
+        	<ul style=" margin-left: 0;padding-left: 18px;">
+		        <li ng-repeat="f in files">
+		            {{f.name}}
+		        </li>
+		    	</ul>
+        </div>
+				<div style="float:right; margin-top:20px; display: inline-block">
+					<button class="submit_b" ng-click="updateAnnounce(files, editAnnouncement)" ng-disabled="frmEditAnnouncement.$invalid">{{ 'btnFinish' | translate }}</button>
+					<button type="button" class="reset_b button" ng-click="goBack()">{{ 'btnReset' | translate }}</button>
+				</div>	
+			</form>
+		</div>
+		<div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+		<div class="clear"></div>
+	</div>
+	
+</div>

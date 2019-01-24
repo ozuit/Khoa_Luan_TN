@@ -1,0 +1,62 @@
+<div class="hr-content grid">
+	<div class="content row cells12">
+		<div class="main_content box_shadow cell colspan8">
+			<h3 class="b_c_add">{{'statisticLeave' | translate}}</h3>
+			<canvas class="chart chart-bar"
+			chart-colours="colours" chart-data="dlNgayNghi" chart-labels="soNgayNghi" chart-series="loaiNghiPhep" chart-legend="true" chart-click="dsNVNghi">
+			</canvas>
+			<div class="listAbsentUsers" ng-show="showListAbsent">
+				<div class="grid">
+					<div class="row cells5">
+						<div class="cell colspan2">
+							<p>Danh sách nhân viên nghỉ {{numDayAbsent}} ngày</p>
+						</div>
+						<div class="cell">
+							<button class="button" ng-click="showListAbsent = false">
+						    <span class="mif-cancel"></span>
+						    <span class="title">Ẩn danh sách</span>
+							</button>
+						</div>
+						<div class="cell">
+							<button class="button" ng-click="exportListAbsent(absentStatus, numDayAbsent)">
+						    <img src="assets/images/metro/xuat-excel.png">
+						    <span class="title">Xuất file excel</span>
+							</button>
+						</div>
+						<div class="cell">
+							<div class="input-control select">
+						    <select ng-model="absentStatus" ng-init="absentStatus = ''">
+					        <option value="">Hiển thị tất cả</option>
+					        <option value="Nghỉ có phép">Nghỉ có phép</option>
+					        <option value="Nghỉ không phép">Nghỉ không phép</option>
+						    </select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<table class="table hovered border bordered" datatable="ng" dt-options="dtOptions">
+	        <thead>
+	        	<tr>
+	        		<th>STT</th>
+	        		<th>Mã NV</th>
+	        		<th>Họ và tên</th>
+	        		<th>Phòng ban</th>
+	        		<th>Trạng thái nghỉ</th>
+	        	</tr>
+	        </thead>
+	      	<tbody>
+	      		<tr ng-repeat="(key, user) in listAbsentUsers | filter: absentStatus">
+	      			<td>{{key + 1}}</td>
+	      			<td>{{user.manv}}</td>
+	      			<td>{{user.hoten}}</td>
+	      			<td>{{user.tenpb}}</td>
+	      			<td>{{user.trangthai}}</td>
+	      		</tr>
+	      	</tbody>
+	      </table>
+	    </div>
+		</div>
+		<div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+		<div class="clear"></div>
+	</div>
+</div>

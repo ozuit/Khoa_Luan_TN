@@ -1,0 +1,98 @@
+<div class="hr-content grid">
+	<div class="content welcome row cells12">
+		<div class="main_content box_shadow cell colspan8" style="padding-bottom: 45px;">
+			<center><h3 class="b_c_add">{{ 'headerTitleDashboard' | translate }}</h3></center>
+			<div class="grid expand">
+				<div class="row">
+					<div class="tile-container cell dashboard">
+						<div class="tile bg-orange fg-white" data-role="tile" ng-click="showUserOnline()">
+		          <div class="tile-content iconic">
+		            <span class="icon mif-users"></span>
+		            <span class="tile-badge bg-red">{{userOnline}}</span>
+		            <span class="tile-label">Users Online</span>
+		          </div>
+		        </div>
+		        <div class="tile-wide bg-indigo fg-white" data-role="tile" ng-click="toRedirectUrl('ds-hop-dong', null, 'file')">
+		          <div class="tile-content iconic">
+		            <span class="icon mif-event-busy"></span>
+		            <span class="tile-badge bg-red">{{userHetHD}}</span>
+		            <span class="tile-label">{{ 'dashboardExpireContract' | translate }}</span>
+		          </div>
+		        </div>
+		        <div class="tile-wide bg-pink fg-white" data-role="tile" ng-click="toRedirectUrl('sinh-nhat', null, 'file')">
+		          <div class="tile-content iconic">
+		            <span class="icon mif-gift mif-ani-shuttle mif-ani-slow"></span>
+		            <span class="tile-badge bg-red">{{userSinhNhat}}</span>
+		            <span class="tile-label">{{ 'dashboardUserBirthday' | translate }}</span>
+		          </div>
+		        </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="tile-container cell dashboard">
+						<div class="tile-wide bg-cyan fg-white" data-role="tile" ng-click="dsNghiPhep()">
+		          <div class="tile-content iconic">
+		            <span class="icon mif-envelop mif-ani-vertical mif-ani-slow"></span>
+		            <span class="tile-badge bg-red">{{countNghiPhep}}</span>
+		            <span class="tile-label">{{ 'dashboardListSabbatical' | translate }}</span>
+		          </div>
+		        </div>
+		        <div class="tile bg-green fg-white" data-role="tile">
+		          <div class="tile-content iconic">
+		            <span class="icon mif-calendar"></span>
+		            <span class="tile-badge bg-red">{{userGhiChu}}</span>
+		            <span class="tile-label">{{ 'dashboardNote' | translate }}</span>
+		          </div>
+		        </div>
+					</div>
+				</div>
+			</div>
+			<h3 class="b_c_add"></h3>
+			<div class="grid expand">
+				<div class="row cells3">
+					<div class="cell" ng-click="toRedirectUrl('gioi-thieu')">
+						<div class="header">
+							<span class="mif-info mif-4x"></span>
+						</div>
+						<div class="content">
+							<table>
+								<tr>
+									<td style="text-align: center;" ng-bind-html="'welcomeOverviewBox' | translate"></td>
+									<td style="width: 60px;"><span class="mif-file-text mif-3x"></span></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="cell" ng-click="toRedirectUrl('huong-dan/tong-quan')">
+						<div class="header">
+							<span class="mif-help mif-4x"></span>
+						</div>
+						<div class="content">
+							<table>
+								<tr>
+									<td style="text-align: center;" ng-bind-html="'welcomeHelpBox' | translate"></td>
+									<td style="width: 60px;"><span class="mif-file-video mif-3x"></span></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="cell" ng-click="toRedirectUrl('phan-hoi')">
+						<div class="header">
+							<span class="mif-question mif-4x"></span>
+						</div>
+						<div class="content">
+							<table>
+								<tr>
+									<td style="text-align: center;" ng-bind-html="'welcomeFeedbackBox' | translate"></td>
+									<td style="width: 60px;"><span class="mif-mail mif-3x"></span></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+		<div class="clear"></div>
+	</div>
+</div>

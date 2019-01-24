@@ -1,0 +1,17 @@
+<div class="hr-content grid">
+	<div class="content row cells12">
+		<div class="main_content box_shadow cell colspan8">
+			<h3 class="b_c_add">{{'statisticGender' | translate}}</h3>
+			<span class="mif-chart-bars2 chart-icon" title="Biểu đồ cột đôi" ng-click="vm.tkGioitinh('chartBar')"></span>
+			<span class="mif-chart-line chart-icon" title="Biểu đồ đường" ng-click="vm.tkGioitinh('chartLine')"></span>
+			<canvas class="chart chart-bar" ng-if="chartBar"
+			chart-colours="colours" chart-data="data" chart-labels="labels" chart-series="series" chart-legend="true">
+			</canvas>
+			<canvas class="chart chart-line" ng-if="chartLine"
+			chart-data="data" chart-labels="labels" chart-series="series" chart-legend="true">
+			</canvas>
+		</div>
+		<div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+		<div class="clear"></div>
+	</div>
+</div>

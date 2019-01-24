@@ -1,0 +1,19 @@
+<div class="hr-content grid">
+  <div class="content row cells12">
+    <div class="main_content box_shadow cell colspan8">
+      <h3 class="b_c_add">{{'listRooms' | translate}}</h3>
+      <h5 style="float: left;margin-left: 15px;"><span style="text-decoration: underline;">{{'totalDepartmental' | translate}}:</span> <b id="num_rooms">{{number}}</b></h5>
+      <input type="button" value="{{'addDepartment' | translate}}" style="float: right;margin-right: 15px;width: 150px;" class="submit_b" ng-click="openNewRoom()">
+      <div style="margin-top: 80px;" id="list-rooms">
+        <div class="room-info" ng-click="showRoom(room.mpb, $event)" ng-repeat="room in rooms">
+          <span class="mif-cancel" ng-click="removeRoom(room.mpb, $event)"></span>
+          <span class="mif-organization mif-4x"></span>
+          <h4>{{room.tenpb}}</h4>
+          <h5>{{'generalinchief' | translate}}: {{room.truongpb}}</h5>
+        </div>
+      </div>
+    </div>
+    <div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+    <div class="clear"></div>
+  </div>
+</div>

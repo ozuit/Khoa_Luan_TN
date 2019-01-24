@@ -1,0 +1,579 @@
+<div class="hr-content grid">
+  <div class="content row cells12">
+    
+    <div class="main_content box_shadow cell colspan8">
+      
+      <form name="newMember" ng-submit="addMember(avatar, newMember.$valid)" id="frm_add_member" class="page_addmem" data-role="validator" novalidate data-show-required-state="false" data-hint-mode="line" data-hint-background="bg-red" data-hint-color="fg-white" data-hide-error="5000">
+        <h3 class="b_c_add">{{'personalInfo' | translate}}</h3>
+        <table>
+          <tr>
+            <td>
+              {{'fullName' | translate}}:
+            </td>
+            <td style="width: 28%">
+              <div class="input-control text capitalize validateString full-size">
+                <input type="text" name="hoten" ng-model="hoten" required onkeyup="stringValidate(this)"
+                placeholder="[Nguyễn Văn A]" data-validate-func="required" data-validate-hint="Bạn chưa nhập họ và tên !"
+                >
+                <span class="input-state-error mif-warning" style="right: 8px;"></span>
+                <span class="input-state-success mif-checkmark" style="right: 8px;"></span>
+              </div>
+            </td>
+            <td colspan="2" rowspan="4" style="padding-left:55px;">
+              <div class="i_logo add">
+                <img ng-model="avatar" name="avatar" ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-thumbnail="avatar || avatar_default" ngf-max-size="'500KB'">
+              </div>
+              <span class="upload-avatar">
+                {{'selectAvatar' | translate}}<br>
+                <span ng-if="newMember.avatar.$error.maxSize" class="upload-size-error">({{'alertLimitAvatar' | translate}})</span>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{'funcGender' | translate}}:
+            </td>
+            <td style="width: 28%">
+              <label class="input-control radio small-check margin_input" style="float: left;margin: 0;">
+                <input type="radio" name="gioitinh" value="Nam" checked>
+                <span class="check"></span><span class="caption">{{'male' | translate}}</span>
+              </label>
+              <label class="input-control radio small-check margin_input">
+                <input type="radio" name="gioitinh" value="Nữ">
+                <span class="check"></span><span class="caption">{{'female' | translate}}</span>
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{'birthplace' | translate}}:
+            </td>
+            <td style="width: 28%">
+              <div class="input-control select full-size">
+                <select name="noisinh" id="select-noisinh1">
+                  <option value="Hà Nội">Hà Nội</option>
+                  <option value="Hà Giang">Hà Giang</option>
+                  <option value="Cao Bằng">Cao Bằng</option>
+                  <option value="Bắc Kạn">Bắc Kạn</option>
+                  <option value="Tuyên Quang">Tuyên Quang</option>
+                  <option value="Lào Cai">Lào Cai</option>
+                  <option value="Điện Biên">Điện Biên</option>
+                  <option value="Lai Châu">Lai Châu</option>
+                  <option value="Sơn La">Sơn La</option>
+                  <option value="Yên Bái">Yên Bái</option>
+                  <option value="Hoà Bình">Hoà Bình</option>
+                  <option value="Thái Nguyên">Thái Nguyên</option>
+                  <option value="Lạng Sơn">Lạng Sơn</option>
+                  <option value="Quảng Ninh">Quảng Ninh</option>
+                  <option value="Bắc Giang">Bắc Giang</option>
+                  <option value="Phú Thọ">Phú Thọ</option>
+                  <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                  <option value="Bắc Ninh">Bắc Ninh</option>
+                  <option value="Hải Dương">Hải Dương</option>
+                  <option value="Hải Phòng">Hải Phòng</option>
+                  <option value="Hưng Yên">Hưng Yên</option>
+                  <option value="Thái Bình">Thái Bình</option>
+                  <option value="Hà Nam">Hà Nam</option>
+                  <option value="Nam Định">Nam Định</option>
+                  <option value="Ninh Bình">Ninh Bình</option>
+                  <option value="Thanh Hoá">Thanh Hoá</option>
+                  <option value="Nghệ An">Nghệ An</option>
+                  <option value="Hà Tĩnh">Hà Tĩnh</option>
+                  <option value="Quảng Bình">Quảng Bình</option>
+                  <option value="Quảng Trị">Quảng Trị</option>
+                  <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
+                  <option value="Đà Nẵng">Đà Nẵng</option>
+                  <option value="Quảng Nam">Quảng Nam</option>
+                  <option value="Quảng Ngãi">Quảng Ngãi</option>
+                  <option value="Bình Định">Bình Định</option>
+                  <option value="Phú Yên">Phú Yên</option>
+                  <option value="Khánh Hoà">Khánh Hoà</option>
+                  <option value="Ninh Thuận">Ninh Thuận</option>
+                  <option value="Bình Thuận">Bình Thuận</option>
+                  <option value="Kon Tum">Kon Tum</option>
+                  <option value="Gia Lai">Gia Lai</option>
+                  <option value="Đắk Lắk">Đắk Lắk</option>
+                  <option value="Đắk Nông">Đắk Nông</option>
+                  <option value="Lâm Đồng">Lâm Đồng</option>
+                  <option value="Bình Phước">Bình Phước</option>
+                  <option value="Bình Phước">Tây Ninh</option>
+                  <option value="Bình Dương">Bình Dương</option>
+                  <option value="Đồng Nai">Đồng Nai</option>
+                  <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+                  <option value="Hồ Chí Minh" selected>Hồ Chí Minh</option>
+                  <option value="Long An">Long An</option>
+                  <option value="Tiền Giang">Tiền Giang</option>
+                  <option value="Bến Tre">Bến Tre</option>
+                  <option value="Trà Vinh">Trà Vinh</option>
+                  <option value="Vĩnh Long">Vĩnh Long</option>
+                  <option value="Đồng Tháp">Đồng Tháp</option>
+                  <option value="An Giang">An Giang</option>
+                  <option value="Kiên Giang">Kiên Giang</option>
+                  <option value="Cần Thơ">Cần Thơ</option>
+                  <option value="Hậu Giang">Hậu Giang</option>
+                  <option value="Sóc Trăng">Sóc Trăng</option>
+                  <option value="Bạc Liêu">Bạc Liêu</option>
+                  <option value="Cà Mau">Cà Mau</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{'birthday' | translate}}:
+            </td>
+            <td style="width: 28%">
+              <div class="input-control date full-size">
+                <input type="date" value="" name="ngaysinh" ng-model="ngaysinh" required style="font-size: 16px;"
+                data-validate-func="required" data-validate-hint="Bạn chưa chọn ngày sinh !"
+                >
+                <span class="input-state-error mif-warning" style="right: 8px;"></span>
+                <span class="input-state-success mif-checkmark" style="right: 8px;"></span>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              {{'nationality' | translate}}:
+            </td>
+            <td style="width: 28%">
+              <div class="input-control text capitalize full-size">
+                <input type="text" value="" name="quoctich" ng-model="quoctich" required placeholder="[Việt Nam]" onkeyup="stringValidate(this)"
+                data-validate-func="required" data-validate-hint="Bạn chưa nhập quốc tịch !"
+                >
+                <span class="input-state-error mif-warning" style="right: 8px;"></span>
+                <span class="input-state-success mif-checkmark" style="right: 8px;"></span>
+              </div>
+            </td>
+            <td style="padding-left: 12%">
+              {{'dateParticipate' | translate}}:
+            </td>
+            <td>
+              <div class="input-control date full-size">
+                <input type="date" value="" name="ngayvaolam" ng-model="ngayvaolam" required style="font-size: 16px;"
+                data-validate-func="required" data-validate-hint="Bạn chưa chọn ngày vào làm !"
+                >
+                <span class="input-state-error mif-warning" style="right: 8px;"></span>
+                <span class="input-state-success mif-checkmark" style="right: 8px;"></span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{'funcEthnic' | translate}}:
+            </td>
+            <td style="width: 28%">
+              <div class="input-control select full-size">
+                <select name="dantoc" id="select-dantoc1">
+                  <option value="Kinh" selected>Kinh</option>
+                  <option value="Khơ-me">Khơ-me</option>
+                  <option value="Hoa">Hoa</option>
+                  <option value="Tày">Tày</option>
+                  <option value="Nùng">Nùng</option>
+                  <option value="Thái">Thái</option>
+                  <option value="Mường">Mường</option>
+                  <option value="Gia-rai">Gia-rai</option>
+                  <option value="Ê-đê">Ê-đê</option>
+                  <option value="Ba-na">Ba-na</option>
+                  <option value="Dao">Dao</option>
+                </select>
+              </div>
+            </td>
+            <td style="padding-left: 12%">
+              {{'status' | translate}}:
+            </td>
+            <td>
+              <div class="input-control select full-size">
+                <select name="trangthai">
+                  <option value="Đang làm việc">Đang làm việc</option>
+                  <option value="Đã nghỉ việc">Đã nghỉ việc</option>
+                  <option value="Đang nghỉ phép">Đang nghỉ phép</option>
+                  <option value="Đã về hưu">Đã về hưu</option>
+                  <option value="Đang thực tập">Đang thực tập</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>{{'funcReligion' | translate}}:</td>
+            <td style="width: 28%">
+              <div class="input-control select full-size">
+                <select name="tongiao" id="select-tongiao1">
+                  <option value="Không" selected>Không</option>
+                  <option value="Phật giáo">Phật giáo</option>
+                  <option value="Thiên chúa giáo">Thiên chúa giáo</option>
+                  <option value="Hồi giáo">Hồi giáo</option>
+                  <option value="Kito giáo">Kito giáo</option>
+                </select>
+              </div>
+            </td>
+            <td style="padding-left: 12%">{{'dependents' | translate}}:</td>
+            <td>
+              <div class="input-control number full-size">
+                <input type="number" min="0" value="" name="songuoi_pt" ng-model="songuoi_pt" required placeholder="[1, 2, 3, ...]"
+                data-validate-func="required" data-validate-hint="Bạn chưa nhập số người phụ thuộc !">
+                <span class="input-state-error mif-warning" style="right: 8px;"></span>
+                <span class="input-state-success mif-checkmark" style="right: 8px;"></span>
+              </div>
+            </td>
+          </tr>
+        </table>
+        
+        
+        <h3 class="b_c_add">{{'contactInfo' | translate}}</h3>
+        <table>
+          <tr>
+            <td>
+              {{'resident' | translate}}:
+            </td>
+            <td colspan="3">
+              <div class="input-control text add_p capitalize full-size">
+                <input type="text" value="" name="thuongtru" ng-model="thuongtru" required placeholder="[Xã Điều Hòa, TX Tân Uyên, Bình Dương]"
+                data-validate-func="required" data-validate-hint="Bạn chưa nhập địa chỉ !"
+                >
+                <span class="input-state-error mif-warning" style="right: 8px;"></span>
+                <span class="input-state-success mif-checkmark" style="right: 8px;"></span>
+              </div>
+            </td>
+          </tr>
+          
+          <tr>
+            
+            <td>
+              {{'addressEmail' | translate}}:
+            </td>
+            <td style="with: 28%">
+              <div class="input-control email add_p full-size">
+                <input type="email" value="" name="email" ng-model="email" required placeholder="[tantd.uit@gmail.com]"
+                data-validate-func="email" data-validate-hint="Bạn chưa nhập email !"
+                >
+                <span class="input-state-error mif-warning" style="right: 8px;"></span>
+                <span class="input-state-success mif-checkmark" style="right: 8px;"></span>
+              </div>
+            </td>
+            <td style="padding-left: 12%">
+              {{'identityCard' | translate}}:
+            </td>
+            <td >
+              <div class="input-control number add_p full-size">
+                <input type="number" value="" name="cmnd" ng-model="cmnd" required placeholder="[281044111]"
+                data-validate-func="required" data-validate-hint="Bạn chưa nhập số CMND !"
+                >
+                <span class="input-state-error mif-warning" style="right: 8px;"></span>
+                <span class="input-state-success mif-checkmark" style="right: 8px;"></span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{'landlineNumber' | translate}}:
+            </td>
+            <td >
+              <div class="input-control text add_p full-size">
+                <input type="text" phone-input value="" name="dtcd" ng-model="dtcd" placeholder="[(06503) 640-476]">
+              </div>
+            </td>
+            
+            <td style="padding-left: 12%">
+              {{'dateIssue' | translate}}:
+            </td>
+            <td>
+              <div class="input-control date full-size">
+                <input type="date" value="" name="ngaycap" ng-model="ngaycap" required style="font-size: 16px;"
+                data-validate-func="required" data-validate-hint="Bạn chưa chọn ngày cấp CMND !"
+                >
+                <span class="input-state-error mif-warning" style="right: 8px;"></span>
+                <span class="input-state-success mif-checkmark" style="right: 8px;"></span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{'mobileNumber' | translate}}:
+            </td>
+            <td >
+              <div class="input-control text add_p full-size">
+                <input type="text" phone-input value="" name="dtdd" ng-model="dtdd" placeholder="[(01284) 090-893]">
+              </div>
+            </td>
+            
+            <td style="padding-left: 12%">
+              {{'placeIssue' | translate}}:
+            </td>
+            <td style="width: 28%">
+              <div class="input-control select full-size">
+                <select name="noicap" id="select-noicap1">
+                  <option value="Hà Nội">Hà Nội</option>
+                  <option value="Hà Giang">Hà Giang</option>
+                  <option value="Cao Bằng">Cao Bằng</option>
+                  <option value="Bắc Kạn">Bắc Kạn</option>
+                  <option value="Tuyên Quang">Tuyên Quang</option>
+                  <option value="Lào Cai">Lào Cai</option>
+                  <option value="Điện Biên">Điện Biên</option>
+                  <option value="Lai Châu">Lai Châu</option>
+                  <option value="Sơn La">Sơn La</option>
+                  <option value="Yên Bái">Yên Bái</option>
+                  <option value="Hoà Bình">Hoà Bình</option>
+                  <option value="Thái Nguyên">Thái Nguyên</option>
+                  <option value="Lạng Sơn">Lạng Sơn</option>
+                  <option value="Quảng Ninh">Quảng Ninh</option>
+                  <option value="Bắc Giang">Bắc Giang</option>
+                  <option value="Phú Thọ">Phú Thọ</option>
+                  <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                  <option value="Bắc Ninh">Bắc Ninh</option>
+                  <option value="Hải Dương">Hải Dương</option>
+                  <option value="Hải Phòng">Hải Phòng</option>
+                  <option value="Hưng Yên">Hưng Yên</option>
+                  <option value="Thái Bình">Thái Bình</option>
+                  <option value="Hà Nam">Hà Nam</option>
+                  <option value="Nam Định">Nam Định</option>
+                  <option value="Ninh Bình">Ninh Bình</option>
+                  <option value="Thanh Hoá">Thanh Hoá</option>
+                  <option value="Nghệ An">Nghệ An</option>
+                  <option value="Hà Tĩnh">Hà Tĩnh</option>
+                  <option value="Quảng Bình">Quảng Bình</option>
+                  <option value="Quảng Trị">Quảng Trị</option>
+                  <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
+                  <option value="Đà Nẵng">Đà Nẵng</option>
+                  <option value="Quảng Nam">Quảng Nam</option>
+                  <option value="Quảng Ngãi">Quảng Ngãi</option>
+                  <option value="Bình Định">Bình Định</option>
+                  <option value="Phú Yên">Phú Yên</option>
+                  <option value="Khánh Hoà">Khánh Hoà</option>
+                  <option value="Ninh Thuận">Ninh Thuận</option>
+                  <option value="Bình Thuận">Bình Thuận</option>
+                  <option value="Kon Tum">Kon Tum</option>
+                  <option value="Gia Lai">Gia Lai</option>
+                  <option value="Đắk Lắk">Đắk Lắk</option>
+                  <option value="Đắk Nông">Đắk Nông</option>
+                  <option value="Lâm Đồng">Lâm Đồng</option>
+                  <option value="Bình Phước">Bình Phước</option>
+                  <option value="Bình Phước">Tây Ninh</option>
+                  <option value="Bình Dương">Bình Dương</option>
+                  <option value="Đồng Nai">Đồng Nai</option>
+                  <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+                  <option value="Hồ Chí Minh" selected>Hồ Chí Minh</option>
+                  <option value="Long An">Long An</option>
+                  <option value="Tiền Giang">Tiền Giang</option>
+                  <option value="Bến Tre">Bến Tre</option>
+                  <option value="Trà Vinh">Trà Vinh</option>
+                  <option value="Vĩnh Long">Vĩnh Long</option>
+                  <option value="Đồng Tháp">Đồng Tháp</option>
+                  <option value="An Giang">An Giang</option>
+                  <option value="Kiên Giang">Kiên Giang</option>
+                  <option value="Cần Thơ">Cần Thơ</option>
+                  <option value="Hậu Giang">Hậu Giang</option>
+                  <option value="Sóc Trăng">Sóc Trăng</option>
+                  <option value="Bạc Liêu">Bạc Liêu</option>
+                  <option value="Cà Mau">Cà Mau</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <h3 class="b_c_add">{{'jobPosition' | translate}}</h3>
+        <table>
+          <tr>
+            <td>
+              {{'funcTitles' | translate}}:
+            </td>
+            <td style="padding-left: 4%; width: 32%">
+              <div class="input-control select full-size">
+                <select name="macd" ng-model="macd" ng-change="changeCD()">
+                  <option ng-repeat="cd in chucdanh" value="{{cd.mcd}}">{{cd.tencd}}</option>
+                </select>
+              </div>
+            </td>
+            <td style="padding-left: 12%">
+              {{'funcTitle' | translate}}:
+            </td>
+            <td>
+              <div class="input-control select full-size">
+                <select name="chucvu" ng-model="macv" ng-change="changeCV()">
+                  <option ng-repeat="cv in chucvu" value="{{cv.ID}}">{{cv.tenchucvu}}</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{'funcRooms' | translate}}:
+            </td>
+            <td style="padding-left: 4%; width: 32%">
+              <div class="input-control select full-size">
+                <select name="phongban">
+                  <option ng-repeat="pb in phongban" value="{{pb.mpb}}">{{pb.tenpb}}</option>
+                </select>
+              </div>
+            </td>
+            <td style="padding-left: 12%">
+              {{'userID' | translate}}:
+            </td>
+            <td>
+              <div class="input-control text full-size">
+                <input type="text" value="" ng-model="mnv" name="mnv" readonly>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{'funcLevel' | translate}}:
+            </td>
+            <td style="padding-left: 4%; width: 32%">
+              <div class="input-control select full-size">
+                <select name="trinhdo">
+                  <option value="Tiến sĩ">Tiến sĩ</option>
+                  <option value="Thạc sĩ">Thạc sĩ</option>
+                  <option value="Đại học">Đại học</option>
+                  <option value="Cao đẳng">Cao đẳng</option>
+                  <option value="Trung cấp">Trung cấp</option>
+                  <option value="Phổ thông">Phổ thông</option>
+                </select>
+              </div>
+            </td>
+            <td style="padding-left: 12%">
+              {{'funcSpecialize' | translate}}:
+            </td>
+            <td>
+              <div class="input-control select full-size">
+                <select name="chuyenmon">
+                  <option ng-repeat="cm in chuyenmon" value="{{cm.ID}}">{{cm.tenchuyenmon}}</option>
+                </select>
+              </div>
+            </td>
+            
+          </tr>
+        </table>
+        <h3 class="b_c_add">{{'contractInformation' | translate}}</h3>
+        <table>
+          <tr>
+            <td>
+              {{'typeContract' | translate}}:
+            </td>
+            <td>
+              <div class="input-control select full-size">
+                <select name="loaihd" id="select-loaihd1">
+                  <option value="Hợp đồng thử việc" selected>Hợp đồng thử việc</option>
+                  <option value="Hợp đồng học việc">Hợp đồng học việc</option>
+                  <option value="Hợp đồng có thời hạn">Hợp đồng có thời hạn</option>
+                  <option value="Hợp đồng không thời hạn">Hợp đồng không thời hạn</option>
+                </select>
+              </div>
+            </td>
+            <td style="padding-left: 5%">
+              {{'termContract' | translate}}:
+            </td>
+            <td>
+              <div class="input-control select full-size">
+                <select name="thoihan" id="select-thoihan1">
+                  <option selected value="2 tháng">2 tháng</option>
+                  <option value="3 tháng">3 tháng</option>
+                  <option value="6 tháng">6 tháng</option>
+                  <option value="1 năm">1 năm</option>
+                  <option value="3 năm">3 năm</option>
+                  <option value="5 năm">5 năm</option>
+                  <option value="Không thời hạn">Không thời hạn</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{'dateEffective' | translate}}:
+            </td>
+            <td>
+              <div class="input-control date full-size">
+                <input type="date" value="" name="ngayhieuluc" ng-model="ngayhieuluc" required style="font-size: 16px;" data-validate-func="required" data-validate-hint="Bạn không được bỏ trống ô này !">
+                <span class="input-state-error mif-warning" style="right: 8px;"></span>
+                <span class="input-state-success mif-checkmark" style="right: 8px;"></span>
+              </div>
+            </td>
+            <td style="padding-left: 5%">
+              {{'dateExpiry' | translate}}:
+            </td>
+            <td style="width: 30%">
+              <div class="input-control date full-size">
+                <input type="date" value="" name="ngayhethan" ng-model="ngayhethan" required style="font-size: 16px;" data-validate-func="required" data-validate-hint="Bạn không được bỏ trống ô này !">
+                <span class="input-state-error mif-warning" style="right: 8px;"></span>
+                <span class="input-state-success mif-checkmark" style="right: 8px;"></span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{'labelRepresentative' | translate}}:
+            </td>
+            <td style="width: 30%">
+              <div class="input-control text add_p capitalize full-size" ng-controller="SystemController as ctrl">
+                <input type="hidden" name="nguoidd" value="{{ctrl.nguoidd.id}}">
+                <ui-select ng-model="ctrl.nguoidd.id" theme="select2" style="min-width: 250px;" title="Chọn một nhân viên">
+                <ui-select-match placeholder="Chọn người đại diện">{{$select.selected.hoten}}</ui-select-match>
+                <ui-select-choices repeat="person.id as person in users | propsFilter: {hoten: $select.search, mnv: $select.search}">
+                <div ng-bind-html="person.hoten | highlight: $select.search"></div>
+                <small>
+                {{'labelUsername' | translate}}: <span ng-bind-html="''+person.mnv | highlight: $select.search"></span>
+                </small>
+                </ui-select-choices>
+                </ui-select>
+              </div>
+            </td>
+            <td style="padding-left: 5%">
+              {{'basicSalary' | translate}}:
+            </td>
+            <td style="width: 30%">
+              <div class="input-control text add_p full-size">
+                <input type="text" value="" min="0" name="luongcb" ng-model="luongcb" required placeholder="[9,000,000]"
+                format="number"
+                data-validate-func="required"
+                data-validate-hint="Bạn không được bỏ trống ô này !">
+                <span class="input-state-error mif-warning" style="right: 8px;"></span>
+                <span class="input-state-success mif-checkmark" style="right: 8px;"></span>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <h3 class="b_c_add">{{'dashboardNote' | translate}}</h3>
+        <div class="input-control textarea text_add left" data-role="input" data-text-auto-resize="true">
+          <textarea name="ghichu"></textarea>
+        </div>
+        <div class="button_add right">
+          <input type="submit" value="{{ 'btnFinish' | translate }}" class="submit_b">
+          <input type="button" value="{{ 'btnReset' | translate }}" class="reset_b" ng-click="resetAddUser()">
+        </div>
+      </form>
+      <div class="clear"></div>
+    </div>
+    <div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+    <div class="clear"></div>
+  </div>
+</div>
+<script type="text/javascript">
+  $('#select-thoihan1').hover(function() {
+    $('#select-thoihan1').editableSelect({ filter: false });
+  })
+  $('#select-noisinh1').hover(function() {
+    $('#select-noisinh1').editableSelect({ filter: false });
+  });
+  $('#select-tongiao1').hover(function() {
+    $('#select-tongiao1').editableSelect({ filter: false });
+  });
+  $('#select-dantoc1').hover(function() {
+    $('#select-dantoc1').editableSelect({ filter: false });
+  });
+  $('#select-noicap1').hover(function() {
+    $('#select-noicap1').editableSelect({ filter: false });
+  });
+  $('#select-loaihd1').hover(function() {
+    $('#select-loaihd1').editableSelect({ filter: false });
+  });
+  $('.hr_content').scroll(function() {
+    $('.es-list').css('display', 'none');
+    $('#select-tongiao1').blur();
+    $('#select-dantoc1').blur();
+    $('#select-thoihan1').blur();
+    $('#select-noisinh1').blur();
+    $('#select-noicap1').blur();
+    $('#select-loaihd1').blur();
+  });
+</script>

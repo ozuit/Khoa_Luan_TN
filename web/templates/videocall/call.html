@@ -1,0 +1,25 @@
+<style type="text/css">
+	.fancymodal .fancymodal-content {width: 350px;background: #fff;line-height: 25px;}
+	.fancymodal .fancymodal-content .fancymodal-data .title {padding: 10px;;font-size: 18px;font-weight: 600;border-bottom: 1px solid #eee;}
+	.fancymodal .fancymodal-content .fancymodal-data .message {padding: 10px;}
+	.fancymodal .fancymodal-content .fancymodal-data .action {text-align: right;padding: 5px;}
+	.fancymodal .fancymodal-content .fancymodal-data .action button {font-weight: bold;}
+	.fancymodal .fancymodal-content .fancymodal-data .action button span {margin-right: 5px;}
+	.fancymodal .fancymodal-content .fancymodal-data .action button.default {margin-right: 10px;vertical-align: middle;line-height: 30px;}
+	.message img {max-width: 70px;max-height: 90px;float: left;margin-right: 10px;}
+	.message .title-invite {margin: 0;margin-bottom: 10px;text-align: left;}
+</style>
+
+<div class="confirm-popup">
+	<div class="title">
+		<span>{{ 'incomingVideoCall' | translate }}</span>
+	</div>
+	<div class="message">
+		<img src="{{avatar || '/assets/kcfinder/upload/files/avatars/avatar.png'}}">
+		<p class="title-invite"><strong>{{user_income}}</strong> {{ 'titleIncoming' | translate }}</p>
+	</div>
+	<div class="action">
+		<button class="button" ng-click="hangDown()">{{ 'declineVideoCall' | translate }}</button>
+		<button class="button primary" ng-click="hangUp()">{{ 'acceptVideoCall' | translate }}</button>
+	</div>
+</div>

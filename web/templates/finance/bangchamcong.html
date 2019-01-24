@@ -1,0 +1,104 @@
+<div class="hr-content">
+	<div class="content">
+		<div class="main_content box_shadow full_content bang-cham-cong">
+			<div class="tool-bar grid condensed">
+				<div class="row cells5">
+					<div class="cell">
+						<button class="button" ng-click="newPayroll()" ng-disabled="isFinishPayroll == false">
+					    <img src="assets/images/metro/tao-cham-cong.png">
+					    <span class="title">{{'newTable' | translate}}</span>
+						</button>
+					</div>
+					<div class="cell">
+						<button class="button" ng-disabled="isFinishPayroll == true" ng-click="fastPayroll()">
+					    <img src="assets/images/metro/cham-cong.png">
+					    <span class="title">{{'quickTimekeeping' | translate}}</span>
+						</button>
+					</div>
+					<div class="cell">
+						<button class="button" ng-click="cfmClosePayroll()" ng-disabled="isFinishPayroll == true">
+					    <img src="assets/images/metro/xong-cham-cong.png">
+					    <span class="title">{{'finish' | translate}}</span>
+						</button>
+					</div>
+					<div class="cell">
+						<button class="button" ng-click="exportPayroll(monthPayroll, yearPayroll)">
+					    <img src="assets/images/metro/xuat-excel.png">
+					    <span class="title">{{'exportExcel' | translate}}</span>
+						</button>
+					</div>
+					<div class="cell setup-payroll">
+						<label>{{'noteMonth' | translate}}</label>
+						<div class="input-control select month-payroll">
+							<select ng-model="monthPayroll" ng-change="getBackupPayroll(monthPayroll, yearPayroll)">
+				        <option ng-repeat="month in arrMonthPayroll" value="{{month}}">{{month}}</option>
+					    </select>
+						</div>
+						<label class="year">{{'year' | translate}} </label>
+						<div class="input-control select year-payroll">
+							<select ng-model="yearPayroll" ng-change="getBackupPayroll(monthPayroll, yearPayroll)">
+				        <option ng-repeat="year in arrYearPayroll" value="{{year}}">{{year}}</option>
+					    </select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="table-content">
+				<table class="table border bordered" datatable="ng" dt-options="dtOptionCC">
+	        <thead>
+	          <tr>
+	            <th class="so-thu-tu">STT</th>
+	            <th class="ma-nhan-vien">{{'labelUsername' | translate}}</th>
+	            <th class="ho-ten">{{'fullName' | translate}}</th>
+	            <th class="day-of-month" ng-repeat="dayNumber in dayOfMonth">{{dayNumber}}</th>
+	            <th>{{'overtime' | translate}}</th>
+	            <th>{{'late' | translate}}</th>
+	            <th class="nghi-co-phep">{{'excusedAbsence' | translate}}</th>
+	            <th class="nghi-khong-phep">{{'unauthorizedAbsences' | translate}}</th>
+	            <th>{{'totalWorkdays' | translate}}</th>
+	          </tr>
+        	</thead>
+        	<tbody>
+        		<tr ng-repeat="(key1, nhanvien) in dataChamCong" ng-init="ttChamCong=parJson(nhanvien.ttchamcong)" class="data-payroll" id="rowPayroll_{{key1}}">
+        			<td class="so-thu-tu">{{key1 + 1}}</td>
+        			<td class="ma-nhan-vien">{{nhanvien.manv}}</td>
+        			<td class="ho-ten">{{nhanvien.hoten}}</td>
+        			<td class="day-of-month" ng-repeat="(key2, dayNumber) in dayOfMonth">
+        				<div class="input-select">
+        					<input type="text" class="data-payroll rowPayroll_{{key1}}_" id="ttcc_{{key1}}_{{key2}}" title="Ngày {{key2 + 1}}"
+        						ng-value="khcc"
+        						ng-blur="updatePayroll($event, nhanvien.manv, dayNumber)" 
+        						ng-init="khcc=(ttChamCong[dayNumber] != khmacdinh && ttChamCong[dayNumber] != null) ? ttChamCong[dayNumber] : khmacdinh" 
+        						ng-class="{saturday: khcc == 'T7', sunday: khcc == 'CN'}" 
+        						ng-disabled="(khcc == 'T7') || (khcc == 'CN')" 
+        						ng-readonly="isFinishPayroll == true"/>
+        				</div>
+        			</td>
+        			<td class="tangca_{{nhanvien.manv}}">{{nhanvien.tangca}}</td>
+        			<td class="denmuon_{{nhanvien.manv}}">{{nhanvien.denmuon}}</td>
+        			<td class="nghi-co-phep cophep_{{nhanvien.manv}}">{{nhanvien.nghicophep}}</td>
+        			<td class="nghi-khong-phep kophep_{{nhanvien.manv}}">{{nhanvien.nghikophep}}</td>
+        			<td class="tong-ngay-cong tongcong_{{nhanvien.manv}}">{{nhanvien.tongngaycong}}</td>
+        		</tr>
+        	</tbody>
+        </table>
+			</div>
+
+			<div class="ki-hieu-cc">
+				<fieldset class="fieldset-border">
+					<div class="grid">
+						<div class="row cells4" ng-repeat="item in khChamcong">
+							<div class="cell" ng-repeat="khcc in item"><span>{{khcc.kyhieu}}:</span> {{khcc.mota}}</div>
+						</div>
+						<div class="row cells4">
+							<div class="cell colspan4">
+								<button class="button" ng-click="toRedirectUrl('ki-hieu-cham-cong')">{{'editSymbolTable' | translate}}</button>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+	</div>
+</div>

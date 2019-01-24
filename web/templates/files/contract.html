@@ -1,0 +1,52 @@
+<div class="hr-content">
+	<div class="content contract">
+		<div class="main_content box_shadow full_content">
+			<div class="title_left">
+				<div class="tools">
+					<div style="padding-top: 16px;float: left;padding-right: 10px;">{{'statusFilter' | translate}}</div>
+					<div class="input-control select btn_tool_table" style="padding-top:5px;width: auto;">
+						<select name="gioitinh" ng-change="contractFilter()" ng-model="stateHD">
+							<option value="all">{{'all' | translate}}</option>
+							<option value="Còn hiệu lực">{{'valid' | translate}}</option>
+							<option value="Hết hiệu lực">{{'invalid' | translate}}</option>
+						</select>
+					</div>
+					<button class="button btn_tool_table" ng-click="exportHD()" title="Xuất ra file excel">
+						<img src="assets/images/metro/xuat-excel.png">
+					</button>
+				</div>
+				<h3 class="b_c_add">{{'listContract' | translate}}</h3>
+			</div>
+			<table class="table hovered border bordered small_font" datatable="ng" dt-options="dtOptionsHD">
+				<thead>
+					<tr>
+						<th>STT</th>
+						<th>{{'fullName' | translate}}</th>
+						<th>{{'codeContract' | translate}}</th>
+						<th>{{'typeContract' | translate}}</th>
+						<th>{{'termContract' | translate}}</th>
+						<th>{{'dateEffective' | translate}}</th>
+						<th>{{'dateExpiry' | translate}}</th>
+						<th>{{'labelRepresentative' | translate}}</th>
+						<th>{{'basicSalary' | translate}}</th>
+						<th>{{'status' | translate}}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="(key, value) in data_contracts" ng-class="{'redColor': value.trangthai=='Hết hiệu lực'}" ng-click="showHD(value.mnv)">
+						<td>{{key+1}}</td>
+						<td>{{value.hoten}}</td>
+						<td>{{value.mahd}}</td>
+						<td>{{value.loaihd}}</td>
+						<td>{{value.thoihan}}</td>
+						<td>{{value.ngayhieuluc | date:'dd/MM/yyyy'}}</td>
+						<td>{{value.ngayhethan | date:'dd/MM/yyyy'}}</td>
+						<td>{{value.nguoidd}}</td>
+						<td>{{value.luongcb}}</td>
+						<td>{{value.trangthai}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

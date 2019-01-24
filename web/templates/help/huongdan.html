@@ -1,0 +1,79 @@
+<div class="hr-content">
+	<div class="content instruction">	
+		<div class="main_content box_shadow full_content">
+			<div class="flex-grid content">
+				<div class="row cells12">
+					<div class="cell colspan3" id="sticker">
+						<ul class="sidebar2 ">
+							<li class="active"><a ng-style="theme_background_color" href="#/huong-dan/tong-quan"><span ng-style="theme_font_color" class="mif-bookmarks icon"></span><span ng-style="theme_font_color">{{'helpOverview' | translate}}</span></a></li>
+							<!-- HỆ THỐNG -->
+              <li class="">
+                <a class="dropdown-toggle"><span class="mif-cog icon"></span>{{'tabSystem' | translate}}</a>
+                <ul class="d-menu" data-role="dropdown" style="display: none;">
+                  <li><a href="#/huong-dan/he-thong/dang-nhap"><span class="icon mif-switch"></span> {{'loginLogout' | translate}}</a></li>
+                  <li><a href="#/huong-dan/he-thong/thong-tin-cong-ty"><span class="mif-info icon"></span> {{'companyInfo' | translate}}</a></li>
+                  <li><a href="#/huong-dan/he-thong/tai-khoan-nguoi-dung"><span class="mif-user icon"></span> {{'accountUser' | translate}}</a></li>
+                  <li><a href="#/huong-dan/he-thong/doi-mat-khau"><span class="mif-key icon"></span> {{'changePassword' | translate}}</a></li>
+                  <li><a href="#/huong-dan/he-thong/phan-quyen"><span class="mif-user-check icon"></span> {{'funcAuth' | translate}}</a></li>
+                  <li><a href="#/huong-dan/he-thong/dat-lai-mat-khau"><span class="mif-security icon"></span> {{'resetPassword' | translate}}</a></li>
+                  <li><a href="#/huong-dan/he-thong/sao-luu-phuc-hoi"><span class="mif-database icon"></span> {{'backup' | translate}}</a></li>
+                  <li><a href="#/huong-dan/he-thong/xin-nghi-phep"><span class="mif-file-text icon"></span> {{'sabbatical' | translate}}</a></li>
+                  <li><a href="#/huong-dan/he-thong/tao-thong-bao"><span class="mif-bell icon"></span> {{'createNotify' | translate}}</a></li>
+                </ul>
+              </li>
+              <!-- QUẢN LÝ -->
+              <li class="">
+                <a class="dropdown-toggle"><span class="mif-users icon"></span>{{'tabManage' | translate}}</a>
+                <ul class="d-menu" data-role="dropdown" style="display: none;">
+                  <li><a href="#/huong-dan/quan-ly/phong-ban"><span class="mif-organization icon"></span> {{'funcRooms' | translate}}</a></li>
+                  <li><a href="#/huong-dan/quan-ly/cd-cv-cm"><span class="mif-credit-card icon"></span> CD - CV - {{'funcSpecialize' | translate}}</a></li>
+                  <li><a href="#/huong-dan/quan-ly/nghi-phep"><span class="mif-moon2 icon"></span> {{'funcGetSabbatical' | translate}}</a></li>
+                  <li><a href="#/huong-dan/quan-ly/tap-tin"><span class="mif-files-empty icon"></span> {{'helpFile' | translate}}</a></li>
+                </ul>
+              </li>
+              <!-- HỒ SƠ -->
+              <li class="">
+                <a class="dropdown-toggle"><span class="mif-folder-open icon"></span>{{'tabProfile' | translate}}</a>
+                <ul class="d-menu" data-role="dropdown" style="display: none;">
+                  <li><a href="#/huong-dan/ho-so/danh-sach-nhan-vien"><span class="mif-users icon"></span> {{'listMember' | translate}}</a></li>
+                  <li><a href="#/huong-dan/ho-so/them-nhan-vien"><span class="mif-user-plus icon"></span> {{'addMember' | translate}}</a></li>
+                  <li><a href="#/huong-dan/ho-so/cap-nhat-ho-so"><span class="mif-profile icon"></span> {{'updateProfile' | translate}}</a></li>
+                  <li><a href="#/huong-dan/ho-so/khen-thuong-ky-luat"><span class="mif-medal icon"></span> {{'laudatoryDiscipline' | translate}}</a></li>
+                  <li><a href="#/huong-dan/ho-so/cong-tac"><span class="mif-loop2 icon"></span> {{'funcMission' | translate}}</a></li>
+                  <li><a href="#/huong-dan/ho-so/hop-dong-lao-dong"><span class="mif-clipboard icon"></span> {{'contract' | translate}}</a></li>
+                </ul>
+              </li>
+              <!-- TIỀN LƯƠNG -->
+              <li class="">
+                <a class="dropdown-toggle"><span class="mif-money icon"></span>{{'tabSalary' | translate}}</a>
+                <ul class="d-menu" data-role="dropdown" style="display: none;">
+                  <li><a href="#/huong-dan/cham-cong/thiet-lap"><span class="mif-calendar icon"></span> {{'setupTimekeeping' | translate}}</a></li>
+                  <li><a href="#/huong-dan/cham-cong/tong-hop"><img class="menu-icon-custom" style="font-size: 35px;" src="/assets/images/metro/cham-cong.png"> {{'timesheets' | translate}}</a></li>
+                  <li><a href="#/huong-dan/tien-luong/dinh-muc"><span class="mif-coins icon"></span> {{'salaryNorms' | translate}}</a></li>
+                  <li><a href="#/huong-dan/tien-luong/phu-cap"><span class="mif-dollars icon"></span> {{'allowance' | translate}}</a></li>
+                  <li><a href="#/huong-dan/tien-luong/tong-hop"><img class="menu-icon-custom" src="/assets/images/metro/bang-luong.png"> {{'payroll' | translate}}</a></li>
+                </ul>
+              </li>
+              <!-- THỐNG KÊ -->
+              <li class="">
+                <a href="#/huong-dan/thong-ke"><span class="mif-stack icon"></span>{{'statistic' | translate}}</a>
+              </li>
+              <!-- TIỆN ÍCH -->
+              <li class="">
+                <a class="dropdown-toggle"><span class="mif-magic-wand icon"></span>{{'groupUtility' | translate}}</a>
+                <ul class="d-menu" data-role="dropdown" style="display: none;">
+                  <li><a href="#/huong-dan/ghi-chu"><span class="mif-clipboard icon"></span> {{'sidebarNote' | translate}}</a></li>
+                  <li><a href="#/huong-dan/tro-chuyen"><span class="mif-bubbles icon"></span> {{'chat' | translate}}</a></li>
+                  <li><a href="#/huong-dan/video-call"><span class="mif-video-camera icon"></span> {{'videoCall' | translate}}</a></li>
+                </ul>
+              </li>
+        	  </ul>
+					</div>
+					<div class="cell colspan9">
+						<div ui-view="instruction"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

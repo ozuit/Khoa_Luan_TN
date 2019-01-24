@@ -1,0 +1,254 @@
+<div class="hr-content grid">
+    <div class="content row cells12">
+        
+        <div class="main_content box_shadow cell colspan8 profile-member">
+            <form name="frm_update_member" ng-submit="updateMember(avatar)" id="frm_update_member" class="page_addmem">
+                <h3 class="b_c_add">{{'personalInfo' | translate}}</h3>
+                <table>
+                    <tr>
+                        <td>
+                            {{'userID' | translate}}:
+                        </td>
+                        <td>
+                            <div class="input-control text">
+                                <input type="text" name="mnv" value="{{user.mnv}}" readonly style="background-color: #EBEBE4;">
+                            </div>
+                        </td>
+                        <td colspan="2" rowspan="4">
+                            <div class="toolbar">
+                              <div class="toolbar-section right">
+                                <button type="button" class="btn-toolbar-view-member" title="In hồ sơ" ng-click="printProfile()"><span class="mif-print" style="font-size: 18px;"></span></button>
+                              </div>
+                            </div>
+                            <div class="i_logo add">
+                                <img ng-model="avatar" name="avatar" ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-thumbnail="avatar || avatar_default" ngf-max-size="'500KB'">
+                            </div>
+                            <span class="upload-avatar">
+                                {{'selectAvatar' | translate}}<br>
+                                <span ng-if="frm_update_member.avatar.$error.maxSize" class="upload-size-error">({{'alertLimitAvatar' | translate}})</span>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                           {{'fullName' | translate}}:
+                        </td>
+                        <td>
+                            <div class="input-control text">
+                                <input type="text" value="{{user.hoten}}" disabled>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{'funcGender' | translate}}:
+                        </td>
+                        <td>
+                            <label class="input-control radio small-check margin_input" style="margin-left: 0px;">
+                                <input type="radio" ozu-form ng-checked="user.gioitinh == 'Nam'" disabled>
+                                <span class="check"></span><span class="caption">{{'male' | translate}}</span>
+                            </label>
+                            <label class="input-control radio small-check margin_input">
+                                <input type="radio" ozu-form ng-checked="user.gioitinh == 'Nữ'" disabled>
+                                <span class="check"></span><span class="caption">{{'female' | translate}}</span>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{'birthplace' | translate}}:
+                        </td>
+                        <td>
+                            <div class="input-control text">
+                                <input type="text" value="{{user.ngaysinh | date : 'dd/MM/yyyy'}}" disabled>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{'birthday' | translate}}:
+                        </td>
+                        <td>
+                            <div class="input-control text">
+                                <input type="text" value="{{user.noisinh}}" disabled>
+                            </div>
+                        </td>
+                        <td style="padding-left:20px;">
+                            {{'marital' | translate}}:
+                        </td>
+                        <td>
+                            <div class="input-control select full-size">
+                                <select name="tthonnhan">
+                                    <option value="Chưa kết hôn" ng-selected="user.tthonnhan == 'Độc thân'">Độc thân</option>
+                                    <option value="Đã kết hôn" ng-selected="user.tthonnhan == 'Đã kết hôn'">Đã kết hôn</option>
+                                    <option value="Đã ly hôn" ng-selected="user.tthonnhan == 'Đã ly hôn'">Đã ly hôn</option>
+                                    <option value="Mất vợ/chồng" ng-selected="user.tthonnhan == 'Mất vợ/chồng'">Mất vợ/chồng</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{'nationality' | translate}}:</td>
+                        <td>
+                            <div class="input-control text">
+                                <input type="text" value="{{user.quoctich}}" disabled>
+                            </div>
+                        </td>
+                        <td style="padding-left:20px;">{{'funcEthnic' | translate}}:</td>
+                        <td>
+                            <div class="input-control text full-size">
+                                <input type="text" value="{{user.dantoc}}" disabled>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                                
+                <h3 class="b_c_add" style="clear:both;padding-top:30px">{{'contactInfo' | translate}}</h3>
+                <table>
+                    <tr>
+                        <td>
+                            {{'resident' | translate}}:
+                        </td>
+                        <td colspan="3">
+                            <div class="input-control text add_p">
+                                <input type="text" value="{{user.thuongtru}}" disabled>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{'staying' | translate}}:
+                        </td>
+                        <td colspan="3">
+                            <div class="input-control text add_p">
+                                <input type="text" value="{{user.tamtru}}" name="tamtru">
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <td>
+                            {{'addressEmail' | translate}}:
+                        </td>
+                        <td>
+                            <div class="input-control mail full-size">
+                                <input type="mail" value="{{user.email}}" name="email">
+                            </div>
+                        </td>
+                        <td style="padding-left:20px;">
+                            {{'identityCard' | translate}}:
+                        </td>
+                        <td >
+                            <div class="input-control number full-size">
+                                <input type="number" value="{{user.cmnd}}" disabled>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{'landlineNumber' | translate}}:
+                        </td>
+                        <td >
+                            <div class="input-control text full-size">
+                                <input type="text" value="{{user.dtcd | tel}}" name="dtcd">
+                            </div>
+                        </td>
+                        
+                        <td style="padding-left:20px;">
+                            {{'dateIssue' | translate}}:
+                        </td>
+                        <td>
+                            <div class="input-control text full-size">
+                                <input type="text" value="{{user.ngaycap | date: 'dd/MM/yyyy'}}" disabled>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{'mobileNumber' | translate}}:
+                        </td>
+                        <td >
+                            <div class="input-control text full-size">
+                                <input type="text" value="{{user.dtdd | tel}}" name="dtdd">
+                            </div>
+                        </td>
+                        
+                        <td style="padding-left:20px;">
+                            {{'placeIssue' | translate}}:
+                        </td>
+                        <td>
+                            <div class="input-control text full-size">
+                                <input type="text" value="{{user.noicap}}" disabled>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <h3 class="b_c_add" style="clear:both;padding-top:30px">{{'jobPosition' | translate}}</h3>
+                <table>
+                    <tr>
+                        <td>
+                            {{'funcLevel' | translate}}:
+                        </td>
+                        <td style="width: 28%">
+                            <div class="input-control text full-size">
+                                <input type="text" value="{{user.trinhdo}}" disabled>
+                            </div>
+                        </td>
+                        <td style="padding-left: 12%">
+                            {{'funcSpecialize' | translate}}:
+                        </td>
+                        <td>
+                            <div class="input-control text full-size">
+                                <input type="text" value="{{user.chuyenmon}}" disabled>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{'computerization' | translate}}:
+                        </td>
+                        <td style="width: 28%">
+                            <div class="input-control select full-size">
+                                <select name="tinhoc">
+                                    <option value="Chứng chỉ A" ng-selected="user.tinhoc == 'Chứng chỉ A'">Chứng chỉ A</option>
+                                    <option value="Chứng chỉ B" ng-selected="user.tinhoc == 'Chứng chỉ B'">Chứng chỉ B</option>
+                                    <option value="Chứng chỉ C" ng-selected="user.tinhoc == 'Chứng chỉ C'">Chứng chỉ C</option>
+                                    <option>Khác</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td style="padding-left: 12%">
+                            {{'language' | translate}}:
+                        </td>
+                        <td>
+                            <div class="input-control select full-size">
+                                <select name="ngoaingu">
+                                    <option value="Chứng chỉ A" ng-selected="user.ngoaingu == 'Chứng chỉ A'">Chứng chỉ A</option>
+                                    <option value="Chứng chỉ B" ng-selected="user.ngoaingu == 'Chứng chỉ B'">Chứng chỉ B</option>
+                                    <option value="Chứng chỉ C" ng-selected="user.ngoaingu == 'Chứng chỉ C'">Chứng chỉ C</option>
+                                    <option value="Chứng chỉ TOEIC" ng-selected="user.ngoaingu == 'Chứng chỉ TOEIC'">Chứng chỉ TOEIC</option>
+                                    <option value="Chứng chỉ TOEFL" ng-selected="user.ngoaingu == 'Chứng chỉ TOEFL'">Chứng chỉ TOEFL</option>
+                                    <option value="Chứng chỉ IELTS" ng-selected="user.ngoaingu == 'Chứng chỉ IELTS'">Chứng chỉ IELTS</option>
+                                    <option>Khác</option>
+                                </select>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align:right;">
+                            <input type="submit" value="{{'btnUpdate' | translate}}" class="submit_b" style="margin-right: 10px;">
+                            <input type="reset" value="{{ 'btnReset' | translate }}" class="reset_b">
+                        </td>
+                    </tr>
+                </table>
+                <input type="hidden" value="{{user.taikhoan}}" name="taikhoan">
+            </form>
+            <div class="clear"></div>
+            
+        </div>
+        <div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+        <div class="clear"></div>
+    </div>
+</div>

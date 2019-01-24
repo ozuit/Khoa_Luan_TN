@@ -1,0 +1,66 @@
+<div class="hr-content grid">
+	<div class="content row cells12">
+		<div class="main_content box_shadow cell colspan8">
+			<h3 class="b_c_add">{{'newAnnouncement' | translate}}</h3>
+			<form id="frm_announcement" name="frmAnnouncement">
+				<p>{{'inputTitleAnnouncement' | translate}}</p>
+				<div class="input-control text full-size">
+				    <input type="text" name="tieude" ng-model="tieude" placeholder="{{'inputShortTitleAnnoucement' | translate}}" required>
+				</div>	
+				<br>
+				<p>
+					{{'inputDescAnnouncement' | translate}}
+					<br>
+					<em style="color:#A9A9A9">"{{'inputShortDescAnnoucement' | translate}}"</em>
+				</p>		
+				<div ckeditor="options" ng-model="mota" required></div>
+				<br>
+				<p>{{'inputContentAnnouncement' | translate}}</p>	
+				<div ckeditor="options" ng-model="noidung" required></div>
+			
+				<div class="grid">
+			    <div class="row cells2">
+			    	<div class="cell">
+			    		<p>{{'attachFileAnnouncement' | translate}} <span ng-if="frmAnnouncement.file.$error.maxSize" class="upload-size-error">{{'alertLimitAttachFile' | translate}}</span></p>
+			    		<div class="span4">
+			        	<button type="button" ngf-select ng-model="files" name="file" multiple ngf-max-size="'10MB'" class="button success">{{'selectFileAnnouncement' | translate}} <span class="mif-attachment"></span></button>
+								<button type="button" class="button warning" ng-show="!frmAnnouncement.file.$error.maxSize && (files.length > 0)" ng-click="files=null">{{'delFileAnnouncement' | translate}}</button>
+			        </div>
+			        <div class="span8">
+			        	<ul style=" margin-left: 0;padding-left: 18px;">
+					        <li ng-repeat="f in files">
+					            {{f.name}}
+					        </li>
+					    	</ul>
+			        </div>
+			    	</div>
+		        <div class="user-notification cell">
+							<p class="title-invite">{{ 'listReceiveAnnoucement' | translate }}</p>
+							<div class="list-users" ng-if="listUser.length > 0">
+								<span class="add-user" ng-repeat="userItem in listUser">{{userItem.hoten}}<span class="icon-close mif-cancel" ng-click="removeUser(userItem.id)"></span></span>
+							</div>
+							<div class="input-control text timkiem">
+								<ui-select ng-model="ctrl.user.mnv" ng-click="getAllUser()" theme="select2" style="min-width: 250px;">
+					      <ui-select-match>{{ 'enterUserInvite' | translate }}</ui-select-match>
+					      <ui-select-choices repeat="person.mnv as person in users | propsFilter: {hoten: $select.search, mnv: $select.search}" ng-click="addUser($select.selected)" ng-enter="addUser($select.selected)">
+					      <div ng-bind-html="person.hoten | highlight: $select.search"></div>
+					      <small>
+					      {{ 'labelUsername' | translate }}: <span ng-bind-html="''+person.mnv | highlight: $select.search"></span>
+					      </small>
+					      </ui-select-choices>
+					      </ui-select>
+							</div>
+						</div>
+			    </div>
+				</div>		
+				<div style="float:right; margin-top:20px; display: inline-block">
+					<button class="submit_b" ng-click="addAnnounce(files)" ng-disabled="frmAnnouncement.$invalid">{{ 'btnFinish' | translate }}</button>
+					<button type="button" class="reset_b button" ng-click="removeAnnounce()">{{ 'btnReset' | translate }}</button>
+				</div>	
+			</form>
+		</div>
+		<div ng-include="'web/templates/layout/sidebar.html'" class="info_sidebar cell colspan4"></div>
+		<div class="clear"></div>
+	</div>
+	
+</div>
